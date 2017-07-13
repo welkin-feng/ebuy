@@ -5,6 +5,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import com.welkin.mapper.TbItemMapper;
 import com.welkin.pojo.TbItem;
 import com.welkin.pojo.TbItemExample;
@@ -24,4 +26,18 @@ public class TbItemService {
 		List<TbItem> li = tbItemdao.selectByExample(ex);
 		return li;
 	  }
+	  
+	  public Tpager findall(Integer page, Integer rows) {
+			Tpager pager = new Tpager();
+
+			TbItemExample ex = new TbItemExample();
+			Criteria cri = ex.createCriteria();
+			// 查询前开始分页
+			PageHelper.startPage(page, rows);
+			List<TbItem> li = tbItemdao.selectByExample(ex);
+			PageInfo<TbItem> pi = new PageInfo<>(li);
+			pager.setRows(li);
+			pager.setTotal(pi.getTotal());
+			return pager;
+		}
 }

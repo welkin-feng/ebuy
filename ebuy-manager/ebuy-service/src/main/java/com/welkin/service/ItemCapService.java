@@ -16,7 +16,7 @@ public class ItemCapService {
 	@Autowired
 	private TbItemCatMapper itemcatDao;
 
-	public List<MTreeNode> findTrees(Long parentId){
+	/*public List<MTreeNode> findTrees(Long parentId){
 		List<MTreeNode> mli=new ArrayList<MTreeNode>();
 		TbItemCatExample ex=new TbItemCatExample();
 		Criteria c = ex.createCriteria();
@@ -30,5 +30,5 @@ public class ItemCapService {
 			mli.add(tree);
 		}
 		return mli;
-	}
+	}*/
 }

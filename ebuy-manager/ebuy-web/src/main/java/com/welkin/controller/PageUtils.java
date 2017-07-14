@@ -13,12 +13,12 @@ public class PageUtils {
 	  System.out.println("pager 拦截："+pager);
 	  return pager;
   }
-  @RequestMapping("/xurl")
+ /* @RequestMapping("/xurl")
   public @ResponseBody User xxurl(Integer wid){
 	  User u=new User();
 	  u.setUid(88);
 	  u.setUname("你好");
 	  System.out.println("测试......"+wid);
 	  return u;
-  }
+  }*/
 }

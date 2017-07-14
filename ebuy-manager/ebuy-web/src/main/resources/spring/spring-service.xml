@@ -13,11 +13,11 @@
         http://www.springframework.org/schema/aop
         http://www.springframework.org/schema/aop/spring-aop.xsd">
 	<context:component-scan base-package="com.welkin.service"></context:component-scan>
-	<bean id="txMan" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
-		<property name="dataSource" ref="ds"></property>
+	<bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource" ref="dataSource"></property>
 	</bean>
 	<!-- 配置事务通知 -->
-	<tx:advice transaction-manager="txMan" id="txAdv">
+	<tx:advice transaction-manager="transactionManager" id="txAdvice">
 		<tx:attributes>
 			<tx:method name="get*" propagation="SUPPORTS" read-only="true" />
 			<tx:method name="save*" propagation="REQUIRED" />
@@ -25,6 +25,6 @@
 	</tx:advice>
 	<!-- aop编织 -->
 	<aop:config>
-		<aop:advisor advice-ref="txAdv" pointcut="execution(* com.welkin.serivce..*.*(..))" />
+		<aop:advisor advice-ref="txAdvice" pointcut="execution(* com.welkin.serivce..*.*(..))" />
 	</aop:config>
 </beans>

@@ -17,11 +17,11 @@ import com.welkin.service.ItemCapService;
 public class TbItemCatController {
   @Autowired
   private ItemCapService itemcapSer;
-  @RequestMapping("/list")
+ /* @RequestMapping("/list")
   @ResponseBody
 	public List<MTreeNode> getCatList(@RequestParam(value="id", defaultValue="0")long parentId) {
 		List<MTreeNode> list = itemcapSer.findTrees(parentId);
 		
 		return list;
-	}
+	}*/
 }

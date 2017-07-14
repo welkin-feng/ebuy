@@ -20,11 +20,15 @@
 			<groupId>org.mybatis</groupId>
 			<artifactId>mybatis</artifactId>
 		</dependency>
-
 		<dependency>
-			<groupId>com.github.pagehelper</groupId>
-			<artifactId>pagehelper</artifactId>
+			<groupId>org.mybatis</groupId>
+			<artifactId>mybatis-spring</artifactId>
 		</dependency>
+		<!-- <dependency>
+			<groupId>com.github.miemiedev</groupId>
+			<artifactId>mybatis-paginator</artifactId>
+		</dependency> -->
+		
 		<!-- MySql -->
 		<dependency>
 			<groupId>mysql</groupId>
@@ -35,12 +39,8 @@
 			<groupId>com.alibaba</groupId>
 			<artifactId>druid</artifactId>
 		</dependency>
-		<!--业务部分依赖 Spring -->
-		<dependency>
-			<groupId>org.mybatis</groupId>
-			<artifactId>mybatis-spring</artifactId>
-		</dependency>
 	</dependencies>
+
 	<!-- 如果不添加此节点mybatis的mapper.xml文件都会被漏掉。 -->
 	<build>
 		<resources>

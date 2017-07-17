@@ -8,12 +8,13 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
 public class PageUtils {
-  @RequestMapping("/{pager}")
-  public String execute(@PathVariable String pager){
-	  System.out.println("pager 拦截："+pager);
-	  return pager;
-  }
- /* @RequestMapping("/xurl")
+	// 通过页面请求，自动跳转到 /WEB-INF/pager/
+	@RequestMapping("/{pager}")
+	public String execute(@PathVariable String pager){
+		System.out.println("pager 拦截："+pager);
+		return pager;
+	}
+	/* @RequestMapping("/xurl")
   public @ResponseBody User xxurl(Integer wid){
 	  User u=new User();
 	  u.setUid(88);

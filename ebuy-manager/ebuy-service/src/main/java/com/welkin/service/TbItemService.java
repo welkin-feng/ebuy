@@ -1,15 +1,21 @@
 package com.welkin.service;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
+import com.welkin.mapper.TbItemCatMapper;
 import com.welkin.mapper.TbItemMapper;
 import com.welkin.pojo.TPager;
 import com.welkin.pojo.TbItem;
+import com.welkin.pojo.TbItemCat;
+import com.welkin.pojo.TbItemCatExample;
 import com.welkin.pojo.TbItemExample;
 import com.welkin.pojo.TbItemExample.Criteria;
 
@@ -17,7 +23,8 @@ import com.welkin.pojo.TbItemExample.Criteria;
 public class TbItemService {
 	@Autowired
 	private TbItemMapper tbItemdao;
-
+	private TbItemCatMapper catMapper;
+	
 	//查询所有商品信息
 	public List<TbItem> findall(){
 		//mapping生成Example对象查询条件对象的模板
@@ -49,5 +56,29 @@ public class TbItemService {
 		pager.setRows(li);
 		pager.setTotal(pi.getTotal());
 		return pager;
+	}
+	
+	public List<Map<String, Object>> findItemCap(Long parent_id) {
+		TbItemCatExample ex = new TbItemCatExample();
+		// 根据查询对象模板生成条件对象
+		com.welkin.pojo.TbItemCatExample.Criteria c = ex.createCriteria();
+		// 按父类id查询下级所有分类对象
+		c.andParentIdEqualTo(parent_id);
+		List<TbItemCat> li = catMapper.selectByExample(ex);
+		List<Map<String,Object>> mli=new ArrayList<Map<String,Object>>();
+		//遍历分类集合
+		for (TbItemCat cat :li) {
+			//用于页面显示数据的封装  id,text,status
+			Map<String,Object> m=new HashMap<String, Object>();
+			m.put("id",cat.getId());
+			m.put("text",cat.getName());
+			//封装当前节点状态
+			m.put("state", cat.getIsParent()?"closed":"open");
+			//将分类节点数据封装到集合中
+			mli.add(m);
+		}
+		
+		return mli;
+		
 	}
 }

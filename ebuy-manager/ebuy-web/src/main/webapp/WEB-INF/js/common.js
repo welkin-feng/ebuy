@@ -104,7 +104,7 @@ var TT = TAOTAO = {
     
     // 初始化选择类目组件
     initItemCat : function(data){
-    	$("#selectItemCat").each(function(i,e){
+    	$(".selectItemCat").each(function(i,e){
     		var _ele = $(e);
     		if(data && data.cid){
     			_ele.after("<span style='margin-left:10px;'>"+data.cid+"</span>");

@@ -24,10 +24,9 @@
 			<!-- 配置Tomcat插件 -->
 			<plugin>
 				<groupId>org.apache.tomcat.maven</groupId>
-				<artifactId>common-tomcat-maven-plugin</artifactId>
-				<version>3.0-r1655215</version>
+				<artifactId>tomcat7-maven-plugin</artifactId>
 				<configuration>
-					<port>8080</port>
+					<port>8000</port>
 					<path>/</path>
 				</configuration>
 			</plugin>

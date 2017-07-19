@@ -1,10 +1,6 @@
 package com.welkin.service;
 
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -58,27 +54,14 @@ public class TbItemService {
 		return pager;
 	}
 	
-	public List<Map<String, Object>> findItemCap(Long parent_id) {
+	public List<TbItemCat> findByParentId(Long parent_id) {
 		TbItemCatExample ex = new TbItemCatExample();
 		// 根据查询对象模板生成条件对象
 		com.welkin.pojo.TbItemCatExample.Criteria c = ex.createCriteria();
 		// 按父类id查询下级所有分类对象
 		c.andParentIdEqualTo(parent_id);
-		List<TbItemCat> li = catMapper.selectByExample(ex);
-		List<Map<String,Object>> mli=new ArrayList<Map<String,Object>>();
-		//遍历分类集合
-		for (TbItemCat cat :li) {
-			//用于页面显示数据的封装  id,text,status
-			Map<String,Object> m=new HashMap<String, Object>();
-			m.put("id",cat.getId());
-			m.put("text",cat.getName());
-			//封装当前节点状态
-			m.put("state", cat.getIsParent()?"closed":"open");
-			//将分类节点数据封装到集合中
-			mli.add(m);
-		}
+		return catMapper.selectByExample(ex);
 		
-		return mli;
 		
 	}
 }

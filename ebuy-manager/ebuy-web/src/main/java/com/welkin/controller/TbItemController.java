@@ -22,8 +22,9 @@ public class TbItemController {
 
 	@RequestMapping("/save")
 	@ResponseBody
-	public String save(TbItem po) {
-		return tbItemService.save(po);
+	public String save(TbItem po, @RequestParam(value = "desc", required = false) String desc,
+			@RequestParam(value = "itrmParams", required = false) String params) {
+		return tbItemService.save(po, desc, params);
 
 	}
 

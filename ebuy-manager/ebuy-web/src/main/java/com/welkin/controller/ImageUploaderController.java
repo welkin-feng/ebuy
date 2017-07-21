@@ -23,7 +23,7 @@ public class ImageUploaderController {
 	@ResponseBody
 	public String imgUpload(MultipartFile uploadFile) {
 
-		System.out.println("");
+		System.out.println("upload:"+uploadFile);
 		// 存储上传后的图片服务器上的路径
 		StringBuilder url = new StringBuilder();
 		Map<String, Serializable> m = new HashMap<String, Serializable>();

@@ -2,7 +2,7 @@ package com.welkin.pojo;
 
 import java.util.List;
 
-public class TPager {
+public class Pager {
 	private Long total;
 	private List<?> rows;
 

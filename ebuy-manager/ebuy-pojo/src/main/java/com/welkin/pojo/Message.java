@@ -1,6 +1,6 @@
 package com.welkin.pojo;
 
-public class TMessage {
+public class Message {
 	private Integer status;
 	private Object data;
 	public Integer getStatus() {

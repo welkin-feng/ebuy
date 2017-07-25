@@ -103,12 +103,6 @@
     </if>
   </delete>
   <insert id="insert" parameterType="com.welkin.pojo.TbContentCategory" >
-    <!-- selectKey 针对数据库中保存的主键的对应操作
-    	mysql 中主键（和mssqlserver一样）可以设置为自动增长
-    	要获取刚刚插入成功的主键值需要配置 selectKey 元素 -->
-    <selectKey keyProperty="id" resultType="Long" order="AFTER">
-      select last_insert_id()
-    </selectKey>
     insert into tb_content_category (id, parent_id, name, 
       status, sort_order, is_parent, 
       created, updated)

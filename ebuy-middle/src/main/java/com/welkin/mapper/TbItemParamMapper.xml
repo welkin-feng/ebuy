@@ -1,15 +1,14 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.welkin.mapper.TbContentCategoryMapper" >
-  <resultMap id="BaseResultMap" type="com.welkin.pojo.TbContentCategory" >
+<mapper namespace="com.welkin.mapper.TbItemParamMapper" >
+  <resultMap id="BaseResultMap" type="com.welkin.pojo.TbItemParam" >
     <id column="id" property="id" jdbcType="BIGINT" />
-    <result column="parent_id" property="parentId" jdbcType="BIGINT" />
-    <result column="name" property="name" jdbcType="VARCHAR" />
-    <result column="status" property="status" jdbcType="INTEGER" />
-    <result column="sort_order" property="sortOrder" jdbcType="INTEGER" />
-    <result column="is_parent" property="isParent" jdbcType="BIT" />
+    <result column="item_cat_id" property="itemCatId" jdbcType="BIGINT" />
     <result column="created" property="created" jdbcType="TIMESTAMP" />
     <result column="updated" property="updated" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="com.welkin.pojo.TbItemParam" extends="BaseResultMap" >
+    <result column="param_data" property="paramData" jdbcType="LONGVARCHAR" />
   </resultMap>
   <sql id="Example_Where_Clause" >
     <where >
@@ -70,15 +69,20 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    id, parent_id, name, status, sort_order, is_parent, created, updated
+    id, item_cat_id, created, updated
   </sql>
-  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.welkin.pojo.TbContentCategoryExample" >
+  <sql id="Blob_Column_List" >
+    param_data
+  </sql>
+  <select id="selectByExampleWithBLOBs" resultMap="ResultMapWithBLOBs" parameterType="com.welkin.pojo.TbItemParamExample" >
     select
     <if test="distinct" >
       distinct
     </if>
     <include refid="Base_Column_List" />
-    from tb_content_category
+    ,
+    <include refid="Blob_Column_List" />
+    from tb_item_param
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
@@ -86,56 +90,52 @@
       order by ${orderByClause}
     </if>
   </select>
-  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.welkin.pojo.TbItemParamExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from tb_item_param
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Long" >
     select 
     <include refid="Base_Column_List" />
-    from tb_content_category
+    ,
+    <include refid="Blob_Column_List" />
+    from tb_item_param
     where id = #{id,jdbcType=BIGINT}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
-    delete from tb_content_category
+    delete from tb_item_param
     where id = #{id,jdbcType=BIGINT}
   </delete>
-  <delete id="deleteByExample" parameterType="com.welkin.pojo.TbContentCategoryExample" >
-    delete from tb_content_category
+  <delete id="deleteByExample" parameterType="com.welkin.pojo.TbItemParamExample" >
+    delete from tb_item_param
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.welkin.pojo.TbContentCategory" >
-    <!-- selectKey 针对数据库中保存的主键的对应操作
-    	mysql 中主键（和mssqlserver一样）可以设置为自动增长
-    	要获取刚刚插入成功的主键值需要配置 selectKey 元素 -->
-    <selectKey keyProperty="id" resultType="Long" order="AFTER">
-      select last_insert_id()
-    </selectKey>
-    insert into tb_content_category (id, parent_id, name, 
-      status, sort_order, is_parent, 
-      created, updated)
-    values (#{id,jdbcType=BIGINT}, #{parentId,jdbcType=BIGINT}, #{name,jdbcType=VARCHAR}, 
-      #{status,jdbcType=INTEGER}, #{sortOrder,jdbcType=INTEGER}, #{isParent,jdbcType=BIT}, 
-      #{created,jdbcType=TIMESTAMP}, #{updated,jdbcType=TIMESTAMP})
+  <insert id="insert" parameterType="com.welkin.pojo.TbItemParam" >
+    insert into tb_item_param (id, item_cat_id, created, 
+      updated, param_data)
+    values (#{id,jdbcType=BIGINT}, #{itemCatId,jdbcType=BIGINT}, #{created,jdbcType=TIMESTAMP}, 
+      #{updated,jdbcType=TIMESTAMP}, #{paramData,jdbcType=LONGVARCHAR})
   </insert>
-  <insert id="insertSelective" parameterType="com.welkin.pojo.TbContentCategory" >
-    insert into tb_content_category
+  <insert id="insertSelective" parameterType="com.welkin.pojo.TbItemParam" >
+    insert into tb_item_param
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="id != null" >
         id,
       </if>
-      <if test="parentId != null" >
-        parent_id,
-      </if>
-      <if test="name != null" >
-        name,
-      </if>
-      <if test="status != null" >
-        status,
-      </if>
-      <if test="sortOrder != null" >
-        sort_order,
-      </if>
-      <if test="isParent != null" >
-        is_parent,
+      <if test="itemCatId != null" >
+        item_cat_id,
       </if>
       <if test="created != null" >
         created,
@@ -143,25 +143,16 @@
       <if test="updated != null" >
         updated,
       </if>
+      <if test="paramData != null" >
+        param_data,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="id != null" >
         #{id,jdbcType=BIGINT},
       </if>
-      <if test="parentId != null" >
-        #{parentId,jdbcType=BIGINT},
-      </if>
-      <if test="name != null" >
-        #{name,jdbcType=VARCHAR},
-      </if>
-      <if test="status != null" >
-        #{status,jdbcType=INTEGER},
-      </if>
-      <if test="sortOrder != null" >
-        #{sortOrder,jdbcType=INTEGER},
-      </if>
-      <if test="isParent != null" >
-        #{isParent,jdbcType=BIT},
+      <if test="itemCatId != null" >
+        #{itemCatId,jdbcType=BIGINT},
       </if>
       <if test="created != null" >
         #{created,jdbcType=TIMESTAMP},
@@ -169,34 +160,25 @@
       <if test="updated != null" >
         #{updated,jdbcType=TIMESTAMP},
       </if>
+      <if test="paramData != null" >
+        #{paramData,jdbcType=LONGVARCHAR},
+      </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.welkin.pojo.TbContentCategoryExample" resultType="java.lang.Integer" >
-    select count(*) from tb_content_category
+  <select id="countByExample" parameterType="com.welkin.pojo.TbItemParamExample" resultType="java.lang.Integer" >
+    select count(*) from tb_item_param
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
   </select>
   <update id="updateByExampleSelective" parameterType="map" >
-    update tb_content_category
+    update tb_item_param
     <set >
       <if test="record.id != null" >
         id = #{record.id,jdbcType=BIGINT},
       </if>
-      <if test="record.parentId != null" >
-        parent_id = #{record.parentId,jdbcType=BIGINT},
-      </if>
-      <if test="record.name != null" >
-        name = #{record.name,jdbcType=VARCHAR},
-      </if>
-      <if test="record.status != null" >
-        status = #{record.status,jdbcType=INTEGER},
-      </if>
-      <if test="record.sortOrder != null" >
-        sort_order = #{record.sortOrder,jdbcType=INTEGER},
-      </if>
-      <if test="record.isParent != null" >
-        is_parent = #{record.isParent,jdbcType=BIT},
+      <if test="record.itemCatId != null" >
+        item_cat_id = #{record.itemCatId,jdbcType=BIGINT},
       </if>
       <if test="record.created != null" >
         created = #{record.created,jdbcType=TIMESTAMP},
@@ -204,42 +186,40 @@
       <if test="record.updated != null" >
         updated = #{record.updated,jdbcType=TIMESTAMP},
       </if>
+      <if test="record.paramData != null" >
+        param_data = #{record.paramData,jdbcType=LONGVARCHAR},
+      </if>
     </set>
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByExample" parameterType="map" >
-    update tb_content_category
+  <update id="updateByExampleWithBLOBs" parameterType="map" >
+    update tb_item_param
     set id = #{record.id,jdbcType=BIGINT},
-      parent_id = #{record.parentId,jdbcType=BIGINT},
-      name = #{record.name,jdbcType=VARCHAR},
-      status = #{record.status,jdbcType=INTEGER},
-      sort_order = #{record.sortOrder,jdbcType=INTEGER},
-      is_parent = #{record.isParent,jdbcType=BIT},
+      item_cat_id = #{record.itemCatId,jdbcType=BIGINT},
+      created = #{record.created,jdbcType=TIMESTAMP},
+      updated = #{record.updated,jdbcType=TIMESTAMP},
+      param_data = #{record.paramData,jdbcType=LONGVARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update tb_item_param
+    set id = #{record.id,jdbcType=BIGINT},
+      item_cat_id = #{record.itemCatId,jdbcType=BIGINT},
       created = #{record.created,jdbcType=TIMESTAMP},
       updated = #{record.updated,jdbcType=TIMESTAMP}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.welkin.pojo.TbContentCategory" >
-    update tb_content_category
+  <update id="updateByPrimaryKeySelective" parameterType="com.welkin.pojo.TbItemParam" >
+    update tb_item_param
     <set >
-      <if test="parentId != null" >
-        parent_id = #{parentId,jdbcType=BIGINT},
-      </if>
-      <if test="name != null" >
-        name = #{name,jdbcType=VARCHAR},
-      </if>
-      <if test="status != null" >
-        status = #{status,jdbcType=INTEGER},
-      </if>
-      <if test="sortOrder != null" >
-        sort_order = #{sortOrder,jdbcType=INTEGER},
-      </if>
-      <if test="isParent != null" >
-        is_parent = #{isParent,jdbcType=BIT},
+      <if test="itemCatId != null" >
+        item_cat_id = #{itemCatId,jdbcType=BIGINT},
       </if>
       <if test="created != null" >
         created = #{created,jdbcType=TIMESTAMP},
@@ -247,16 +227,23 @@
       <if test="updated != null" >
         updated = #{updated,jdbcType=TIMESTAMP},
       </if>
+      <if test="paramData != null" >
+        param_data = #{paramData,jdbcType=LONGVARCHAR},
+      </if>
     </set>
     where id = #{id,jdbcType=BIGINT}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.welkin.pojo.TbContentCategory" >
-    update tb_content_category
-    set parent_id = #{parentId,jdbcType=BIGINT},
-      name = #{name,jdbcType=VARCHAR},
-      status = #{status,jdbcType=INTEGER},
-      sort_order = #{sortOrder,jdbcType=INTEGER},
-      is_parent = #{isParent,jdbcType=BIT},
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.welkin.pojo.TbItemParam" >
+    update tb_item_param
+    set item_cat_id = #{itemCatId,jdbcType=BIGINT},
+      created = #{created,jdbcType=TIMESTAMP},
+      updated = #{updated,jdbcType=TIMESTAMP},
+      param_data = #{paramData,jdbcType=LONGVARCHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.welkin.pojo.TbItemParam" >
+    update tb_item_param
+    set item_cat_id = #{itemCatId,jdbcType=BIGINT},
       created = #{created,jdbcType=TIMESTAMP},
       updated = #{updated,jdbcType=TIMESTAMP}
     where id = #{id,jdbcType=BIGINT}

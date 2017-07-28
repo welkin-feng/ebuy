@@ -20,7 +20,6 @@ public class ContentService {
 	@Autowired
 	private TbContentMapper tbContentMapper;
 
-
 	public int delete(ArrayList<Long> ids) {
 
 		TbContentExample ex = new TbContentExample();

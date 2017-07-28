@@ -1,4 +1,4 @@
-package com.welkin.pojo;
+package com.welkin.util;
 
 public class TreeNode {
 	private Long id;

@@ -1,4 +1,4 @@
-package com.welkin.pojo;
+package com.welkin.util;
 
 public class Message {
 	private Integer status;

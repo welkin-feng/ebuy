@@ -26,7 +26,7 @@
 		<jackson.version>2.8.8</jackson.version>
 		<httpclient.version>4.5.3</httpclient.version>
 		<pagehelper.version>4.1.6</pagehelper.version>
-		<jedis.version>2.8.0</jedis.version>
+		<jedis.version>2.9.0</jedis.version>
 		<solrj.version>6.6.0</solrj.version>
 		<jsch.version>0.1.54</jsch.version>
 		<!-- unused -->

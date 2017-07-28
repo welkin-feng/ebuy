@@ -24,7 +24,9 @@ public class ContentCategoryController {
 	@RequestMapping("/delete")
 	@ResponseBody
 	public Message delete(Long id) {
-		System.out.println("delete:" + ",id=" + id);
+
+		System.out.println("delete: " + "id=" + id);
+
 		List<TbContentCategory> li = contentCategoryService.findByParentId(id);
 		if (li != null && !li.isEmpty()) {
 			for (TbContentCategory tbcc : li) {

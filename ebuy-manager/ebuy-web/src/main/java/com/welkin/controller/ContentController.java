@@ -1,6 +1,7 @@
 package com.welkin.controller;
 
 import java.util.ArrayList;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -22,7 +23,6 @@ public class ContentController {
 	@RequestMapping("/delete")
 	@ResponseBody
 	public Message delete(@RequestParam(value = "ids", required = true) ArrayList<Long> ids) {
-
 		// System.out.println("delete:" + "ids=" + ids);
 		int x = contentService.delete(ids);
 		return MessageUtil.generateStatus(x);

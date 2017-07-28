@@ -21,6 +21,7 @@ public class ContentService {
 	private TbContentMapper tbContentMapper;
 
 	public int delete(ArrayList<Long> ids) {
+
 		TbContentExample ex = new TbContentExample();
 		Criteria c = ex.createCriteria();
 		c.andIdIn(ids);

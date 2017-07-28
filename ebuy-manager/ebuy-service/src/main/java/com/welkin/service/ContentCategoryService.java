@@ -21,6 +21,11 @@ public class ContentCategoryService {
 	private TbContentMapper tbContentMapper;
 
 	public int delete(Long id) {
+
+		//在删除之前拿到pid
+		Long pid = tbContentCategoryMapper.selectByPrimaryKey(id).getParentId();
+		
+
 		// 删内容类别
 		int x1 = tbContentCategoryMapper.deleteByPrimaryKey(id);
 		// 删内容类别下面的所有内容
@@ -28,6 +33,20 @@ public class ContentCategoryService {
 		com.welkin.pojo.TbContentExample.Criteria c = ex.createCriteria();
 		c.andCategoryIdEqualTo(id);
 		int x2 = tbContentMapper.deleteByExample(ex);
+
+		
+		//空指针错误
+		//System.out.println("-----------------------pid=" +pid);
+		
+		List<TbContentCategory> subli = findByParentId(pid);
+		if(subli==null || subli.isEmpty()) {
+			TbContentCategory record = new TbContentCategory();
+			record.setId(pid);
+			record.setIsParent(false);
+			tbContentCategoryMapper.updateByPrimaryKeySelective(record);
+		}
+		
+
 		return x1 & x2;
 	}
 

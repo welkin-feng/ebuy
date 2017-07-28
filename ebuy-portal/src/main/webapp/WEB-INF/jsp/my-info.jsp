@@ -7,16 +7,16 @@
 <head>
 <meta http-equiv="Cache-Control" content="max-age=300" />
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>我的信息 - 淘淘</title>
+<title>我的信息</title>
 <meta name="Keywords" content="java,淘淘java" />
 <meta name="description" content="在淘淘中找到了29910件java的类似商品，其中包含了“图书”，“电子书”，“教育音像”，“骑行运动”等类型的java的商品。" />
 <link rel="stylesheet" type="text/css" href="css/base.css" media="all" />
 <link rel="stylesheet" type="text/css" href="css/myjd.common.css" media="all" />
 <link rel="stylesheet" type="text/css" href="css/myjd.info.css" media="all" />
-<script type="text/javascript" src="/js/jquery-1.6.4.js"></script>
+<script type="text/javascript" src="js/jquery-1.6.4.js"></script>
 </head>
 <body>
-<script type="text/javascript" src="/js/base-2011.js" charset="utf-8"></script>
+<script type="text/javascript" src="js/base-2011.js" charset="utf-8"></script>
 <!-- header start -->
 <jsp:include page="commons/header.jsp" />
 <!-- header end -->

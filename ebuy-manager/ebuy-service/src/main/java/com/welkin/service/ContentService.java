@@ -1,5 +1,6 @@
 package com.welkin.service;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -19,7 +20,7 @@ public class ContentService {
 	@Autowired
 	private TbContentMapper tbContentMapper;
 
-	public int delete(List<Long> ids) {
+	public int delete(ArrayList<Long> ids) {
 		TbContentExample ex = new TbContentExample();
 		Criteria c = ex.createCriteria();
 		c.andIdIn(ids);

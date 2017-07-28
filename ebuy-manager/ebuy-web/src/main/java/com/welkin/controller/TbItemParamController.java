@@ -1,6 +1,7 @@
 package com.welkin.controller;
 
 import java.util.ArrayList;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -18,6 +19,26 @@ import com.welkin.service.TbItemParamService;
 public class TbItemParamController {
 	@Autowired
 	private TbItemParamService tbItemParamService;
+	
+	@RequestMapping("/update/{cid}")
+	@ResponseBody
+	public Message update(@PathVariable Long cid, @RequestParam("paramData") String pstr) {
+		//封装产品的规格信息
+		TbItemParam tbItemParam = new TbItemParam();
+		//对应产品信息
+		tbItemParam.setItemCatId(cid);
+		tbItemParam.setParamData(pstr);
+		
+		//调用业务更新的方法
+		boolean flag = tbItemParamService.update(tbItemParam);
+		
+		Message me = new Message();
+		if(flag)
+			me.setStatus(200);
+		else
+			me.setStatus(500);
+		return me;
+	}
 
 	// 删除“商品类别”对应的“规格参数”
 	@RequestMapping("/delete")

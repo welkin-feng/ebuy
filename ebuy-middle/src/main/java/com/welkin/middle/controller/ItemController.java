@@ -8,7 +8,7 @@ public class ItemController {
 
 	@RequestMapping(value = "")
 	public String findItemTitle(String query, Integer page) {
-		
+
 		return null;
 	}
 }

@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.welkin.middle.service.ContentService;
-import com.welkin.pojo.Message;
+import com.welkin.util.Message;
 
 @Controller
 @RequestMapping("/content")

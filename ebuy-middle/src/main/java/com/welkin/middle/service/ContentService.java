@@ -44,7 +44,6 @@ public class ContentService {
 
 	/**
 	 * 功能：按内容分类编号查询对应的广告信息
-	 * 
 	 * @param cateId 分类编号
 	 * @return
 	 */

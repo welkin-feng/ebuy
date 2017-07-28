@@ -8,12 +8,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.welkin.pojo.Message;
 import com.welkin.pojo.TbItem;
 import com.welkin.pojo.TbItemDesc;
 import com.welkin.pojo.TbItemParamItem;
 import com.welkin.service.TbItemOpService;
 import com.welkin.service.TbItemService;
+import com.welkin.util.Message;
+import com.welkin.util.MessageUtil;
 
 @Controller
 @RequestMapping("/rest/item")
@@ -25,7 +26,6 @@ public class TbItemOpController {
 
 	/**
 	 * 编辑商品：根据用户选择具体商品id查询对应商品对象，返回给类型的json形式的数据
-	 * 
 	 * @param id
 	 * @return
 	 */
@@ -45,7 +45,6 @@ public class TbItemOpController {
 
 	/**
 	 * 编辑商品：根据用户选择具体商品的id查询TbItemParamItem表，得到规格信息
-	 * 
 	 * @param paramitemid
 	 * @return
 	 */
@@ -67,42 +66,24 @@ public class TbItemOpController {
 	@RequestMapping("/delete")
 	@ResponseBody
 	public Message delete(@RequestParam(value = "ids", required = true) ArrayList<Long> ids) {
-		Message msg = new Message();
 		int x = tbItemOpService.delete(ids);
-
-		if (x > 0)
-			msg.setStatus(200);
-		else
-			msg.setStatus(500);
-		return msg;
+		return MessageUtil.generateStatus(x);
 	}
 
 	// 下架商品
 	@RequestMapping("/instock")
 	@ResponseBody
 	public Message instock(@RequestParam(value = "ids", required = true) ArrayList<Long> ids) {
-		Message msg = new Message();
 		int x = tbItemOpService.updateStock(ids, (byte) 2);
-
-		if (x > 0)
-			msg.setStatus(200);
-		else
-			msg.setStatus(500);
-		return msg;
+		return MessageUtil.generateStatus(x);
 	}
 
 	// 上架商品
 	@RequestMapping("/reshelf")
 	@ResponseBody
 	public Message reshelf(@RequestParam(value = "ids", required = true) ArrayList<Long> ids) {
-		Message msg = new Message();
 		int x = tbItemOpService.updateStock(ids, (byte) 1);
-
-		if (x > 0)
-			msg.setStatus(200);
-		else
-			msg.setStatus(500);
-		return msg;
+		return MessageUtil.generateStatus(x);
 	}
 
 	@RequestMapping("/update")
@@ -113,13 +94,6 @@ public class TbItemOpController {
 		System.out.println("商品规格:" + itemParam);
 
 		int x = tbItemOpService.updateItem(po, desc, itemParam);
-
-		Message op = new Message();
-		if (x > 0)
-			op.setStatus(200);
-		else
-			op.setStatus(500);
-
-		return op;
+		return MessageUtil.generateStatus(x);
 	}
 }

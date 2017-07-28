@@ -8,14 +8,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.welkin.pojo.Message;
-import com.welkin.pojo.Pager;
 import com.welkin.pojo.TbItem;
 import com.welkin.pojo.TbItemCat;
-import com.welkin.pojo.TreeNode;
 import com.welkin.service.TbItemService;
+import com.welkin.util.Message;
+import com.welkin.util.MessageUtil;
+import com.welkin.util.Pager;
+import com.welkin.util.TreeNode;
 
 @Controller
 @RequestMapping("/item")
@@ -27,14 +26,8 @@ public class TbItemController {
 	@ResponseBody
 	public Message save(TbItem po, @RequestParam(value = "desc", required = false) String desc,
 			@RequestParam(value = "itemParams", required = false) String params) {
-		Message m = new Message();
 		int x = tbItemService.save(po, desc, params);
-		
-		if (x > 0) {
-			m.setStatus(200);
-		} else {
-			m.setStatus(500);
-		}
+		return MessageUtil.generateStatus(x);
 
 		/*
 		 * jackson 组件将java 对象和 json 对象相互转化 spring 中加入 jackson
@@ -42,14 +35,7 @@ public class TbItemController {
 		 * json字符串的工作，但是在不同版本浏览器中存在兼容问题 为了解决这个通过jackson 组件手工将java对象转换成json字符串
 		 * ObjectMapper 提供将java对象转换成json字符串的方法 writeValueAsString
 		 */
-		ObjectMapper om = new ObjectMapper();
-		String s = null;
-		try {
-			s = om.writeValueAsString(m);
-		} catch (JsonProcessingException e) {
-			e.printStackTrace();
-		}
-		return m;
+
 	}
 
 	@RequestMapping("/list")
@@ -59,7 +45,7 @@ public class TbItemController {
 		System.out.println("page:" + page + ",rows:" + rows);
 		return tbItemService.selectPager(page, rows);
 	}
-	
+
 	// 针对商品分类查询的 mapping
 	@RequestMapping("/cat/list")
 	@ResponseBody

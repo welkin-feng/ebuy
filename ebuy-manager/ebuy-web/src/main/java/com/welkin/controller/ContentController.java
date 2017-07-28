@@ -25,7 +25,7 @@ public class ContentController {
 
 		// System.out.println("delete:" + "ids=" + ids);
 		int x = contentService.delete(ids);
-		return MessageUtil.compare(x);
+		return MessageUtil.generateStatus(x);
 	}
 
 	@RequestMapping("/edit")
@@ -37,14 +37,14 @@ public class ContentController {
 
 		int x = contentService.update(con);
 
-		return MessageUtil.compare(x);
+		return MessageUtil.generateStatus(x);
 	}
 
 	@RequestMapping("/save")
 	@ResponseBody
 	public Message save(TbContent con) {
 		int x = contentService.save(con);
-		return MessageUtil.compare(x);
+		return MessageUtil.generateStatus(x);
 	}
 
 	@RequestMapping("/query/list")

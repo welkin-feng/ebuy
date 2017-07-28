@@ -13,8 +13,6 @@ import com.welkin.mapper.TbItemCatMapper;
 import com.welkin.mapper.TbItemMapper;
 import com.welkin.mapper.TbItemParamItemMapper;
 import com.welkin.mapper.TbItemParamMapper;
-import com.welkin.pojo.JsonUtil;
-import com.welkin.pojo.Pager;
 import com.welkin.pojo.TbItem;
 import com.welkin.pojo.TbItemCat;
 import com.welkin.pojo.TbItemCatExample;
@@ -24,6 +22,8 @@ import com.welkin.pojo.TbItemParamExample;
 import com.welkin.pojo.TbItemParamExample.Criteria;
 import com.welkin.pojo.TbItemParamItem;
 import com.welkin.pojo.TbItemParamItemExample;
+import com.welkin.util.JsonUtil;
+import com.welkin.util.Pager;
 
 @Service
 public class TbItemParamService {
@@ -43,34 +43,34 @@ public class TbItemParamService {
 	 */
 	public boolean update(TbItemParam tbItemParam) {
 		tbItemParam.setUpdated(new Date());
-		//更新产品类型规格基本信息
+		// 更新产品类型规格基本信息
 		TbItemParamExample ex1 = new TbItemParamExample();
 		Criteria c1 = ex1.createCriteria();
 		c1.andItemCatIdEqualTo(tbItemParam.getItemCatId());
 		int updateTbItemParamRes = tbItemParamMapper.updateByExampleSelective(tbItemParam, ex1);
 
-		//更新该类型所有商品的规格信息
-		//根据cid从Tb_Item中查询所有商品
+		// 更新该类型所有商品的规格信息
+		// 根据cid从Tb_Item中查询所有商品
 		TbItemExample ex2 = new TbItemExample();
 		com.welkin.pojo.TbItemExample.Criteria c2 = ex2.createCriteria();
 		c2.andCidEqualTo(tbItemParam.getItemCatId());
 		List<TbItem> tbItems = tbItemMapper.selectByExample(ex2);
 		List<Long> tbItems_ItemId = new ArrayList<Long>();
-		for(int i = 0; i<tbItems.size(); i++) {
+		for (int i = 0; i < tbItems.size(); i++) {
 			tbItems_ItemId.add(tbItems.get(i).getId());
 		}
-		//根据所有商品id从Tb_Item_param_item查询所有商品规格信息
+		// 根据所有商品id从Tb_Item_param_item查询所有商品规格信息
 		TbItemParamItemExample ex3 = new TbItemParamItemExample();
 		com.welkin.pojo.TbItemParamItemExample.Criteria c3 = ex3.createCriteria();
 		c3.andItemIdIn(tbItems_ItemId);
 		TbItemParamItem tbItemParamItem = new TbItemParamItem();
 		int updateByTbItemParamItemRes = 0;
-		for(int i=0; i<tbItems_ItemId.size();i++) {
+		for (int i = 0; i < tbItems_ItemId.size(); i++) {
 			tbItemParamItem.setParamData(JsonUtil.JsonParamToString(tbItemParam.getParamData()));
 			tbItemParamItem.setUpdated(new Date());
 			updateByTbItemParamItemRes += tbItemParamItemMapper.updateByExampleSelective(tbItemParamItem, ex3);
 		}
-		if(updateTbItemParamRes > 0 && updateByTbItemParamItemRes>0)
+		if (updateTbItemParamRes > 0 && updateByTbItemParamItemRes > 0)
 			return true;
 
 		return false;
@@ -106,9 +106,7 @@ public class TbItemParamService {
 
 	/**
 	 * 功能：保存商品类型规格基本信息
-	 * 
-	 * @param po
-	 *            商品类型对应基本规格对象
+	 * @param po 商品类型对应基本规格对象
 	 * @return
 	 */
 	public int save(TbItemParam po) {
@@ -119,11 +117,8 @@ public class TbItemParamService {
 
 	/**
 	 * 功能分页查询商品
-	 * 
-	 * @param page
-	 *            当前页码
-	 * @param rows
-	 *            每页显示记录数量
+	 * @param page 当前页码
+	 * @param rows 每页显示记录数量
 	 * @return 封装了分页信息的对象
 	 */
 	public Pager selectPager(Integer page, Integer rows) {
@@ -136,7 +131,7 @@ public class TbItemParamService {
 		List<TbItemParam> paramList = tbItemParamMapper.selectByExampleWithBLOBs(ex);
 
 		List<Long> catIds = new ArrayList<>();
-		for (int i = 0; i < paramList.size(); i ++) {
+		for (int i = 0; i < paramList.size(); i++) {
 			catIds.add(paramList.get(i).getItemCatId());
 		}
 
@@ -146,7 +141,7 @@ public class TbItemParamService {
 		List<TbItemCat> catList = tbItemCatMapper.selectByExample(catEx);
 
 		List<TbItemParamDetail> tli = new ArrayList<>();
-		for (int i = 0; i < catList.size(); i ++) {
+		for (int i = 0; i < catList.size(); i++) {
 			TbItemParamDetail e = new TbItemParamDetail();
 			e.setTbItemParam(paramList.get(i));
 			e.setItemCatName(catList.get(i).getName());
@@ -176,6 +171,7 @@ class TbItemParamDetail {
 	public TbItemParam getTbItemParam() {
 		return tbItemParam;
 	}
+
 	public void setTbItemParam(TbItemParam tbItemParam) {
 		this.tbItemParam = tbItemParam;
 		this.id = tbItemParam.getId();
@@ -184,24 +180,31 @@ class TbItemParamDetail {
 		this.updated = tbItemParam.getUpdated();
 		this.paramData = tbItemParam.getParamData();
 	}
+
 	public String getItemCatName() {
 		return itemCatName;
 	}
+
 	public void setItemCatName(String itemCatName) {
 		this.itemCatName = itemCatName;
 	}
+
 	public Long getId() {
 		return id;
 	}
+
 	public Long getItemCatId() {
 		return itemCatId;
 	}
+
 	public Date getCreated() {
 		return created;
 	}
+
 	public Date getUpdated() {
 		return updated;
 	}
+
 	public String getParamData() {
 		return paramData;
 	}

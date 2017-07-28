@@ -33,7 +33,7 @@ public class ContentCategoryController {
 		}
 
 		int x = contentCategoryService.delete(id);
-		return MessageUtil.compare(x);
+		return MessageUtil.generateStatus(x);
 	}
 
 	@RequestMapping("/update")
@@ -41,7 +41,7 @@ public class ContentCategoryController {
 	public Message update(Long id, String name) {
 		System.out.println("update:" + "id=" + id + ",name=" + name);
 		int x = contentCategoryService.update(id, name);
-		return MessageUtil.compare(x);
+		return MessageUtil.generateStatus(x);
 	}
 
 	@RequestMapping("/create")
@@ -52,7 +52,7 @@ public class ContentCategoryController {
 		cc.setParentId(parentId);
 		cc.setName(name);
 		int x = contentCategoryService.save(cc);
-		return MessageUtil.compare(x);
+		return MessageUtil.generateStatus(x);
 	}
 
 	// 查询返回内容分类的信息

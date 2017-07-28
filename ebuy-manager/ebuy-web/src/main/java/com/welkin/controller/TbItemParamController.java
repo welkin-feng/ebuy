@@ -9,58 +9,44 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.welkin.pojo.Message;
-import com.welkin.pojo.Pager;
 import com.welkin.pojo.TbItemParam;
 import com.welkin.service.TbItemParamService;
+import com.welkin.util.Message;
+import com.welkin.util.MessageUtil;
+import com.welkin.util.Pager;
 
 @Controller
 @RequestMapping("/item/param")
 public class TbItemParamController {
 	@Autowired
 	private TbItemParamService tbItemParamService;
-	
+
 	@RequestMapping("/update/{cid}")
 	@ResponseBody
 	public Message update(@PathVariable Long cid, @RequestParam("paramData") String pstr) {
-		//封装产品的规格信息
+		// 封装产品的规格信息
 		TbItemParam tbItemParam = new TbItemParam();
-		//对应产品信息
+		// 对应产品信息
 		tbItemParam.setItemCatId(cid);
 		tbItemParam.setParamData(pstr);
-		
-		//调用业务更新的方法
+
+		// 调用业务更新的方法
 		boolean flag = tbItemParamService.update(tbItemParam);
-		
-		Message me = new Message();
-		if(flag)
-			me.setStatus(200);
-		else
-			me.setStatus(500);
-		return me;
+		return MessageUtil.generateStatus(flag);
 	}
 
 	// 删除“商品类别”对应的“规格参数”
 	@RequestMapping("/delete")
 	@ResponseBody
 	public Message delete(@RequestParam(value = "ids", required = true) ArrayList<Long> ids) {
-		Message msg = new Message();
 		int x = tbItemParamService.delete(ids);
-
-		if (x > 0)
-			msg.setStatus(200);
-		else
-			msg.setStatus(500);
-		return msg;
+		return MessageUtil.generateStatus(x);
 	}
 
 	/**
 	 * 功能：保存商品规格信息
-	 * 
-	 * @param cid
-	 *            对应商品类型的编号
-	 * @param pstr
-	 *            商品类型对应的商品规格基本信息
+	 * @param cid 对应商品类型的编号
+	 * @param pstr 商品类型对应的商品规格基本信息
 	 * @return
 	 */
 	@RequestMapping("/save/{cid}")
@@ -71,15 +57,9 @@ public class TbItemParamController {
 		// 设置对应产品类型的编号
 		po.setItemCatId(cid);
 		po.setParamData(pstr);
-
-		Message msg = new Message();
 		// 调用业务中保存方法
 		int x = tbItemParamService.save(po);
-		if (x > 0)
-			msg.setStatus(200);
-		else
-			msg.setStatus(500);
-		return msg;
+		return MessageUtil.generateStatus(x);
 	}
 
 	@RequestMapping("/query/itemcatid/{id}")

@@ -1,4 +1,4 @@
-package com.welkin.test;
+package com.welkin.portal.test;
 
 import java.io.IOException;
 import java.net.URI;

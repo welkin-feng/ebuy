@@ -9,33 +9,52 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.welkin.pojo.Message;
 import com.welkin.pojo.TbContentCategory;
-import com.welkin.pojo.TreeNode;
 import com.welkin.service.ContentCategoryService;
+import com.welkin.util.Message;
+import com.welkin.util.MessageUtil;
+import com.welkin.util.TreeNode;
 
 @Controller
 @RequestMapping("/content/category")
 public class ContentCategoryController {
 	@Autowired
 	private ContentCategoryService contentCategoryService;
-	
+
+	@RequestMapping("/delete")
+	@ResponseBody
+	public Message delete(Long id) {
+		System.out.println("delete:" + "id=" + id);
+		List<TbContentCategory> li = contentCategoryService.findByParentId(id);
+		if (li != null && !li.isEmpty()) {
+			for (TbContentCategory tbcc : li) {
+				delete(tbcc.getId());
+			}
+		}
+
+		int x = contentCategoryService.delete(id);
+		return MessageUtil.generateStatus(x);
+	}
+
+	@RequestMapping("/update")
+	@ResponseBody
+	public Message update(Long id, String name) {
+		System.out.println("update:" + "id=" + id + ",name=" + name);
+		int x = contentCategoryService.update(id, name);
+		return MessageUtil.generateStatus(x);
+	}
+
 	@RequestMapping("/create")
 	@ResponseBody
 	public Message create(Long parentId, String name) {
-		Message m = new Message();
 		// 封装用户传递的信息
 		TbContentCategory cc = new TbContentCategory();
 		cc.setParentId(parentId);
 		cc.setName(name);
 		int x = contentCategoryService.save(cc);
-		if(x > 0)
-			m.setStatus(200);
-		else
-			m.setStatus(500);
-		return m;		
+		return MessageUtil.generateStatus(x);
 	}
-	
+
 	// 查询返回内容分类的信息
 	@RequestMapping("/list")
 	@ResponseBody

@@ -1,4 +1,4 @@
-package com.welkin.controller;
+package com.welkin.middle.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
@@ -6,10 +6,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.welkin.pojo.CateResult;
-import com.welkin.service.ItemCatService;
+import com.welkin.middle.service.ItemCatService;
 
 @Controller
 @RequestMapping("/itemcat")
@@ -21,20 +18,9 @@ public class ItemCatController {
 	@ResponseBody
 	public String findAllCat(String callback) {
 		// 调用业务
-		CateResult res = itemCatService.getAllCate();
-		// 将java 对象转换成json字符串
-		ObjectMapper om = new ObjectMapper();
-		String s = "";
-		try {
-			s = om.writeValueAsString(res);
-		} catch (JsonProcessingException e) {
-			e.printStackTrace();
-		}
+		String s = itemCatService.getAllCat();
 
-		String str = callback + "(" + s + ");";
-		System.out.println("middle str: " + str);
-
-		return str;
+		return callback + "(" + s + ");";
 	}
 
 }

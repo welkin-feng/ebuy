@@ -1,4 +1,4 @@
-package com.welkin.service;
+package com.welkin.middle.service;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -6,9 +6,12 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.welkin.mapper.TbItemCatMapper;
-import com.welkin.pojo.CatePojo;
-import com.welkin.pojo.CateResult;
+import com.welkin.middle.dao.RedisDao;
+import com.welkin.middle.pojo.CatPojo;
+import com.welkin.middle.pojo.CatResult;
 import com.welkin.pojo.TbItemCat;
 import com.welkin.pojo.TbItemCatExample;
 import com.welkin.pojo.TbItemCatExample.Criteria;
@@ -16,17 +19,32 @@ import com.welkin.pojo.TbItemCatExample.Criteria;
 @Service
 public class ItemCatService {
 	@Autowired
-	private TbItemCatMapper catMapper;
+	private TbItemCatMapper tbItemCatMapper;
+	@Autowired
+	private RedisDao redis;
 
-	public CateResult getAllCate() {
-		CateResult res = new CateResult();
+	public String getAllCat() {
+		String value = redis.hgetKey("ItemCatService", "getAllCat");
+		if (value != null && !value.equals("")) {
+			return value;
+		}
+		CatResult res = new CatResult();
 		// 为data属性赋值
-		res.setData(getCateItems(0L));
-		return res;
+		res.setData(getCatItems(0L));
+
+		ObjectMapper om = new ObjectMapper();
+		try {
+			value = om.writeValueAsString(res);
+			redis.hsetKey("ItemCatService", "getAllCat", value);
+		} catch (JsonProcessingException e) {
+			e.printStackTrace();
+		}
+
+		return value;
 	}
 
 	@SuppressWarnings({ "rawtypes", "unchecked" })
-	private List getCateItems(long pid) {
+	private List getCatItems(long pid) {
 		// 返回的数据
 		List rli = new ArrayList();
 		// 按当前父层次id查询执行的子类型商品集合
@@ -35,12 +53,12 @@ public class ItemCatService {
 		Criteria c = ex.createCriteria();
 		// 将父类型的id作为查询条件
 		c.andParentIdEqualTo(pid);
-		List<TbItemCat> list = catMapper.selectByExample(ex);
+		List<TbItemCat> list = tbItemCatMapper.selectByExample(ex);
 		// 遍历商品类型
 		for (TbItemCat cate : list) {
 			// 当前类型是否有子类型
 			if (cate.getIsParent()) {
-				CatePojo cp = new CatePojo();
+				CatPojo cp = new CatPojo();
 				cp.setUrl("/product/" + cate.getId() + ".html");
 				// 判断当前商品类型的parentId 是否为0
 				if (cate.getParentId() == 0) {
@@ -49,7 +67,7 @@ public class ItemCatService {
 					cp.setName(cate.getName());
 				}
 				// 封装 info 属性
-				cp.setInfo(getCateItems(cate.getId()));
+				cp.setInfo(getCatItems(cate.getId()));
 				// 封装了数据的对象存储在集合中
 				rli.add(cp);
 			} else {
@@ -59,7 +77,6 @@ public class ItemCatService {
 				rli.add("/products/" + cate.getId() + ".html|" + cate.getName());
 			}
 		}
-
 		return rli;
 	}
 

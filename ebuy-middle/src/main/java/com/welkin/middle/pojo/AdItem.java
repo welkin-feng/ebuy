@@ -1,4 +1,4 @@
-package com.welkin.pojo;
+package com.welkin.middle.pojo;
 
 public class AdItem {
 	private Integer height;

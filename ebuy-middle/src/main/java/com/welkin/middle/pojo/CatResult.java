@@ -1,8 +1,8 @@
-package com.welkin.pojo;
+package com.welkin.middle.pojo;
 
 import java.util.List;
 
-public class CateResult {
+public class CatResult {
 	@SuppressWarnings("rawtypes")
 	private List data;
 

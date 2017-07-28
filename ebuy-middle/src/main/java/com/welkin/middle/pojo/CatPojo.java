@@ -1,10 +1,10 @@
-package com.welkin.pojo;
+package com.welkin.middle.pojo;
 
 import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-public class CatePojo {
+public class CatPojo {
 	//在spring返回的json对象中属性名能够与客户端要求的u，n，i名称一致
 	//@JsonProperty注解目标，在spring返回json字符串重新封装属性名称
 	@JsonProperty(value="u")

@@ -19,15 +19,12 @@ public class ImageUploaderService {
 	private String host = "10.211.55.7";
 	private int port = 22;
 	private String userpwd = "ftpuser";
-	private String baseDir="/home/ftpuser/www";
+	private String baseDir = "/home/ftpuser/www";
 
 	/**
 	 * 功能 通过该sftp上传的图片服务器
-	 * 
-	 * @param uploadfile
-	 *            客户端上传的本地文件
-	 * @param url
-	 *            向客户端返回的上传后的文件的图片服务器上的路径
+	 * @param uploadfile 客户端上传的本地文件
+	 * @param url 向客户端返回的上传后的文件的图片服务器上的路径
 	 * 
 	 */
 	public boolean upload(MultipartFile uploadfile, StringBuilder url) {
@@ -78,7 +75,7 @@ public class ImageUploaderService {
 			url.append(accessUrl);
 			System.out.println("服务器访问路径" + accessUrl);
 			flag = true;
-			
+
 		} catch (JSchException e) {
 			e.printStackTrace();
 		} catch (SftpException e) {

@@ -17,15 +17,15 @@ import com.welkin.pojo.TbItemExample.Criteria;
 public class ItemService {
 	@Autowired
 	private TbItemMapper tbItemMapper;
-	
+
 	public String queryItem(String query, Integer page) {
-//		Pager pager = new Pager();
+		// Pager pager = new Pager();
 		PageHelper.startPage(page, 30);
 		TbItemExample ex = new TbItemExample();
 		Criteria c = ex.createCriteria();
 		c.andTitleLike(query);
 		List<TbItem> li = tbItemMapper.selectByExample(ex);
-		
+
 		ObjectMapper om = new ObjectMapper();
 		String s = null;
 		try {
@@ -33,11 +33,11 @@ public class ItemService {
 		} catch (JsonProcessingException e) {
 			e.printStackTrace();
 		}
-		
-//		PageInfo<TbItem> pi = new PageInfo<>(li);
-		
-//		pager.setRows(li);
-//		pager.setTotal(pi.getTotal());
+
+		// PageInfo<TbItem> pi = new PageInfo<>(li);
+
+		// pager.setRows(li);
+		// pager.setTotal(pi.getTotal());
 		return s;
 	}
 }

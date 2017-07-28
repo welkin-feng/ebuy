@@ -11,7 +11,6 @@ import com.welkin.mapper.TbItemCatMapper;
 import com.welkin.mapper.TbItemDescMapper;
 import com.welkin.mapper.TbItemMapper;
 import com.welkin.mapper.TbItemParamItemMapper;
-import com.welkin.pojo.Pager;
 import com.welkin.pojo.TbItem;
 import com.welkin.pojo.TbItemCat;
 import com.welkin.pojo.TbItemCatExample;
@@ -20,6 +19,7 @@ import com.welkin.pojo.TbItemDesc;
 import com.welkin.pojo.TbItemExample;
 import com.welkin.pojo.TbItemParamItem;
 import com.welkin.pojo.TbItemParamItemExample;
+import com.welkin.util.Pager;
 
 @Service
 public class TbItemService {
@@ -31,7 +31,7 @@ public class TbItemService {
 	private TbItemDescMapper tbItemDescMapper;
 	@Autowired
 	private TbItemParamItemMapper tbItemParamItemMapper;
-	
+
 	/**
 	 * 根据itemid查询ItemDesc
 	 * @param itemId
@@ -39,10 +39,10 @@ public class TbItemService {
 	 */
 	public TbItemDesc findTbItemDescById(Long itemId) {
 		TbItemDesc itemdesc = tbItemDescMapper.selectByPrimaryKey(itemId);
-		
+
 		return itemdesc;
 	}
-	
+
 	/**
 	 * 根据 商品 item_id 查询所对应的 规格参数信息
 	 * @param paramid
@@ -53,7 +53,7 @@ public class TbItemService {
 		com.welkin.pojo.TbItemParamItemExample.Criteria c = ex.createCriteria();
 		c.andItemIdEqualTo(paramid);
 		List<TbItemParamItem> li = tbItemParamItemMapper.selectByExampleWithBLOBs(ex);
-		
+
 		if (li == null || li.size() < 1)
 			return null;
 		return li.get(0);
@@ -105,15 +105,15 @@ public class TbItemService {
 		// 查询前开始分页
 		// page: 第几页, rows：每页的记录数量
 		PageHelper.startPage(page, rows);
-		
+
 		TbItemExample ex = new TbItemExample();
 		List<TbItem> li = tbItemMapper.selectByExample(ex);
 		// 获取查询集合
 		// PageInfo<要查询的实体类> pi = new PageInfo<>(查询后的集合对象);
-//		PageInfo<TbItem> pi = new PageInfo<>(li);
-		
+		// PageInfo<TbItem> pi = new PageInfo<>(li);
+
 		pager.setRows(li);
-//		pager.setTotal(pi.getTotal());
+		// pager.setTotal(pi.getTotal());
 		pager.setTotal((long) tbItemMapper.countByExample(ex));
 		return pager;
 	}

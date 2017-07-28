@@ -22,7 +22,9 @@ public class ContentController {
 
 	@RequestMapping("/delete")
 	@ResponseBody
+
 	public Message delete(@RequestParam(value="ids", required=true) ArrayList<Long> ids) {
+
 
 		// System.out.println("delete:" + "ids=" + ids);
 		int x = contentService.delete(ids);

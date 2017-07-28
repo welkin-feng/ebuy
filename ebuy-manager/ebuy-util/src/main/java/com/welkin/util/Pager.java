@@ -1,4 +1,4 @@
-package com.welkin.pojo;
+package com.welkin.util;
 
 import java.util.List;
 

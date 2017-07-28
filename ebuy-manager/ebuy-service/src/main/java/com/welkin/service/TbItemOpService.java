@@ -6,12 +6,9 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.welkin.mapper.TbItemDescMapper;
 import com.welkin.mapper.TbItemMapper;
 import com.welkin.mapper.TbItemParamItemMapper;
-import com.welkin.pojo.Message;
 import com.welkin.pojo.TbItem;
 import com.welkin.pojo.TbItemDesc;
 import com.welkin.pojo.TbItemDescExample;
@@ -31,9 +28,7 @@ public class TbItemOpService {
 
 	/**
 	 * 删除商品 同时删除数据库中的“商品”和“商品对应的规格参数信息”
-	 * 
-	 * @param ids
-	 *            要删除的商品id List
+	 * @param ids 要删除的商品id List
 	 * @return 删除状态
 	 * 
 	 */
@@ -54,7 +49,6 @@ public class TbItemOpService {
 
 	/**
 	 * 上、下架商品 更改商品在数据库中的 status参数的值，1代表已经上架，2代表已经下架
-	 * 
 	 * @param ids
 	 * @return
 	 */
@@ -70,33 +64,33 @@ public class TbItemOpService {
 	}
 
 	public int updateItem(TbItem po, String des, String paramStr) {
-		//修改商品的更新时间
+		// 修改商品的更新时间
 		po.setStatus((byte) 1);
 		po.setUpdated(new Date());
-		//更新商品的信息
+		// 更新商品的信息
 		TbItemExample ex1 = new TbItemExample();
 		com.welkin.pojo.TbItemExample.Criteria c1 = ex1.createCriteria();
 		c1.andIdEqualTo(po.getId());
 		int x1 = tbItemMapper.updateByExampleSelective(po, ex1);
 
-		//修改商品描述
-		TbItemDesc desc=new TbItemDesc();
+		// 修改商品描述
+		TbItemDesc desc = new TbItemDesc();
 		desc.setItemId(po.getId());
 		desc.setUpdated(new Date());
 		desc.setItemDesc(des);
-		//更新商品描述信息
+		// 更新商品描述信息
 		TbItemDescExample ex2 = new TbItemDescExample();
 		com.welkin.pojo.TbItemDescExample.Criteria c2 = ex2.createCriteria();
 		c2.andItemIdEqualTo(po.getId());
 
 		int x2 = tbItemDescMapper.updateByExampleSelective(desc, ex2);
 
-		//修改商品规格信息
+		// 修改商品规格信息
 		TbItemParamItem paramItem = new TbItemParamItem();
 		paramItem.setItemId(po.getId());
 		paramItem.setParamData(paramStr);
 		paramItem.setUpdated(new Date());
-		//更新商品规格信息
+		// 更新商品规格信息
 		TbItemParamItemExample ex3 = new TbItemParamItemExample();
 		com.welkin.pojo.TbItemParamItemExample.Criteria c3 = ex3.createCriteria();
 		c3.andItemIdEqualTo(po.getId());

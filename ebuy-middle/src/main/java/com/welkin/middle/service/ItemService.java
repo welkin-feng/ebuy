@@ -26,56 +26,10 @@ public class ItemService {
 	private static final int PAGESIZE = 6;
 	@Autowired
 	private TbItemMapper tbItemMapper;
-
 	@Autowired
 	private TbItemDescMapper tbItemDescMapper;
 	@Autowired
 	private TbItemParamItemMapper tbItemParamItemMapper;
-
-	/**
-	 * 功能：按条件分页查询商品
-	 * 
-	 * @param query
-	 *            查询条件
-	 * @param page
-	 *            显示的页码
-	 * @return
-	 */
-	public String queryItem(String query, Integer page) {
-
-		// 分页
-		PageHelper.startPage(page, PAGESIZE);
-		// 按条件查询
-
-		TbItemExample ex = new TbItemExample();
-		Criteria c = ex.createCriteria();
-
-		c.andTitleLike("%" + query + "%");
-		List<TbItem> tbItems = tbItemMapper.selectByExample(ex);
-		// 分页信息
-		PageInfo<TbItem> pi = new PageInfo<TbItem>(tbItems);
-		Long rescount = pi.getTotal();
-		// 计算总页数
-		Integer pagecount = rescount.intValue() % PAGESIZE == 0 ? rescount.intValue() / PAGESIZE
-				: rescount.intValue() / PAGESIZE + 1;
-
-		MItemPager mp = new MItemPager();
-		mp.setItemList(tbItems);
-		mp.setPage(page);
-		mp.setQuery(query);
-		mp.setTotalPages(pagecount);
-		String str = null;
-
-		ObjectMapper om = new ObjectMapper();
-		try {
-			str = om.writeValueAsString(mp);
-		} catch (JsonProcessingException e) {
-			e.printStackTrace();
-		}
-
-
-		return str;
-	}
 
 	/**
 	 * 功能：根据ItemId查询TbItem，找到具体的商品，该商品的查询结果只能有一个

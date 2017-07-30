@@ -1,5 +1,6 @@
 package com.welkin.search.dao;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -8,10 +9,16 @@ import javax.annotation.Resource;
 
 import org.apache.solr.client.solrj.SolrClient;
 import org.apache.solr.client.solrj.SolrQuery;
+import org.apache.solr.client.solrj.SolrServerException;
 import org.apache.solr.client.solrj.response.QueryResponse;
+import org.apache.solr.client.solrj.response.UpdateResponse;
 import org.apache.solr.common.SolrDocument;
 import org.apache.solr.common.SolrDocumentList;
+import org.apache.solr.common.SolrInputDocument;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+
+import com.welkin.search.mapper.ItemMapper;
 import com.welkin.search.pojo.Item;
 import com.welkin.search.pojo.SearchResult;
 
@@ -19,6 +26,8 @@ import com.welkin.search.pojo.SearchResult;
 public class SearchDao {
 	@Resource(name = "httpSolrClient")
 	private SolrClient solrClient;
+	@Autowired
+	private ItemMapper itemMapper;
 
 	public SearchResult search(SolrQuery query) throws Exception {
 		// 根据查询条件查询索引库
@@ -58,6 +67,27 @@ public class SearchDao {
 		}
 		result.setItemList(itemList);
 		return result;
+	}
+	
+	public boolean update() throws SolrServerException, IOException {
+		List<Item> list = itemMapper.getItemList();
+		for (Item item : list) {
+			SolrInputDocument document = new SolrInputDocument();
+			document.addField("id", item.getId());
+			document.addField("item_title", item.getTitle());
+			document.addField("item_sell_point", item.getSell_point());
+			document.addField("item_price", item.getPrice());
+			document.addField("item_image", item.getImage());
+			document.addField("item_category_name", item.getCategory_name());
+			//将文档写入索引库
+			solrClient.add(document);
+		}
+		//提交修改
+		UpdateResponse res = solrClient.commit();
+		if(res.getStatus() != 0) 
+			return false;
+		else
+			return true;
 	}
 
 }

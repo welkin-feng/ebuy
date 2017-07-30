@@ -6,56 +6,58 @@
         http://www.springframework.org/schema/beans/spring-beans.xsd
         http://www.springframework.org/schema/context
         http://www.springframework.org/schema/context/spring-context.xsd">
-    <context:component-scan base-package="com.welkin.middle.dao"></context:component-scan>
+    <context:component-scan base-package="com.welkin.middle.dao" />
+    <!-- 加载配置文件 -->
+	<context:property-placeholder location="classpath:resource/*.properties" />
 	<!-- 连接池配置 -->
 	<bean id="jedisPoolConfig" class="redis.clients.jedis.JedisPoolConfig">
 		<!-- 最大连接数 -->
-		<property name="maxTotal" value="30" />
+		<property name="maxTotal" value="${redis.maxTotal}" />
 		<!-- 最大空闲连接数 -->
-		<property name="maxIdle" value="10" />
+		<property name="maxIdle" value="${redis.maxIdle}" />
 		<!-- 每次释放连接的最大数目 -->
-		<property name="numTestsPerEvictionRun" value="1024" />
+		<property name="numTestsPerEvictionRun" value="${redis.numTestsPerEvictionRun}" />
 		<!-- 释放连接的扫描间隔（毫秒） -->
-		<property name="timeBetweenEvictionRunsMillis" value="30000" />
+		<property name="timeBetweenEvictionRunsMillis" value="${redis.timeBetweenEvictionRunsMillise}" />
 		<!-- 连接最小空闲时间 -->
-		<property name="minEvictableIdleTimeMillis" value="1800000" />
+		<property name="minEvictableIdleTimeMillis" value="${redis.minEvictableIdleTimeMillis}" />
 		<!-- 连接空闲多久后释放, 当空闲时间>该值 且 空闲连接>最大空闲连接数 时直接释放 -->
-		<property name="softMinEvictableIdleTimeMillis" value="10000" />
+		<property name="softMinEvictableIdleTimeMillis" value="${redis.softMinEvictableIdleTimeMillis}" />
 		<!-- 获取连接时的最大等待毫秒数,小于零:阻塞不确定的时间,默认-1 -->
-		<property name="maxWaitMillis" value="1500" />
+		<property name="maxWaitMillis" value="${redis.maxWaitMillis}" />
 		<!-- 在获取连接的时候检查有效性, 默认false -->
-		<property name="testOnBorrow" value="true" />
+		<property name="testOnBorrow" value="${redis.testOnBorrow}" />
 		<!-- 在空闲时检查有效性, 默认false -->
-		<property name="testWhileIdle" value="true" />
+		<property name="testWhileIdle" value="${redis.testWhileIdle}" />
 		<!-- 连接耗尽时是否阻塞, false报异常,ture阻塞直到超时, 默认true -->
-		<property name="blockWhenExhausted" value="false" />
-	</bean>
+		<property name="blockWhenExhausted" value="${redis.blockWhenExhausted}" />
+	</bean>	
 	<bean id="redisClientCluster" class="redis.clients.jedis.JedisCluster">
 		<constructor-arg name="nodes">
 			<set>
 				<bean class="redis.clients.jedis.HostAndPort">
-					<constructor-arg name="host" value="10.211.55.8"></constructor-arg>
-					<constructor-arg name="port" value="7001"></constructor-arg>
+					<constructor-arg name="host" value="${redis.host}"></constructor-arg>
+					<constructor-arg name="port" value="${redis.port1}"></constructor-arg>
 				</bean>
 				<bean class="redis.clients.jedis.HostAndPort">
-					<constructor-arg name="host" value="10.211.55.8"></constructor-arg>
-					<constructor-arg name="port" value="7002"></constructor-arg>
+					<constructor-arg name="host" value="${redis.host}"></constructor-arg>
+					<constructor-arg name="port" value="${redis.port2}"></constructor-arg>
 				</bean>
 				<bean class="redis.clients.jedis.HostAndPort">
-					<constructor-arg name="host" value="10.211.55.8"></constructor-arg>
-					<constructor-arg name="port" value="7003"></constructor-arg>
+					<constructor-arg name="host" value="${redis.host}"></constructor-arg>
+					<constructor-arg name="port" value="${redis.port3}"></constructor-arg>
 				</bean>
 				<bean class="redis.clients.jedis.HostAndPort">
-					<constructor-arg name="host" value="10.211.55.8"></constructor-arg>
-					<constructor-arg name="port" value="7004"></constructor-arg>
+					<constructor-arg name="host" value="${redis.host}"></constructor-arg>
+					<constructor-arg name="port" value="${redis.port4}"></constructor-arg>
 				</bean>
 				<bean class="redis.clients.jedis.HostAndPort">
-					<constructor-arg name="host" value="10.211.55.8"></constructor-arg>
-					<constructor-arg name="port" value="7005"></constructor-arg>
+					<constructor-arg name="host" value="${redis.host}"></constructor-arg>
+					<constructor-arg name="port" value="${redis.port5}"></constructor-arg>
 				</bean>
 				<bean class="redis.clients.jedis.HostAndPort">
-					<constructor-arg name="host" value="10.211.55.8"></constructor-arg>
-					<constructor-arg name="port" value="7006"></constructor-arg>
+					<constructor-arg name="host" value="${redis.host}"></constructor-arg>
+					<constructor-arg name="port" value="${redis.port6}"></constructor-arg>
 				</bean>
 			</set>
 		</constructor-arg>

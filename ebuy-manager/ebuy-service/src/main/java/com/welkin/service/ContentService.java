@@ -9,11 +9,11 @@ import org.springframework.stereotype.Service;
 
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
+import com.welkin.commons.Pager;
 import com.welkin.mapper.TbContentMapper;
 import com.welkin.pojo.TbContent;
 import com.welkin.pojo.TbContentExample;
 import com.welkin.pojo.TbContentExample.Criteria;
-import com.welkin.util.Pager;
 
 @Service
 public class ContentService {

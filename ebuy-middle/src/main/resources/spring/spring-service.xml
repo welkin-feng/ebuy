@@ -17,13 +17,21 @@
 		<property name="dataSource" ref="dataSource"></property>
 	</bean>
 	<!-- 配置事务通知 -->
-	<tx:advice transaction-manager="transactionManager" id="txAdvice">
+	<tx:advice id="txAdvice" transaction-manager="transactionManager">
 		<tx:attributes>
-			<tx:method name="get*" propagation="SUPPORTS" read-only="true" />
+			<!-- 传播行为，name指要用到事务的方法名的命名方式 -->
+			<tx:method name="add*" propagation="REQUIRED" />
+			<tx:method name="create*" propagation="REQUIRED" />
+			<tx:method name="delete*" propagation="REQUIRED" />
+			<tx:method name="insert*" propagation="REQUIRED" />
 			<tx:method name="save*" propagation="REQUIRED" />
+			<tx:method name="update*" propagation="REQUIRED" />
+			<tx:method name="find*" propagation="SUPPORTS" read-only="true" />
+			<tx:method name="get*" propagation="SUPPORTS" read-only="true" />
+			<tx:method name="select*" propagation="SUPPORTS" read-only="true" />
 		</tx:attributes>
 	</tx:advice>
-	<!-- aop编织 -->
+	<!-- aop -->
 	<aop:config>
 		<aop:advisor advice-ref="txAdvice" pointcut="execution(* com.welkin.middle.serivce..*.*(..))" />
 	</aop:config>

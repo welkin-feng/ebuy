@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.github.pagehelper.PageHelper;
+import com.welkin.commons.Pager;
 import com.welkin.mapper.TbItemCatMapper;
 import com.welkin.mapper.TbItemDescMapper;
 import com.welkin.mapper.TbItemMapper;
@@ -19,7 +20,6 @@ import com.welkin.pojo.TbItemDesc;
 import com.welkin.pojo.TbItemExample;
 import com.welkin.pojo.TbItemParamItem;
 import com.welkin.pojo.TbItemParamItemExample;
-import com.welkin.util.Pager;
 
 @Service
 public class TbItemService {

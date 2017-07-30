@@ -8,11 +8,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.welkin.commons.Message;
+import com.welkin.commons.MessageUtil;
+import com.welkin.commons.Pager;
 import com.welkin.pojo.TbContent;
 import com.welkin.service.ContentService;
-import com.welkin.util.Message;
-import com.welkin.util.MessageUtil;
-import com.welkin.util.Pager;
 
 @Controller
 @RequestMapping("/content")

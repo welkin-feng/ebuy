@@ -1,4 +1,4 @@
-package com.welkin.util;
+package com.welkin.commons;
 
 public class Message {
 	private Integer status;

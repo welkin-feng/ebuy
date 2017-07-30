@@ -9,6 +9,8 @@ import org.springframework.stereotype.Service;
 
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
+import com.welkin.commons.JsonUtil;
+import com.welkin.commons.Pager;
 import com.welkin.mapper.TbItemCatMapper;
 import com.welkin.mapper.TbItemMapper;
 import com.welkin.mapper.TbItemParamItemMapper;
@@ -22,8 +24,6 @@ import com.welkin.pojo.TbItemParamExample;
 import com.welkin.pojo.TbItemParamExample.Criteria;
 import com.welkin.pojo.TbItemParamItem;
 import com.welkin.pojo.TbItemParamItemExample;
-import com.welkin.util.JsonUtil;
-import com.welkin.util.Pager;
 
 @Service
 public class TbItemParamService {

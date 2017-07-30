@@ -8,13 +8,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.welkin.commons.Message;
+import com.welkin.commons.MessageUtil;
 import com.welkin.pojo.TbItem;
 import com.welkin.pojo.TbItemDesc;
 import com.welkin.pojo.TbItemParamItem;
 import com.welkin.service.TbItemOpService;
 import com.welkin.service.TbItemService;
-import com.welkin.util.Message;
-import com.welkin.util.MessageUtil;
 
 @Controller
 @RequestMapping("/rest/item")

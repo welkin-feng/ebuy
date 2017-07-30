@@ -1,4 +1,4 @@
-package com.welkin.util;
+package com.welkin.commons;
 
 import java.util.ArrayList;
 import java.util.List;

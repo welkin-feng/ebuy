@@ -10,14 +10,14 @@
 <title>${query} - 商品搜索 </title>
 <meta name="Keywords" content="java,java" />
 <meta name="description" content="在商城中找到了*件${query}的类似商品" />
-<link rel="stylesheet" type="text/css" href="/css/base.css" media="all" />
-<link rel="stylesheet" type="text/css" href="/css/psearch20131008.css" media="all" />
-<link rel="stylesheet" type="text/css" href="/css/psearch.onebox.css" media="all" />
-<link rel="stylesheet" type="text/css" href="/css/pop_compare.css" media="all" />
-<script type="text/javascript" src="/js/jquery-1.6.4.js"></script>
+<link rel="stylesheet" type="text/css" href="css/base.css" media="all" />
+<link rel="stylesheet" type="text/css" href="css/psearch20131008.css" media="all" />
+<link rel="stylesheet" type="text/css" href="css/psearch.onebox.css" media="all" />
+<link rel="stylesheet" type="text/css" href="css/pop_compare.css" media="all" />
+<script type="text/javascript" src="js/jquery-1.6.4.js"></script>
 </head>
 <body>
-<script type="text/javascript" src="/js/base-2011.js" charset="utf-8"></script>
+<script type="text/javascript" src="js/base-2011.js" charset="utf-8"></script>
 <!-- header start -->
 <jsp:include page="commons/header.jsp" />
 <!-- header end -->
@@ -67,8 +67,8 @@
 <!-- footer start -->
 <jsp:include page="commons/footer.jsp" />
 <!-- footer end -->
-<script type="text/javascript" src="/js/jquery.hashchange.js"></script>
-<script type="text/javascript" src="/js/search_main.js"></script>
+<script type="text/javascript" src="js/jquery.hashchange.js"></script>
+<script type="text/javascript" src="js/search_main.js"></script>
 <script type="text/javascript">
 //${paginator.totalPages}
 SEARCH.query = "${query}";

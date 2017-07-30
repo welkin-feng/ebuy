@@ -45,6 +45,7 @@ public class MessageUtil {
      * @return
      */
     public static Message formatToPojo(String jsonData, Class<?> clazz) {
+    	
         try {
             if (clazz == null) {
                 return om.readValue(jsonData, Message.class);

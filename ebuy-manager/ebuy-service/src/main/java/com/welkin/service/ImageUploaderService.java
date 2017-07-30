@@ -4,6 +4,8 @@ import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Properties;
+
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -15,11 +17,16 @@ import com.jcraft.jsch.ChannelSftp;
 
 @Service
 public class ImageUploaderService {
-	private String username = "ftpuser";
-	private String host = "192.168.254.136";
-	private int port = 22;
-	private String userpwd = "ftpuser";
-	private String baseDir = "/home/ftpuser/www";
+	@Value("${imageNginx.username}")
+	private String username;
+	@Value("${imageNginx.host}")
+	private String host;
+	@Value("${imageNginx.port}")
+	private int port;
+	@Value("${imageNginx.userpwd}")
+	private String userpwd;
+	@Value("${imageNginx.baseDir}")
+	private String baseDir;
 
 	/**
 	 * 功能 通过该sftp上传的图片服务器

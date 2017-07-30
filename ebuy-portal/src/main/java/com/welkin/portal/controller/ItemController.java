@@ -34,7 +34,7 @@ public class ItemController {
 	 * @param page 当前页
 	 * @return
 	 */
-	@RequestMapping("/search")
+	/*@RequestMapping("/search")
 	public ModelAndView itemSearch(@RequestParam("q") String query,
 			@RequestParam(value = "page", defaultValue = "1") Integer page) {
 		ModelAndView mv = new ModelAndView("search");
@@ -42,7 +42,6 @@ public class ItemController {
 		// // 将查询条件中文转换
 		// query = new String(query.getBytes("iso-8859-1"), "UTF-8");
 		// } catch (UnsupportedEncodingException e) {
-		// // TODO Auto-generated catch block
 		// e.printStackTrace();
 		// }
 
@@ -65,23 +64,20 @@ public class ItemController {
 			mv.addObject("page", t.getPage());
 			mv.addObject("totalPages", t.getTotalPages());
 			mv.addObject("itemList", t.getItemList());
-			/*
+			
 			 * System.out.println("query:"+t.getQuery()+",page count:"+t.getTotalPages());
 			 * List<TbItem> tli = t.getItemList(); for (TbItem tbItem : tli) {
 			 * System.out.println(tbItem.getTitle()); }
-			 */
+			 
 		} catch (JsonParseException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (JsonMappingException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return mv;
-	}
+	}*/
 
 	/**
 	 * 根据itemId得到item的基本信息
@@ -109,13 +105,10 @@ public class ItemController {
 			tbIteminfo = om.readValue(str, TbItemInfo.class);
 			mv.addObject("item", tbIteminfo);
 		} catch (JsonParseException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (JsonMappingException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 
@@ -135,7 +128,6 @@ public class ItemController {
 		try {
 			request.setCharacterEncoding("utf-8");
 		} catch (UnsupportedEncodingException e1) {
-			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
 		response.setContentType("text/html;charset=utf-8");
@@ -185,7 +177,6 @@ public class ItemController {
 		try {
 			request.setCharacterEncoding("utf-8");
 		} catch (UnsupportedEncodingException e1) {
-			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
 		response.setContentType("text/html;charset=utf-8");

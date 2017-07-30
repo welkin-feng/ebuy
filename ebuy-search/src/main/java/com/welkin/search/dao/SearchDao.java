@@ -48,7 +48,7 @@ public class SearchDao {
 		for (SolrDocument solrDocument : solrDocumentList) {
 			// 创建一商品对象
 			Item item = new Item();
-			item.setId((Long) solrDocument.get("id"));
+			item.setId(Long.parseLong((String) solrDocument.get("id")) );
 			// 取高亮显示的结果
 			List<String> list = highlighting.get(solrDocument.get("id")).get("item_title");
 			String title = "";

@@ -3,6 +3,9 @@ package com.welkin.commons;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+
 public class JsonUtil {
 	/**
 	 * 将tb_item_param的param_date转换成tb_item_param_item的param-data 例如：将
@@ -61,6 +64,23 @@ public class JsonUtil {
 
 		return result;
 	}
+	
+	/**
+	 * 将Message类转化为json格式的String
+	 * @param m 
+	 * @return
+	 */
+	public static String messageToString(Message m) {
+		ObjectMapper om = new ObjectMapper();
+		String s = null;
+		try {
+			s = om.writeValueAsString(m);
+		} catch (JsonProcessingException e) {
+			e.printStackTrace();
+		}
+		return s;
+	}
+	
 }
 
 class JsonObject {

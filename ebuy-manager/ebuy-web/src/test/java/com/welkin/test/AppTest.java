@@ -5,9 +5,9 @@ import java.util.List;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
+import com.welkin.commons.Pager;
 import com.welkin.pojo.TbItem;
 import com.welkin.service.TbItemService;
-import com.welkin.util.Pager;
 
 public class AppTest {
 	public static void main(String[] args) {

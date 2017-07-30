@@ -16,6 +16,11 @@
 			<artifactId>ebuy-commons</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
+		<dependency>
+			<groupId>com.welkin-git.ebuy</groupId>
+			<artifactId>ebuy-pojo</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
 		
 		<!-- Spring -->
 		<dependency>

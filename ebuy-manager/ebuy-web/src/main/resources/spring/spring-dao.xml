@@ -5,7 +5,14 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/beans
         http://www.springframework.org/schema/beans/spring-beans.xsd">
     <!-- 加载配置文件 -->
-	<context:property-placeholder location="classpath:resource/*.properties" />
+    <bean id="prop" class="org.springframework.beans.factory.config.PropertiesFactoryBean">
+		<!-- 这里是PropertiesFactoryBean类，它也有个locations属性，也是接收一个数组，跟上面一样 -->
+		<property name="locations">
+			<array>
+				<value>classpath:resource/*.properties</value>
+			</array>
+		</property>
+	</bean>
 	<!-- 设置数据源，数据库连接池 -->
 	<bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource"
 		destroy-method="close">

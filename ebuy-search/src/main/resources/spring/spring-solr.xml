@@ -11,7 +11,7 @@
 	<!-- 配置SolrServer对象 -->
 	<!-- 单机版 -->
 	<bean id="httpSolrClient" class="org.apache.solr.client.solrj.impl.HttpSolrClient">
-		<constructor-arg name="baseURL" value="${SOLR.SERVER.URL}"></constructor-arg>
+		<constructor-arg name="baseURL" value="http://10.211.55.9:8080/solr/admin_core"></constructor-arg>
 	</bean>
 	<!-- 集群版 -->
 	<bean id="cloudSolrClient" class="org.apache.solr.client.solrj.impl.CloudSolrClient">

@@ -4,22 +4,22 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans
         http://www.springframework.org/schema/beans/spring-beans.xsd">
-    <!-- 加载配置文件 -->
-	<bean id="prop" class="org.springframework.beans.factory.config.PropertiesFactoryBean">
-		<!-- 这里是PropertiesFactoryBean类，它也有个locations属性，也是接收一个数组，跟上面一样 -->
+	<!-- 加载配置文件 -->
+	<bean id="propertyConfigurer"
+		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
 		<property name="locations">
-			<array>
+			<list>
 				<value>classpath:resource/*.properties</value>
-			</array>
+			</list>
 		</property>
 	</bean>
 	<!-- 设置数据源，数据库连接池 -->
 	<bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource"
 		destroy-method="close">
-		<property name="url" value="${jdbc.url}" />
-		<property name="username" value="${jdbc.username}" />
-		<property name="password" value="${jdbc.password}" />
-		<property name="driverClassName" value="${jdbc.driver}" />
+		<property name="url" value="jdbc:mysql://localhost:3306/tb" />
+		<property name="username" value="root" />
+		<property name="password" value="welkin" />
+		<property name="driverClassName" value="com.mysql.jdbc.Driver" />
 		<property name="maxActive" value="10" />
 		<property name="minIdle" value="5" />
 	</bean>
@@ -29,10 +29,11 @@
 		<!-- 数据库连接池 -->
 		<property name="dataSource" ref="dataSource"></property>
 		<property name="configLocation" value="classpath:mybatis/mybatis-config.xml"></property>
+		<property name="mapperLocations" value="classpath:com/welkin/search/mapper/*.xml"></property>
 	</bean>
 	<!-- 创建mapperscanner -->
 	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
 		<property name="sqlSessionFactory" ref="sqlSessionFactory"></property>
-		<property name="basePackage" value="com.welkin.mapper, com.welkin.search.mapper"></property>
+		<property name="basePackage" value="com.welkin.search.mapper"></property>
 	</bean>
 </beans>

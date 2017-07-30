@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.welkin.portal.utils.HttpClientUtils;
 
 @Controller                                                                                                                                                        
-public class PagerUtil {
+public class IndexController {
 	@RequestMapping("/{pager}")
 	public String gopager(@PathVariable String pager) {
 		return pager;

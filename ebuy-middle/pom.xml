@@ -10,19 +10,41 @@
 	<packaging>war</packaging>
 
 	<dependencies>
+		<!-- 依赖dao模块 -->
 		<dependency>
 			<groupId>com.welkin-git.ebuy</groupId>
 			<artifactId>ebuy-mapping</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
 		
+		<!-- Spring -->
 		<dependency>
-			<groupId>com.welkin-git.ebuy</groupId>
-			<artifactId>ebuy-service</artifactId>
-			<version>0.0.1-SNAPSHOT</version>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-context</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-beans</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-webmvc</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-jdbc</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-aspects</artifactId>
 		</dependency>
 		
-		
+		<!-- Redis客户端 -->
+		<dependency>
+			<groupId>redis.clients</groupId>
+			<artifactId>jedis</artifactId>
+		</dependency>
+
 	</dependencies>
 	<build>
 		<!-- 配置插件 -->

@@ -11,8 +11,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.welkin.pojo.TbUser;
 import com.welkin.portal.utils.HttpClientUtils;
-import com.welkin.util.JsonUtil;
-import com.welkin.util.Message;
+import com.welkin.commons.JsonUtil;
+import com.welkin.commons.Message;
 
 @Controller
 @RequestMapping("/reg")

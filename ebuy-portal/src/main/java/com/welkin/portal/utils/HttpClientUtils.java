@@ -64,9 +64,7 @@ public class HttpClientUtils {
 			// 6 通过客户端发送get请求，返回响应对象
 			response = client.execute(get);
 			// 7 通过响应对象得到服务器状态
-			int resCode = response.getStatusLine().getStatusCode();
-			if(resCode != 200) 
-				return "服务器返回错误信息......";
+			// int resCode = response.getStatusLine().getStatusCode();
 			// 8 得到响应对象中的实体
 			HttpEntity entity = response.getEntity();
 			// 9 将响应实体中的字符集进行处理
@@ -125,9 +123,8 @@ public class HttpClientUtils {
 			response = client.execute(post);
 
 			// 9 通过响应对象得到服务器状态
-			int resCode = response.getStatusLine().getStatusCode();
-			if (resCode != 200)
-				return "服务器返回错误信息...";
+			// int resCode = response.getStatusLine().getStatusCode();
+			
 
 			// 10得到响应对象中实体
 			HttpEntity entity = response.getEntity();

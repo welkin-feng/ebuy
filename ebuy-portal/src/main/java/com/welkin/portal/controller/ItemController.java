@@ -9,11 +9,9 @@ import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -22,62 +20,11 @@ import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.welkin.pojo.TbItemDesc;
 import com.welkin.pojo.TbItemParamItem;
-import com.welkin.portal.pojo.MItemPager;
 import com.welkin.portal.pojo.TbItemInfo;
 import com.welkin.portal.utils.HttpClientUtils;
 
 @Controller
 public class ItemController {
-	/**
-	 * 搜索商品
-	 * @param query 用户输入的商品信息
-	 * @param page 当前页
-	 * @return
-	 */
-	/*@RequestMapping("/search")
-	public ModelAndView itemSearch(@RequestParam("q") String query,
-			@RequestParam(value = "page", defaultValue = "1") Integer page) {
-		ModelAndView mv = new ModelAndView("search");
-		// try {
-		// // 将查询条件中文转换
-		// query = new String(query.getBytes("iso-8859-1"), "UTF-8");
-		// } catch (UnsupportedEncodingException e) {
-		// e.printStackTrace();
-		// }
-
-		// 发送请求
-		String url = "http://localhost:8005/item/queryCon";
-		Map<String, String> params = new HashMap<String, String>();
-		params.put("query", query);
-		params.put("page", page + "");
-		// 向指定url地址发送post请求
-		String str = HttpClientUtils.doPost(url, params);
-		System.out.println("查询到的结果：" + str);
-		// 接收的json的字符串str，是自定义的类MItemPager
-		// json组件的转换器
-		ObjectMapper om = new ObjectMapper();
-		// 将json的字符串转换成自定类
-		MItemPager t = null;
-		try {
-			t = om.readValue(str, MItemPager.class);
-			mv.addObject("query", t.getQuery());
-			mv.addObject("page", t.getPage());
-			mv.addObject("totalPages", t.getTotalPages());
-			mv.addObject("itemList", t.getItemList());
-			
-			 * System.out.println("query:"+t.getQuery()+",page count:"+t.getTotalPages());
-			 * List<TbItem> tli = t.getItemList(); for (TbItem tbItem : tli) {
-			 * System.out.println(tbItem.getTitle()); }
-			 
-		} catch (JsonParseException e) {
-			e.printStackTrace();
-		} catch (JsonMappingException e) {
-			e.printStackTrace();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-		return mv;
-	}*/
 
 	/**
 	 * 根据itemId得到item的基本信息

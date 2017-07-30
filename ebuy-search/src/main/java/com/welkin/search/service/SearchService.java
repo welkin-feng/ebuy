@@ -27,8 +27,10 @@ public class SearchService {
 		query.addHighlightField("item_title");
 		query.setHighlightSimplePre("<em style=\"color:red\">");
 		query.setHighlightSimplePost("</em>");
+		
 		// 执行查询
 		SearchResult searchResult = searchDao.search(query);
+		
 		// 计算查询结果总页数
 		long recordCount = searchResult.getRecordCount();
 		long pageCount = recordCount / rows;

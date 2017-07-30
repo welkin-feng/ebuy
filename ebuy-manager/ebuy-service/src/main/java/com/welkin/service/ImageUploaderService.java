@@ -16,7 +16,7 @@ import com.jcraft.jsch.ChannelSftp;
 @Service
 public class ImageUploaderService {
 	private String username = "ftpuser";
-	private String host = "10.211.55.7";
+	private String host = "192.168.254.136";
 	private int port = 22;
 	private String userpwd = "ftpuser";
 	private String baseDir = "/home/ftpuser/www";

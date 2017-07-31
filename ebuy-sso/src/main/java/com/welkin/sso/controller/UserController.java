@@ -1,14 +1,24 @@
 package com.welkin.sso.controller;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.MediaType;
+import org.springframework.context.annotation.Scope;
+import org.springframework.http.converter.json.MappingJacksonValue;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.welkin.sso.service.UserService;
-import com.welkin.commons.JsonUtil;
 import com.welkin.commons.Message;
+import com.welkin.commons.MessageUtil;
+import com.welkin.pojo.TbUser;
+import com.welkin.sso.service.UserService;
+
 
 @Controller
 @RequestMapping("/user")
@@ -17,33 +27,97 @@ public class UserController {
 	@Autowired
 	private UserService userService;
 	
-	@RequestMapping("/showLogin")
-	public String showLogin() {
-		return "redirect:/login";
-	}
-	
-	@RequestMapping(value = "/doRegist", produces = MediaType.APPLICATION_JSON_VALUE + ";charset=UTF-8")
+	@RequestMapping("/check/{param}/{type}")
 	@ResponseBody
-	public String doRegist(String username, String password, String phone) {
-		Message m = new Message();
-		int rv = userService.doRegist(username, password, phone);
-		if(rv > 0)
-			m.setStatus(200);
-		else 
-			m.setStatus(400);
+	public Object checkData(@PathVariable String param, @PathVariable Integer type, String callback) {
 		
-		return JsonUtil.messageToString(m);
+		Message result = null;
+		
+		//参数有效性校验
+		if (StringUtils.isBlank(param)) {
+			result = MessageUtil.build(400, "校验内容不能为空");
+		}
+		if (type == null) {
+			result = MessageUtil.build(400, "校验内容类型不能为空");
+		}
+		if (type != 1 && type != 2 && type != 3 ) {
+			result = MessageUtil.build(400, "校验内容类型错误");
+		}
+		//校验出错
+		if (null != result) {
+			if (null != callback) {
+				MappingJacksonValue mappingJacksonValue = new MappingJacksonValue(result);
+				mappingJacksonValue.setJsonpFunction(callback);
+				return mappingJacksonValue;
+			} else {
+				return result; 
+			}
+		}
+		//调用服务
+		try {
+			result = userService.checkData(param, type);
+			
+		} catch (Exception e) {
+			result = MessageUtil.build(500, e.getMessage());
+		}
+		
+		if (null != callback) {
+			MappingJacksonValue mappingJacksonValue = new MappingJacksonValue(result);
+			mappingJacksonValue.setJsonpFunction(callback);
+			return mappingJacksonValue;
+		} else {
+			return result; 
+		}
 	}
 	
-	@RequestMapping(value = "/login", produces = MediaType.APPLICATION_JSON_VALUE + ";charset=UTF-8")
+	//创建用户
+	@RequestMapping(value="/register", method=RequestMethod.POST)
 	@ResponseBody
-	public String doLogin(String username, String password) {
-		Message m = userService.login(username, password);
+	public Message createUser(TbUser user) {
 		
-		System.out.println("status:" + m.getStatus());
-//		System.out.println("msg:" + m.getMsg());
-		
-		return JsonUtil.messageToString(m);
+		try {
+			Message result = userService.createUser(user);
+			return result;
+		} catch (Exception e) {
+			e.printStackTrace();
+			return MessageUtil.build(500, e.getMessage());
+		}
 	}
 	
+	//用户登录
+	@RequestMapping(value="/login", method=RequestMethod.POST)
+	@ResponseBody
+	public Message userLogin(String username, String password,
+			HttpServletRequest request, HttpServletResponse response) {
+		try {
+			
+			Message result = userService.userLogin(username, password, request, response);
+			return result;
+		} catch (Exception e) {
+			e.printStackTrace();
+			return MessageUtil.build(500, e.getMessage());
+		}
+	}
+	
+	@RequestMapping("/token/{token}")
+	@ResponseBody
+	public Object getUserByToken(@PathVariable String token, String callback) {
+		Message result = null;
+		try {
+			result = userService.getUserByToken(token);
+		} catch (Exception e) {
+			e.printStackTrace();
+			result = MessageUtil.build(500, e.getMessage());
+		}
+		
+		//判断是否为jsonp调用
+		if (StringUtils.isBlank(callback)) {
+			return result;
+		} else {
+			MappingJacksonValue mappingJacksonValue = new MappingJacksonValue(result);
+			mappingJacksonValue.setJsonpFunction(callback);
+			return mappingJacksonValue;
+		}
+		
+	}
 }

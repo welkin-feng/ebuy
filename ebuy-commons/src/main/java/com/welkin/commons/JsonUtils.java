@@ -4,9 +4,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.JavaType;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-public class JsonUtil {
+public class JsonUtils {
+	// 定义jackson对象
+	private static final ObjectMapper om = new ObjectMapper();
+
 	/**
 	 * 将tb_item_param的param_date转换成tb_item_param_item的param-data 例如：将
 	 * [{"group":"作者","params":["作者姓名","作者简介"]},
@@ -64,23 +68,52 @@ public class JsonUtil {
 
 		return result;
 	}
-	
+
 	/**
-	 * 将Message类转化为json格式的String
-	 * @param m 
+	 * 将对象转换成json字符串。
+	 * 
+	 * @param data
 	 * @return
 	 */
-	public static String messageToString(Message m) {
-		ObjectMapper om = new ObjectMapper();
-		String s = null;
+	public static String objectToJson(Object data) {
 		try {
-			s = om.writeValueAsString(m);
+			String string = om.writeValueAsString(data);
+			return string;
 		} catch (JsonProcessingException e) {
 			e.printStackTrace();
 		}
-		return s;
+		return null;
 	}
-	
+
+	/**
+	 * 将Message类转化为json格式的String
+	 * 
+	 * @param m
+	 * @return
+	 */
+	public static String messageToString(Message m) {
+		return objectToJson(m);
+	}
+
+	/**
+	 * 将json数据转换成pojo对象list
+	 * 
+	 * @param jsonData
+	 * @param beanType
+	 * @return
+	 */
+	public static <T> List<T> jsonToList(String jsonData, Class<T> beanType) {
+		JavaType javaType = om.getTypeFactory().constructParametricType(List.class, beanType);
+		try {
+			List<T> list = om.readValue(jsonData, javaType);
+			return list;
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		return null;
+	}
+
 }
 
 class JsonObject {

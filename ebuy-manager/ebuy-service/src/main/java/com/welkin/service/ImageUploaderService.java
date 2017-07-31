@@ -21,7 +21,8 @@ public class ImageUploaderService {
 	private String username;
 	@Value("${imageNginx.host}")
 	private String host;
-	private int port = 22;
+	@Value("${imageNginx.port}")
+	private int port;
 	@Value("${imageNginx.userpwd}")
 	private String userpwd;
 	@Value("${imageNginx.baseDir}")

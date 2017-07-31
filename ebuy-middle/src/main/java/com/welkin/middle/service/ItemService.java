@@ -7,12 +7,9 @@ import org.springframework.stereotype.Service;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.github.pagehelper.PageHelper;
-import com.github.pagehelper.PageInfo;
 import com.welkin.mapper.TbItemDescMapper;
 import com.welkin.mapper.TbItemMapper;
 import com.welkin.mapper.TbItemParamItemMapper;
-import com.welkin.middle.pojo.MItemPager;
 import com.welkin.pojo.TbItem;
 import com.welkin.pojo.TbItemDesc;
 import com.welkin.pojo.TbItemDescExample;
@@ -23,7 +20,6 @@ import com.welkin.pojo.TbItemParamItemExample;
 
 @Service
 public class ItemService {
-	private static final int PAGESIZE = 6;
 	@Autowired
 	private TbItemMapper tbItemMapper;
 	@Autowired

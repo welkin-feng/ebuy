@@ -57,9 +57,9 @@ public class UserService  {
 		//执行查询
 		List<TbUser> list = userMapper.selectByExample(example);
 		if (list == null || list.size() == 0) {
-			return MessageUtil.build(200, true);
+			return MessageUtil.generateStatus(true);
 		}
-		return MessageUtil.build(200, false);
+		return MessageUtil.generateStatus(false);
 	}
 
 	public Message createUser(TbUser user) {

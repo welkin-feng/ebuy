@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.welkin.commons.Message;
 import com.welkin.portal.pojo.CartItem;
 import com.welkin.portal.service.CartService;
 

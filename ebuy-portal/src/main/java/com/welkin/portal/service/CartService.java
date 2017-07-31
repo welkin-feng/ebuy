@@ -91,13 +91,10 @@ public class CartService {
 			try {
 				item = om.readValue(json, TbItem.class);
 			} catch (JsonParseException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			} catch (JsonMappingException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			} catch (IOException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 			// 为购物车中商品对象赋值

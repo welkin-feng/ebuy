@@ -11,5 +11,5 @@
         http://www.springframework.org/schema/aop
         http://www.springframework.org/schema/aop/spring-aop.xsd">
 	<context:property-placeholder location="classpath:resource/*.properties" />
-	<context:component-scan base-package="com.welkin.portal.service"></context:component-scan>
+	<context:component-scan base-package="com.welkin.portal.service" />
 </beans>

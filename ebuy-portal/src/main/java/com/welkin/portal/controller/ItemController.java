@@ -31,7 +31,7 @@ public class ItemController {
 	 * @param itemId
 	 * @return 
 	 */
-	@RequestMapping("/{itemId}")
+	@RequestMapping("/item/{itemId}")
 	public ModelAndView getItem(@PathVariable Long itemId) {
 		ModelAndView mv = new ModelAndView("item");
 

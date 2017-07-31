@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
-import com.welkin.commons.JsonUtil;
+import com.welkin.commons.JsonUtils;
 import com.welkin.commons.Pager;
 import com.welkin.mapper.TbItemCatMapper;
 import com.welkin.mapper.TbItemMapper;
@@ -66,7 +66,7 @@ public class TbItemParamService {
 		TbItemParamItem tbItemParamItem = new TbItemParamItem();
 		int updateByTbItemParamItemRes = 0;
 		for (int i = 0; i < tbItems_ItemId.size(); i++) {
-			tbItemParamItem.setParamData(JsonUtil.JsonParamToString(tbItemParam.getParamData()));
+			tbItemParamItem.setParamData(JsonUtils.JsonParamToString(tbItemParam.getParamData()));
 			tbItemParamItem.setUpdated(new Date());
 			updateByTbItemParamItemRes += tbItemParamItemMapper.updateByExampleSelective(tbItemParamItem, ex3);
 		}

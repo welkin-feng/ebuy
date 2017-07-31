@@ -32,9 +32,9 @@ public class MessageUtil {
 
 	public static Message generateStatus(boolean flag) {
 		if (flag)
-			return generateStatus(1);
+			return build(200, true);
 		else
-			return generateStatus(0);
+			return build(500, false);
 	}
 	
 	/**

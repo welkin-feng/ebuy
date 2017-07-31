@@ -16,7 +16,7 @@
    <link type="text/css" rel="stylesheet" href="css/base.css" />
    <link rel="stylesheet" type="text/css" href="css/purchase.base.2012.css" />
    <link rel="stylesheet" type="text/css" href="css/purchase.sop.css" />
-   <title>订单成功页面 - 淘淘商城</title>
+   <title>订单成功页面 - 商城</title>
    <script type="text/javascript" src="js/jquery-1.6.4.js"></script>
    <script type="text/javascript" src="js/base-2011.js" charset="utf-8"></script>
    <script type="text/javascript" src="js/jquery.cookie.js" charset="utf-8"></script>
@@ -26,7 +26,7 @@
 <jsp:include page="commons/shortcut.jsp" />
 <!--shortcut end-->
 <div class="w" id="headers">
-		<div id="logo"><a href="/"><img alt="淘淘商城" src="images/taotao-logo.gif"></a></div>
+		<div id="logo"><a href="/"><img alt="商城" src="images/taotao-logo.gif"></a></div>
 		<ul class="step" id="step3">
 			<li class="fore1">1.我的购物车<b></b></li>
 			<li class="fore2">2.填写核对订单信息<b></b></li>

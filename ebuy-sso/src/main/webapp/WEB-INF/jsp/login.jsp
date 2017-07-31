@@ -5,21 +5,21 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=gb2312"/>
     <title>登录淘淘</title>
-    <link type="text/css" rel="stylesheet" href="/portal/css/login.css"/>
-    <script type="text/javascript" src="/portal/js/jquery-1.6.4.js"></script>
+    <link type="text/css" rel="stylesheet" href="/css/login.css"/>
+    <script type="text/javascript" src="/js/jquery-1.6.4.js"></script>
 </head>
 <body>
 <div class="w">
     <div id="logo">
-    	<a href="http://localhost:8082" clstag="passport|keycount|login|01">
-    		<img src="/portal/images/taotao-logo.gif" alt="淘淘" width="170" height="60"/>
+    	<a href="http://www.taotao.com" clstag="passport|keycount|login|01">
+    		<img src="/images/taotao-logo.gif" alt="淘淘" width="170" height="60"/>
     	</a><b></b>
    	</div>
 </div>
 <form id="formlogin" method="post" onsubmit="return false;">
     <div class=" w1" id="entry">
         <div class="mc " id="bgDiv">
-            <div id="entry-bg" clstag="passport|keycount|login|02" style="width: 511px; height: 455px; position: absolute; left: -44px; top: -44px; background: url(/portal/images/544a11d3Na5a3d566.png) 0px 0px no-repeat;">
+            <div id="entry-bg" clstag="passport|keycount|login|02" style="width: 511px; height: 455px; position: absolute; left: -44px; top: -44px; background: url(/images/544a11d3Na5a3d566.png) 0px 0px no-repeat;">
 			</div>
             <div class="form ">
                 <div class="item fore1">
@@ -54,7 +54,7 @@
             </div>
         </div>
         <div class="free-regist">
-            <span><a href="user/showRegister.html" clstag="passport|keycount|login|08">免费注册&gt;&gt;</a></span>
+            <span><a href="/page/register" clstag="passport|keycount|login|08">免费注册&gt;&gt;</a></span>
         </div>
     </div>
 </form>
@@ -75,26 +75,17 @@
 				return true;
 			},
 			doLogin:function() {
-				$.post("/portal/user/login.html", $("#formlogin").serialize(),function(data){
-					data = eval("(" + data + ")");
+				$.post("/user/login", $("#formlogin").serialize(),function(data){
 					if (data.status == 200) {
 						alert("登录成功！");
 						if (redirectUrl == "") {
-							location.href = "http://localhost:8080/portal/";
+							location.href = "http://localhost:8000/portal/";
 						} else {
 							location.href = redirectUrl;
 						}
 					} else {
-						alert("登录失败：" + data.msg);
-						if(data.msg == "用户不存在") { //401表示用户名不存在
-							$("#loginname").val("");
-							$("#nloginpwd").val("");
-							$("#loginname").select();
-						} else { //密码错误
-							$("#nloginpwd").val("");
-							$("#nloginpwd").select();
-						}
-						
+						alert("登录失败，原因是：" + data.msg);
+						$("#loginname").select();
 					}
 				});
 			},

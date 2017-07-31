@@ -11,8 +11,8 @@
    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"> 
    <meta name="format-detection" content="telephone=no">
    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-   <link rel="stylesheet" href="css/base.css">
-   <link href="css/purchase.2012.css?v=201410141639" rel="stylesheet" type="text/css">
+   <link rel="stylesheet" href="<%=request.getContextPath() %>/css/base.css">
+   <link href="<%=request.getContextPath() %>/css/purchase.2012.css?v=201410141639" rel="stylesheet" type="text/css">
    <title>我的购物车 - 淘淘商城</title>
    <script>
    	var pageConfig  = {};
@@ -22,7 +22,7 @@
 <jsp:include page="commons/shortcut.jsp" />
 <!--shortcut end-->
 <div class="w w1 header clearfix">
-	<div id="logo"><a href="/"><img clstag="clickcart|keycount|xincart|logo" src="images/taotao-logo.gif" title="返回淘淘商城首页" alt="返回淘淘商城首页"></a></div>
+	<div id="logo"><a href="/"><img clstag="clickcart|keycount|xincart|logo" src="<%=request.getContextPath() %>/images/taotao-logo.gif" title="返回淘淘商城首页" alt="返回淘淘商城首页"></a></div>
     <div class="language"><a href="javascript:void(0);" onclick="toEnCart()"></a></div>
 	<div class="progress clearfix">
 		<ul class="progress-1">
@@ -57,9 +57,9 @@
         <c:set var="totalPrice" value="0"></c:set>
         <c:forEach items="${cartList}" var="cart">
         	<c:set var="totalPrice"  value="${ totalPrice + (cart.price * cart.num)}"/>
-	        <div id="product_11345721" data-bind="rowid:1" class="item item_selected ">
+	        <div id="product_${cart.id}" data-bind="rowid:1" class="item item_selected ">
 		        <div class="item_form clearfix">
-		            <div class="cell p-checkbox"><input data-bind="cbid:1" class="checkbox" type="checkbox" name="checkItem" checked="" value="11345721-1"></div>
+		            <div class="cell p-checkbox"><input data-bind="cbid:1" class="checkbox" type="checkbox" name="checkItem" checked="true" value="${cart.id}"></div>
 		            <div class="cell p-goods">
 		                <div class="p-img">
 		                	<a href="/item/${cart.id }.html" target="_blank">
@@ -99,7 +99,7 @@
         <div class="ui-ceilinglamp-1" style="width: 988px; height: 49px;"><div class="cart-dibu ui-ceilinglamp-current" style="width: 988px; height: 49px;">
           <div class="control fdibu fdibucurrent">
               <span class="column t-checkbox form">
-                  <input data-cart="toggle-cb" name="toggle-checkboxes" id="toggle-checkboxes_down" type="checkbox" checked="" value="" class="jdcheckbox">
+                  <input data-cart="toggle-cb" name="toggle-checkboxes" id="toggle-checkboxes_down" type="checkbox" checked="true" value="" class="jdcheckbox">
                   <label for="toggle-checkboxes_down">
                           全选
                   </label>
@@ -120,7 +120,7 @@
           <div class="cart-total-2014">
               <div class="cart-button">
                   <span class="check-comm-btns" id="checkout-jd">
-                      <a class="checkout" href="/order/order-cart.html" clstag="clickcart|keycount|xincart|gotoOrderInfo" id="toSettlement">去结算<b></b></a>
+                      <a class="checkout" href="<%=request.getContextPath() %>/order/order-cart.html" clstag="clickcart|keycount|xincart|gotoOrderInfo" id="toSettlement">去结算<b></b></a>
                   </span>
                   <span class="combine-btns" style="display:none">
                         <span class="fore1" style="display: none;">
@@ -144,13 +144,45 @@
 <!--推荐位html修改处-->
 
 
-<script type="text/javascript" src="/js/base-v1.js"></script>
+<script type="text/javascript" src="<%=request.getContextPath() %>/js/base-v1.js"></script>
 <!-- footer start -->
 <jsp:include page="commons/footer.jsp" />
 <!-- footer end -->
 
 <!-- 购物车相关业务 -->
-<script type="text/javascript" src="/js/cart.js"></script>
-<script type="text/javascript" src="/js/jquery.price_format.2.0.min.js"></script>
-
+<script type="text/javascript" src="<%=request.getContextPath() %>/js/cart.js"></script>
+<script type="text/javascript" src="<%=request.getContextPath() %>/js/jquery.price_format.2.0.min.js"></script>
+<script type="text/javascript">
+	$(function() {
+		//为
+		$(".checkbox").bind("click",function() {
+			if($(this).is(":checked")) {
+				$(this).prop("checked", false);
+			}
+			else {
+				$(this).prop("checked", true);
+			}
+		});
+		//为删除选定商品按钮添加删除事件
+		$("#remove-batch").bind("click",function() {
+			var cartItems = new Array();
+			
+			$("#product-list").find(".checkbox").each(function(){
+				if($(this).is(":checked")) {
+					cartItems.push($(this).attr("value"));
+				}
+			});
+			
+			var url = "/cart/deleteSelected";
+			var data = "";
+			$(cartItems).each(function(i,n) {
+				data += n+","				
+			});
+			
+			$.post(url, , function(res) {
+				
+			});
+		});
+	});
+</script>
 </html>

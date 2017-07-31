@@ -7,15 +7,15 @@
     <meta http-equiv="pragma" content="no-cache">
     <meta http-equiv="Cache-Control" content="no-cache,must-revalidate">
     <title>注册-个人用户</title>
-    <link type="text/css" rel="stylesheet" href="/portal/css/regist.personal.css"/>
-    <link type="text/css" rel="stylesheet" href="/portal/css/passport.base.css"/>
-    <script type="text/javascript" src="/portal/js/jquery-1.6.4.js"></script>
+    <link type="text/css" rel="stylesheet" href="/css/regist.personal.css"/>
+    <link type="text/css" rel="stylesheet" href="/css/passport.base.css"/>
+    <script type="text/javascript" src="/js/jquery-1.6.4.js"></script>
 </head>
 <body>
 <div class="w" id="logo">
     <div>
-    	<a href="http://localhost:8082">
-    		<img src="/portal/images/taotao-logo.gif" alt="淘淘商城" width="170" height="60"/>
+    	<a href="http://www.taotao.com">
+    		<img src="/images/taotao-logo.gif" alt="商城" width="170" height="60"/>
     	</a> <b></b>
     </div>
 </div>
@@ -27,7 +27,7 @@
         </ul>
         <div class="extra">
         <span>我已经注册，现在就&nbsp;
-        	<a href="user/showLogin.html" class="flk13">登录</a>
+        	<a href="/page/login" class="flk13">登录</a>
         </span>
         </div>
     </div>
@@ -108,7 +108,7 @@
                 </div>
             </div>
             <div class="phone">
-                <img width="180" height="180" src="/portal/images/phone-bg.jpg">
+                <img width="180" height="180" src="/images/phone-bg.jpg">
             </div>
             <span class="clr"></span>
         </form>
@@ -148,16 +148,16 @@
 		beforeSubmit:function() {
 				//检查用户是否已经被占用
 				$.ajax({
-	            	url : REGISTER.param.surl + "/portal/reg/checkName.html?name="+escape($("#regName").val())+"&r=" + Math.random(),
+	            	url : REGISTER.param.surl + "/user/check/"+escape($("#regName").val())+"/1?r=" + Math.random(),
 	            	success : function(data) {
-	            		data = eval('('+data +')');
-	            		if (data.status == 200) {
+	            		alert(data);
+	            		alert(data.data);
+	            		if (data.data) {
 	            			//检查手机号是否存在
 	            			$.ajax({
-	            				url : REGISTER.param.surl + "/portal/reg/checkPhone.html?phone="+$("#phone").val()+"&r=" + Math.random(),
+	            				url : REGISTER.param.surl + "/user/check/"+$("#phone").val()+"/2?r=" + Math.random(),
 				            	success : function(data) {
-				            		data = eval('('+data +')');
-				            		if (data.status == 200) {
+				            		if (data.data) {
 					            		REGISTER.doSubmit();
 				            		} else {
 				            			alert("此手机号已经被注册！");
@@ -174,8 +174,7 @@
 	            	
 		},
 		doSubmit:function() {
-			$.post("reg/doRegist.html",$("#personRegForm").serialize(), function(data){
-				data = eval('('+data +')');
+			$.post("/user/register",$("#personRegForm").serialize(), function(data){
 				if(data.status == 200){
 					alert('用户注册成功，请登录！');
 					REGISTER.login();
@@ -185,7 +184,7 @@
 			});
 		},
 		login:function() {
-			 location.href = "user/showLogin.html";
+			 location.href = "/page/login";
 			 return false;
 		},
 		reg:function() {

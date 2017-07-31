@@ -16,12 +16,6 @@
 			<artifactId>ebuy-mapping</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
-		<!-- 依赖util模块 -->
-		<dependency>
-			<groupId>com.welkin-git.ebuy</groupId>
-			<artifactId>ebuy-util</artifactId>
-			<version>0.0.1-SNAPSHOT</version>
-		</dependency>
 
 		<!-- 业务由spring容器管理 -->
 		<dependency>

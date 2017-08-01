@@ -9,6 +9,7 @@ import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import com.fasterxml.jackson.core.JsonParseException;
@@ -23,10 +24,10 @@ import com.welkin.portal.utils.HttpClientUtils;
 
 @Service
 public class CartService {
-	/**
-	 * middle服务器地址
-	 */
-	private final String middleServer = "http://localhost:8005";
+	@Value("${MIDDLE_URL}")
+	private String MIDDLE_URL;
+	@Value("${MIDDLE_QUERY_ITEM_URL}")
+	private String MIDDLE_QUERY_ITEM_URL;	// "/item/query/item"
 
 	/**
 	 * 从cookie中取商品列表
@@ -84,7 +85,7 @@ public class CartService {
 			// 查找商品信息
 			Map<String, String> params = new HashMap<String, String>();
 			params.put("itemId", itemId + "");
-			String json = HttpClientUtils.doPost(middleServer + "/item/query/item", params);
+			String json = HttpClientUtils.doPost(MIDDLE_URL + MIDDLE_QUERY_ITEM_URL, params);
 			// System.out.println("json:"+json);
 			TbItem item = null;
 			ObjectMapper om = new ObjectMapper();

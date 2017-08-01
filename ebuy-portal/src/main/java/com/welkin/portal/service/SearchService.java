@@ -13,8 +13,8 @@ import com.welkin.portal.utils.HttpClientUtils;
 
 @Service
 public class SearchService {
-	@Value("${SEARCH_BASE_URL}")
-	private String SEARCH_BASE_URL;
+	@Value("${SEARCH_URL}")
+	private String SEARCH_URL;
 	
 	public SearchResult search(String queryString, int page) {
 		System.out.println("search q = " + queryString);
@@ -25,7 +25,7 @@ public class SearchService {
 		param.put("page", page + "");
 		try {
 			//调用服务
-			String json = HttpClientUtils.doGet(SEARCH_BASE_URL, param);
+			String json = HttpClientUtils.doGet(SEARCH_URL, param);
 			System.out.println(json);
 			//把字符串转换成java对象
 			Message m = MessageUtil.formatToPojo(json, SearchResult.class);
@@ -39,5 +39,7 @@ public class SearchService {
 		}
 		return null;
 	}
+	
+	
 
 }

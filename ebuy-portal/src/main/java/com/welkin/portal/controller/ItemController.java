@@ -9,6 +9,7 @@ import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -25,18 +26,28 @@ import com.welkin.portal.utils.HttpClientUtils;
 
 @Controller
 public class ItemController {
+	@Value("${MIDDLE_URL}")
+	private String MIDDLE_URL;	// "http://localhost:8005"
+	@Value("${MIDDLE_QUERY_ITEM_URL}")
+	private String MIDDLE_QUERY_ITEM_URL;	// "/item/query/item"
+	@Value("${MIDDLE_QUERY_ITEMDESC_URL}")	
+	private String MIDDLE_QUERY_ITEMDESC_URL;	// "/item/query/itemDesc"
+	@Value("${MIDDLE_QUERY_ITEMPARAM_URL}")
+	private String MIDDLE_QUERY_ITEMPARAM_URL;	// "/item/query/itemParam"
+
 
 	/**
 	 * 根据itemId得到item的基本信息
+	 * 
 	 * @param itemId
-	 * @return 
+	 * @return
 	 */
 	@RequestMapping("/item/{itemId}")
 	public ModelAndView getItem(@PathVariable Long itemId) {
 		ModelAndView mv = new ModelAndView("item");
 
 		// 发送请求 返回TbItem表的商品基本信息
-		String url = "http://localhost:8005/item/query/item";
+		String url = MIDDLE_URL + MIDDLE_QUERY_ITEM_URL;
 		Map<String, String> params = new HashMap<String, String>();
 		params.put("itemId", itemId + "");
 		// 向指定url地址发送post请求
@@ -64,14 +75,14 @@ public class ItemController {
 
 	/**
 	 * 根据itemId得到商品的详细介绍
+	 * 
 	 * @param itemId
 	 * @return
 	 */
-	@RequestMapping(value="/item/desc/{itemId}")
+	@RequestMapping(value = "/item/desc/{itemId}")
 	@ResponseBody
-	public void getItemDesc(@PathVariable Long itemId, 
-			HttpServletRequest request, HttpServletResponse response) {
-		//设置编码格式
+	public void getItemDesc(@PathVariable Long itemId, HttpServletRequest request, HttpServletResponse response) {
+		// 设置编码格式
 		try {
 			request.setCharacterEncoding("utf-8");
 		} catch (UnsupportedEncodingException e1) {
@@ -79,15 +90,15 @@ public class ItemController {
 		}
 		response.setContentType("text/html;charset=utf-8");
 		response.setHeader("Cache-Control", "no-cache");
-		
+
 		// 发送请求 返回TbItem表的商品基本信息
-		String url = "http://localhost:8005/item/query/itemDesc";
+		String url = MIDDLE_URL + MIDDLE_QUERY_ITEMDESC_URL;
 		Map<String, String> params = new HashMap<String, String>();
 		params.put("itemId", itemId + "");
 		// 向指定url地址发送post请求
 		String str = HttpClientUtils.doPost(url, params);
 		System.out.println("str:" + str);
-		
+
 		// json组件的转换器
 		ObjectMapper om = new ObjectMapper();
 		// 将json的字符串转换成自定类
@@ -96,31 +107,31 @@ public class ItemController {
 		try {
 			tbItemDesc = om.readValue(str, TbItemDesc.class);
 			String res = tbItemDesc.getItemDesc();
-			
+
 			PrintWriter out;
 			out = response.getWriter();
 			out.print(res);
-		    out.flush();
-		    out.close();
+			out.flush();
+			out.close();
 		} catch (JsonParseException e) {
-			
+
 		} catch (JsonMappingException e) {
-			
+
 		} catch (IOException e) {
-			
+
 		}
 	}
-	
+
 	/**
 	 * 根据itemId得到商品的规格信息
+	 * 
 	 * @param itemId
 	 * @return
 	 */
-	@RequestMapping(value="/item/param/{itemId}")
+	@RequestMapping(value = "/item/param/{itemId}")
 	@ResponseBody
-	public void getItemParam(@PathVariable Long itemId,
-			HttpServletRequest request, HttpServletResponse response) {
-		//设置编码格式
+	public void getItemParam(@PathVariable Long itemId, HttpServletRequest request, HttpServletResponse response) {
+		// 设置编码格式
 		try {
 			request.setCharacterEncoding("utf-8");
 		} catch (UnsupportedEncodingException e1) {
@@ -128,15 +139,15 @@ public class ItemController {
 		}
 		response.setContentType("text/html;charset=utf-8");
 		response.setHeader("Cache-Control", "no-cache");
-				
+
 		// 发送请求 返回TbItem表的商品基本信息
-		String url = "http://localhost:8005/item/query/itemParam";
+		String url = MIDDLE_URL + MIDDLE_QUERY_ITEMPARAM_URL;
 		Map<String, String> params = new HashMap<String, String>();
 		params.put("itemId", itemId + "");
 		// 向指定url地址发送post请求
 		String str = HttpClientUtils.doPost(url, params);
 		System.out.println("str:" + str);
-		
+
 		// json组件的转换器
 		ObjectMapper om = new ObjectMapper();
 		// 将json的字符串转换成自定类
@@ -145,18 +156,18 @@ public class ItemController {
 		try {
 			tbItemParamItem = om.readValue(str, TbItemParamItem.class);
 			String res = tbItemParamItem.getParamData();
-			
+
 			PrintWriter out;
 			out = response.getWriter();
 			out.print(res);
-		    out.flush();
-		    out.close();
+			out.flush();
+			out.close();
 		} catch (JsonParseException e) {
-			
+
 		} catch (JsonMappingException e) {
-			
+
 		} catch (IOException e) {
-			
+
 		}
 
 	}

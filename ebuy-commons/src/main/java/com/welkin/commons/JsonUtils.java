@@ -86,13 +86,22 @@ public class JsonUtils {
 	}
 
 	/**
-	 * 将Message类转化为json格式的String
+	 * 将json结果集转化为指定类的对象
 	 * 
-	 * @param m
+	 * @param jsonData
+	 *            json数据
+	 * @param clazz
+	 *            指定要转化为的对象类型
 	 * @return
 	 */
-	public static String messageToString(Message m) {
-		return objectToJson(m);
+	public static <T> T jsonToObject(String jsonData, Class<T> beanType) {
+		try {
+			T t = om.readValue(jsonData, beanType);
+			return t;
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return null;
 	}
 
 	/**

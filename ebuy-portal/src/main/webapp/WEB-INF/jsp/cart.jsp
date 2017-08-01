@@ -44,7 +44,7 @@
 </div>
 <div class="cart-inner">
     <div class="cart-thead clearfix">
-        <div class="column t-checkbox form"><input data-cart="toggle-cb" name="toggle-checkboxes" id="toggle-checkboxes_up" type="checkbox" checked="" value=""><label for="toggle-checkboxes_up">全选</label></div>
+        <div class="column t-checkbox form"><input data-cart="toggle-cb" name="toggle-checkboxes" id="toggle-checkboxes_up" type="checkbox" checked="checked" value=""><label for="toggle-checkboxes_up">全选</label></div>
         <div class="column t-goods">商品</div>
         <div class="column t-price">淘淘价</div>
         <div class="column t-promotion">优惠</div>
@@ -91,15 +91,15 @@
     </div><!-- product-list结束 -->
           <div class="cart-toolbar clearfix">
             <div class="total fr">
-                <p><span class="totalSkuPrice">¥<fmt:formatNumber value="${totalPrice / 100}" maxFractionDigits="2" minFractionDigits="2" groupingUsed="true"/></span>总计：</p>
+                <p><span class="totalSkuPrice_all">¥<fmt:formatNumber value="${totalPrice / 100}" maxFractionDigits="2" minFractionDigits="2" groupingUsed="true"/></span>总计：</p>
                 <p><span id="totalRePrice">- ¥0.00</span>优惠：</p>
             </div>
-            <div class="amout fr"><span id="selectedCount">1</span> 件商品</div>
+            <div class="amout fr"><span id="selectedCount">0</span> 件商品</div>
         </div>
         <div class="ui-ceilinglamp-1" style="width: 988px; height: 49px;"><div class="cart-dibu ui-ceilinglamp-current" style="width: 988px; height: 49px;">
           <div class="control fdibu fdibucurrent">
               <span class="column t-checkbox form">
-                  <input data-cart="toggle-cb" name="toggle-checkboxes" id="toggle-checkboxes_down" type="checkbox" checked="true" value="" class="jdcheckbox">
+                  <input data-cart="toggle-cb" name="toggle-checkboxes" id="toggle-checkboxes_down" type="checkbox" checked="checked" value="" class="jdcheckbox">
                   <label for="toggle-checkboxes_down">
                           全选
                   </label>
@@ -120,7 +120,7 @@
           <div class="cart-total-2014">
               <div class="cart-button">
                   <span class="check-comm-btns" id="checkout-jd">
-                      <a class="checkout" href="<%=request.getContextPath() %>/order/order-cart.html" clstag="clickcart|keycount|xincart|gotoOrderInfo" id="toSettlement">去结算<b></b></a>
+                      <a class="checkout" href="/order/order-cart.html" clstag="clickcart|keycount|xincart|gotoOrderInfo" id="toSettlement">去结算<b></b></a>
                   </span>
                   <span class="combine-btns" style="display:none">
                         <span class="fore1" style="display: none;">
@@ -134,7 +134,7 @@
               </div>
               <div class="total fr">
                   总计（不含运费）：
-                  <span class="totalSkuPrice">¥<fmt:formatNumber value="${totalPrice / 100}" maxFractionDigits="2" minFractionDigits="2" groupingUsed="true"/></span>
+                  <span class="totalSkuPrice_final">¥<fmt:formatNumber value="${totalPrice / 100}" maxFractionDigits="2" minFractionDigits="2" groupingUsed="true"/></span>
               </div>
           </div>
       </div></div>
@@ -153,35 +153,131 @@
 <script type="text/javascript" src="<%=request.getContextPath() %>/js/cart.js"></script>
 <script type="text/javascript" src="<%=request.getContextPath() %>/js/jquery.price_format.2.0.min.js"></script>
 <script type="text/javascript">
+	var controller = {
+		calculateTotalPrice:function() {
+			var totalPrice = 0;
+			$(".checkbox").each(function(){
+				if($(this).is(":checked")) {
+					var _price = $(this).parent().parent().find(".price").text();
+					var price = parseFloat(_price.split("¥")[1]);
+					var num = parseInt($(this).parent().parent().find(".quantity-text").attr("value"));
+					totalPrice += price * num;
+					
+				}
+			});
+			totalPrice = totalPrice.toFixed(2);
+			
+			$(".totalSkuPrice_all").html("¥"+totalPrice);
+			$(".totalSkuPrice_final").html("¥"+totalPrice);
+		}
+	};
 	$(function() {
-		//为
-		$(".checkbox").bind("click",function() {
+		//为选中的商品数量赋初始值，即全部被选中
+		var amount = 0;
+		$("#product-list").find(".checkbox").each(function(){
+			amount++;
+		});
+		$("#selectedCount").html(amount);
+		controller.calculateTotalPrice();
+		//为toggle-checkboxes_up添加点击事件
+		$("#toggle-checkboxes_up").bind("click",function(){
 			if($(this).is(":checked")) {
-				$(this).prop("checked", false);
+				var amount = 0;
+				$("#product-list").find(".checkbox").each(function(){
+					$(this).prop("checked", true);
+					amount++;
+				});
+				$(this).prop("checked", true);
+				$("#toggle-checkboxes_down").prop("checked", true);
+				$("#selectedCount").html(amount);
 			}
 			else {
+				$("#product-list").find(".checkbox").each(function(){
+					$(this).prop("checked", false);
+				});
+				$(this).prop("checked", false);
+				$("#toggle-checkboxes_down").prop("checked", false);
+				$("#selectedCount").html(0);
+			}
+			controller.calculateTotalPrice();
+		});
+		//为toggle-checkboxes_down添加点击事件
+		$("#toggle-checkboxes_down").bind("click",function(){
+			if($(this).is(":checked")) {
+				var amount = 0;
+				$("#product-list").find(".checkbox").each(function(){
+					$(this).prop("checked", true);
+					amount++;
+				});
+				$(this).prop("checked", true);
+				$("#toggle-checkboxes_up").prop("checked", true);
+				$("#selectedCount").html(amount);
+			}
+			else {
+				$("#product-list").find(".checkbox").each(function(){
+					$(this).prop("checked", false);
+				});
+				$(this).prop("checked", false);
+				$("#toggle-checkboxes_up").prop("checked", false);
+				$("#selectedCount").html(0);
+			}
+			controller.calculateTotalPrice();
+		});
+		//为checkbox添加点击事件
+		$(".checkbox").bind("click",function(){
+			var amount = 0;
+			$("#product-list").find(".checkbox").each(function(){
+				if($(this).is(":checked")) {
+					amount++;
+				}
+			});
+			
+			if($(this).is(":checked")) {
 				$(this).prop("checked", true);
 			}
+			else {
+				$(this).prop("checked", false);
+			}
+			$("#selectedCount").html(amount);
+			controller.calculateTotalPrice();
 		});
 		//为删除选定商品按钮添加删除事件
 		$("#remove-batch").bind("click",function() {
 			var cartItems = new Array();
-			
 			$("#product-list").find(".checkbox").each(function(){
 				if($(this).is(":checked")) {
 					cartItems.push($(this).attr("value"));
 				}
 			});
 			
-			var url = "/cart/deleteSelected";
 			var data = "";
 			$(cartItems).each(function(i,n) {
-				data += n+","				
+				data += n+",";				
 			});
+			alert(data);
+			var url = "/cart/deleteSelected.html?cartList=" + data;
+			$("#remove-batch").attr("href", url);
+			controller.calculateTotalPrice();
+			//window.location.href = url;
 			
-			$.post(url, , function(res) {
-				
-			});
+		});
+		//为商品数量增加按钮添加点击事件
+		$(".increment").bind("click", function(){
+			//var num = parseInt($(this).parent().find(".quantity-text").attr("value"));
+			//if(num <99) {
+			//	num++;
+			//	$(this).parent().find(".quantity-text").attr("value", num);
+			//}
+			controller.calculateTotalPrice();
+		});
+		//为商品数量减少按钮添加点击事件
+		$(".decrement").bind("click", function(){
+			//var num = parseInt($(this).parent().find(".quantity-text").attr("value"));
+			//if(num >1) {
+			//	num--;
+			//	$(this).parent().find(".quantity-text").attr("value", num);
+			//}
+			controller.calculateTotalPrice();
 		});
 	});
 </script>

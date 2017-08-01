@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.welkin.portal.utils.HttpClientUtils;
 
-@Controller                                                                                                                                                        
+@Controller
 public class IndexController {
 	@Value("${MIDDLE_URL}")
 	private String MIDDLE_URL;
@@ -19,15 +19,37 @@ public class IndexController {
 	public String gopager(@PathVariable String pager) {
 		return pager;
 	}
-	
+
 	@RequestMapping("/index")
 	public String index(Model model) {
 		System.out.println("首页信息");
 		String url = MIDDLE_URL + MIDDLE_ADLIST_URL;
-		// 通过工具类中 doGet 方法发送请求，并接收返回的数据
+
 		String jsonArray = HttpClientUtils.doGet(url);
-		//将返回的json数组格式的字符串封装Model给 页面传值
+		// 将返回的json数组格式的字符串封装Model给 页面传值
 		model.addAttribute("ad1", jsonArray);
 		return "index";
 	}
+
+	/*@RequestMapping(value = "/itemcat/all", produces = MediaType.APPLICATION_JSON_VALUE + ";charset=utf-8")
+	@ResponseBody
+	public String findAllCat(String callback, HttpServletRequest request, HttpServletResponse response) throws UnsupportedEncodingException {
+		// 设置编码格式
+		try {
+			request.setCharacterEncoding("utf-8");
+		} catch (UnsupportedEncodingException e1) {
+			e1.printStackTrace();
+		}
+		response.setContentType("text/html;charset=utf-8");
+		response.setHeader("Cache-Control", "no-cache");
+		
+		System.out.println("商品分类信息");
+		String url = MIDDLE_URL + MIDDLE_ITEMCAT_URL;
+		Map<String, String> param = new HashMap<>();
+		param.put("callback", callback);
+		String r = HttpClientUtils.doPost(url, param);
+
+		System.out.println("return :" + r);
+		return r;
+	}*/
 }

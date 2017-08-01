@@ -28,18 +28,13 @@ public class SearchService {
 			String json = HttpClientUtils.doGet(SEARCH_URL, param);
 			System.out.println(json);
 			//把字符串转换成java对象
-			Message m = MessageUtil.formatToPojo(json, SearchResult.class);
-			if (m.getStatus() == 200) {
-				SearchResult result = (SearchResult) m.getData();
-				return result;
-			}
-			
+			Message m = MessageUtil.jsonToMessage(json, SearchResult.class);
+			if (m.getStatus() == 200)
+				return (SearchResult) m.getData();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		return null;
 	}
 	
-	
-
 }

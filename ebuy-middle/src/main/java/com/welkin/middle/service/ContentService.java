@@ -6,8 +6,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
+import com.welkin.commons.JsonUtils;
 import com.welkin.mapper.TbContentMapper;
 import com.welkin.middle.dao.RedisDao;
 import com.welkin.middle.pojo.AdItem;
@@ -30,14 +29,9 @@ public class ContentService {
 		Criteria c = ex.createCriteria();
 		c.andCategoryIdEqualTo(gid);
 		List<TbContent> li = tbContentMapper.selectByExample(ex);
-		ObjectMapper om = new ObjectMapper();
-		try {
-			value = om.writeValueAsString(li);
-			// 写入缓冲区
-			redis.hsetKey("ContentService", gid + "", value);
-		} catch (JsonProcessingException e) {
-			e.printStackTrace();
-		}
+		
+		value = JsonUtils.objectToJson(li);
+		redis.hsetKey("ContentService", gid + "", value);
 
 		return value;
 	}
@@ -73,15 +67,8 @@ public class ContentService {
 			item.setHref(con.getUrl());
 			mlist.add(item);
 		}
-		// 将java的集合对象转换成json字符串
-		ObjectMapper om = new ObjectMapper();
-		try {
-			value = om.writeValueAsString(mlist);
-			// 写入缓冲区
-			redis.hsetKey("ContentService", catId + "", value);
-		} catch (JsonProcessingException e) {
-			e.printStackTrace();
-		}
+		value = JsonUtils.objectToJson(mlist);
+		redis.hsetKey("ContentService", catId + "", value);
 
 		return value;
 	}

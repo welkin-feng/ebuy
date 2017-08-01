@@ -6,8 +6,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
+import com.welkin.commons.JsonUtils;
 import com.welkin.mapper.TbItemCatMapper;
 import com.welkin.middle.dao.RedisDao;
 import com.welkin.middle.pojo.CatPojo;
@@ -26,20 +25,16 @@ public class ItemCatService {
 	public String getAllCat() {
 		String value = redis.hgetKey("ItemCatService", "getAllCat");
 		if (value != null && !value.equals("")) {
+			System.out.println("redis hit!!!");
 			return value;
 		}
+		System.out.println("redis does not hit!!!");
 		CatResult res = new CatResult();
 		// 为data属性赋值
 		res.setData(getCatItems(0L));
 
-		ObjectMapper om = new ObjectMapper();
-		try {
-			value = om.writeValueAsString(res);
-			redis.hsetKey("ItemCatService", "getAllCat", value);
-		} catch (JsonProcessingException e) {
-			e.printStackTrace();
-		}
-
+		value = JsonUtils.objectToJson(res);
+		redis.hsetKey("ItemCatService", "getAllCat", value);
 		return value;
 	}
 

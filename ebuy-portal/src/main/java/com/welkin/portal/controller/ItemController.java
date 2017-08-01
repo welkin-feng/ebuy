@@ -19,6 +19,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.welkin.commons.JsonUtils;
 import com.welkin.pojo.TbItemDesc;
 import com.welkin.pojo.TbItemParamItem;
 import com.welkin.portal.pojo.TbItemInfo;
@@ -27,14 +28,13 @@ import com.welkin.portal.utils.HttpClientUtils;
 @Controller
 public class ItemController {
 	@Value("${MIDDLE_URL}")
-	private String MIDDLE_URL;	// "http://localhost:8005"
+	private String MIDDLE_URL; // "http://localhost:8005"
 	@Value("${MIDDLE_QUERY_ITEM_URL}")
-	private String MIDDLE_QUERY_ITEM_URL;	// "/item/query/item"
-	@Value("${MIDDLE_QUERY_ITEMDESC_URL}")	
-	private String MIDDLE_QUERY_ITEMDESC_URL;	// "/item/query/itemDesc"
+	private String MIDDLE_QUERY_ITEM_URL; // "/item/query/item"
+	@Value("${MIDDLE_QUERY_ITEMDESC_URL}")
+	private String MIDDLE_QUERY_ITEMDESC_URL; // "/item/query/itemDesc"
 	@Value("${MIDDLE_QUERY_ITEMPARAM_URL}")
-	private String MIDDLE_QUERY_ITEMPARAM_URL;	// "/item/query/itemParam"
-
+	private String MIDDLE_QUERY_ITEMPARAM_URL; // "/item/query/itemParam"
 
 	/**
 	 * 根据itemId得到item的基本信息
@@ -54,21 +54,9 @@ public class ItemController {
 		String str = HttpClientUtils.doPost(url, params);
 		System.out.println("str:" + str);
 
-		// json组件的转换器
-		ObjectMapper om = new ObjectMapper();
 		// 将json的字符串转换成自定类
-		TbItemInfo tbIteminfo = null;
-
-		try {
-			tbIteminfo = om.readValue(str, TbItemInfo.class);
-			mv.addObject("item", tbIteminfo);
-		} catch (JsonParseException e) {
-			e.printStackTrace();
-		} catch (JsonMappingException e) {
-			e.printStackTrace();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+		TbItemInfo tbIteminfo = JsonUtils.jsonToObject(str, TbItemInfo.class);
+		mv.addObject("item", tbIteminfo);
 
 		return mv;
 	}
@@ -99,26 +87,18 @@ public class ItemController {
 		String str = HttpClientUtils.doPost(url, params);
 		System.out.println("str:" + str);
 
-		// json组件的转换器
-		ObjectMapper om = new ObjectMapper();
 		// 将json的字符串转换成自定类
-		TbItemDesc tbItemDesc = null;
-
+		TbItemDesc tbItemDesc = JsonUtils.jsonToObject(str, TbItemDesc.class);
+		String res = tbItemDesc.getItemDesc();
+		PrintWriter out = null;
 		try {
-			tbItemDesc = om.readValue(str, TbItemDesc.class);
-			String res = tbItemDesc.getItemDesc();
-
-			PrintWriter out;
 			out = response.getWriter();
+		} catch (IOException e) {
+			e.printStackTrace();
+		} finally {
 			out.print(res);
 			out.flush();
 			out.close();
-		} catch (JsonParseException e) {
-
-		} catch (JsonMappingException e) {
-
-		} catch (IOException e) {
-
 		}
 	}
 
@@ -148,26 +128,19 @@ public class ItemController {
 		String str = HttpClientUtils.doPost(url, params);
 		System.out.println("str:" + str);
 
-		// json组件的转换器
-		ObjectMapper om = new ObjectMapper();
 		// 将json的字符串转换成自定类
-		TbItemParamItem tbItemParamItem = null;
-
+		TbItemParamItem tbItemParamItem = JsonUtils.jsonToObject(str, TbItemParamItem.class);
+		
+		String res = tbItemParamItem.getParamData();
+		PrintWriter out = null;
 		try {
-			tbItemParamItem = om.readValue(str, TbItemParamItem.class);
-			String res = tbItemParamItem.getParamData();
-
-			PrintWriter out;
 			out = response.getWriter();
+		} catch (IOException e) {
+			e.printStackTrace();
+		} finally {
 			out.print(res);
 			out.flush();
 			out.close();
-		} catch (JsonParseException e) {
-
-		} catch (JsonMappingException e) {
-
-		} catch (IOException e) {
-
 		}
 
 	}

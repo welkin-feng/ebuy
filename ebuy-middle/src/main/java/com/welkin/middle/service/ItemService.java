@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.welkin.commons.JsonUtils;
 import com.welkin.mapper.TbItemDescMapper;
 import com.welkin.mapper.TbItemMapper;
 import com.welkin.mapper.TbItemParamItemMapper;
@@ -40,16 +41,9 @@ public class ItemService {
 		c.andIdEqualTo(itemId);
 		List<TbItem> tbItems = tbItemMapper.selectByExample(ex);
 
-		if (1 == tbItems.size()) {
-			ObjectMapper om = new ObjectMapper();
-			String str = "";
-			try {
-				str = om.writeValueAsString(tbItems.get(0));
-			} catch (JsonProcessingException e) {
-				e.printStackTrace();
-			}
-			return str;
-		}
+		if (1 == tbItems.size()) 
+			return JsonUtils.objectToJson(tbItems.get(0));
+		
 		return "";
 	}
 
@@ -66,16 +60,9 @@ public class ItemService {
 		c.andItemIdEqualTo(itemId);
 		List<TbItemDesc> tbItemDescs = tbItemDescMapper.selectByExampleWithBLOBs(ex);
 
-		if (1 == tbItemDescs.size()) {
-			ObjectMapper om = new ObjectMapper();
-			String str = "";
-			try {
-				str = om.writeValueAsString(tbItemDescs.get(0));
-			} catch (JsonProcessingException e) {
-				e.printStackTrace();
-			}
-			return str;
-		}
+		if (1 == tbItemDescs.size()) 
+			return JsonUtils.objectToJson(tbItemDescs.get(0));
+		
 		return "";
 	}
 
@@ -92,16 +79,9 @@ public class ItemService {
 		c.andItemIdEqualTo(itemId);
 		List<TbItemParamItem> tbItemParamItem = tbItemParamItemMapper.selectByExampleWithBLOBs(ex);
 
-		if (1 == tbItemParamItem.size()) {
-			ObjectMapper om = new ObjectMapper();
-			String str = "";
-			try {
-				str = om.writeValueAsString(tbItemParamItem.get(0));
-			} catch (JsonProcessingException e) {
-				e.printStackTrace();
-			}
-			return str;
-		}
+		if (1 == tbItemParamItem.size()) 
+			return JsonUtils.objectToJson(tbItemParamItem.get(0));
+		
 		return "";
 	}
 }

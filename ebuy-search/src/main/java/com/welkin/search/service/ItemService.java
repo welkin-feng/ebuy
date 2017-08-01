@@ -16,7 +16,6 @@ public class ItemService {
 
 	public Message importItemToIndex() throws IOException, SolrServerException {
 		boolean status = searchDao.update();
-
 		return MessageUtil.generateStatus(status);
 	}
 

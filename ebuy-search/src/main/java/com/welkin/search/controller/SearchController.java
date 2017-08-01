@@ -25,9 +25,8 @@ public class SearchController {
 			@RequestParam(defaultValue = "60") Integer rows) {
 		System.out.println("q = " + queryString + ", page = " + page + ", rows = " + rows);
 		// 查询条件不能为空
-		if (StringUtils.isBlank(queryString)) {
+		if (StringUtils.isBlank(queryString))
 			return MessageUtil.build(400, "查询条件不能为空");
-		}
 		SearchResult searchResult = null;
 		try {
 			queryString = new String(queryString.getBytes("iso8859-1"), "utf-8");

@@ -28,11 +28,9 @@ public class ContentCategoryController {
 		System.out.println("delete: " + "id=" + id);
 
 		List<TbContentCategory> li = contentCategoryService.findByParentId(id);
-		if (li != null && !li.isEmpty()) {
-			for (TbContentCategory tbcc : li) {
+		if (li != null && !li.isEmpty()) 
+			for (TbContentCategory tbcc : li) 
 				delete(tbcc.getId());
-			}
-		}
 
 		int x = contentCategoryService.delete(id);
 		return MessageUtil.generateStatus(x);

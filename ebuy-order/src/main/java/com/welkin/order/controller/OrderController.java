@@ -12,26 +12,16 @@ import com.welkin.commons.MessageUtil;
 import com.welkin.order.pojo.Order;
 import com.welkin.order.service.OrderService;
 
-
-
-/*import com.taotao.common.pojo.TaotaoResult;
-import com.taotao.common.utils.ExceptionUtil;
-import com.taotao.order.pojo.Order;
-import com.taotao.order.service.OrderService;*/
-
 /**
  * 订单Controller
- * <p>Title: OrderController</p>
- * <p>Description: </p>
- * <p>Company: www.itcast.com</p> 
  */
 @Controller
 public class OrderController {
 
 	@Autowired
 	private OrderService orderService;
-	
-	@RequestMapping(value="/create", method=RequestMethod.POST)
+
+	@RequestMapping(value = "/create", method = RequestMethod.POST)
 	@ResponseBody
 	public Message createOrder(@RequestBody Order order) {
 		try {

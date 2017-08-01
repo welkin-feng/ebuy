@@ -28,19 +28,15 @@ public class UserController {
 	@RequestMapping("/check/{param}/{type}")
 	@ResponseBody
 	public Object checkData(@PathVariable String param, @PathVariable Integer type, String callback) {
-		
 		Message result = null;
-		
 		//参数有效性校验
-		if (StringUtils.isBlank(param)) {
+		if (StringUtils.isBlank(param)) 
 			result = MessageUtil.build(400, "校验内容不能为空");
-		}
-		if (type == null) {
+		if (type == null) 
 			result = MessageUtil.build(400, "校验内容类型不能为空");
-		}
-		if (type != 1 && type != 2 && type != 3 ) {
+		if (type != 1 && type != 2 && type != 3 ) 
 			result = MessageUtil.build(400, "校验内容类型错误");
-		}
+		
 		//校验出错
 		if (null != result) {
 			if (null != callback) {
@@ -72,7 +68,6 @@ public class UserController {
 	@RequestMapping(value="/register", method=RequestMethod.POST)
 	@ResponseBody
 	public Message createUser(TbUser user) {
-		
 		try {
 			Message result = userService.createUser(user);
 			return result;
@@ -88,9 +83,7 @@ public class UserController {
 	public Message userLogin(String username, String password,
 			HttpServletRequest request, HttpServletResponse response) {
 		try {
-			
-			Message result = userService.userLogin(username, password, request, response);
-			return result;
+			return  userService.userLogin(username, password, request, response);
 		} catch (Exception e) {
 			e.printStackTrace();
 			return MessageUtil.build(500, e.getMessage());
@@ -109,13 +102,13 @@ public class UserController {
 		}
 		
 		//判断是否为jsonp调用
-		if (StringUtils.isBlank(callback)) {
+		if (StringUtils.isBlank(callback)) 
 			return result;
-		} else {
+		else {
 			MappingJacksonValue mappingJacksonValue = new MappingJacksonValue(result);
 			mappingJacksonValue.setJsonpFunction(callback);
 			return mappingJacksonValue;
 		}
-		
 	}
+	
 }

@@ -18,6 +18,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.welkin.commons.CookieUtils;
 import com.welkin.commons.JsonUtils;
 import com.welkin.commons.Message;
+import com.welkin.commons.MessageUtil;
 import com.welkin.pojo.TbItem;
 import com.welkin.portal.pojo.CartItem;
 import com.welkin.portal.utils.HttpClientUtils;
@@ -27,7 +28,7 @@ public class CartService {
 	@Value("${MIDDLE_URL}")
 	private String MIDDLE_URL;
 	@Value("${MIDDLE_QUERY_ITEM_URL}")
-	private String MIDDLE_QUERY_ITEM_URL;	// "/item/query/item"
+	private String MIDDLE_QUERY_ITEM_URL; // "/item/query/item"
 
 	/**
 	 * 从cookie中取商品列表
@@ -37,9 +38,9 @@ public class CartService {
 	public List<CartItem> getCartItemList(HttpServletRequest request) {
 		// 从cookie中取商品列表
 		String cartJson = CookieUtils.getCookieValue(request, "TT_CART", true);
-		if (cartJson == null) {
+		if (cartJson == null) 
 			return new ArrayList<>();
-		}
+		
 		// 把json转换成商品列表
 		try {
 			List<CartItem> list = JsonUtils.jsonToList(cartJson, CartItem.class);
@@ -62,7 +63,6 @@ public class CartService {
 	 * @return
 	 */
 	public Message addCartItem(Long itemId, Integer number, HttpServletRequest request, HttpServletResponse response) {
-		Message me = new Message();
 
 		// 取商品信息
 		CartItem cartItem = null;
@@ -87,17 +87,8 @@ public class CartService {
 			params.put("itemId", itemId + "");
 			String json = HttpClientUtils.doPost(MIDDLE_URL + MIDDLE_QUERY_ITEM_URL, params);
 			// System.out.println("json:"+json);
-			TbItem item = null;
-			ObjectMapper om = new ObjectMapper();
-			try {
-				item = om.readValue(json, TbItem.class);
-			} catch (JsonParseException e) {
-				e.printStackTrace();
-			} catch (JsonMappingException e) {
-				e.printStackTrace();
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
+			TbItem item = JsonUtils.jsonToObject(json, TbItem.class);
+			
 			// 为购物车中商品对象赋值
 			cartItem = new CartItem();
 			cartItem.setId(itemId);
@@ -111,22 +102,21 @@ public class CartService {
 		}
 		// 把购物车列表写入cookie
 		CookieUtils.setCookie(request, response, "TT_CART", JsonUtils.objectToJson(itemList), true);
-		me.setStatus(200);
 		System.out.println("购物车添加商品/itemId:" + cartItem.getId() + ",number:" + cartItem.getNum());
 
-		return me;
+		return MessageUtil.build(200);
 	}
 
 	/**
 	 * 从购物车中删除指定商品
+	 * 
 	 * @param itemId
 	 * @param request
 	 * @param response
 	 * @return
 	 */
 	public Message deleteCartItem(Long itemId, HttpServletRequest request, HttpServletResponse response) {
-		Message me = new Message();
-		//获取当前cookie中的购物车的所有商品信息
+		// 获取当前cookie中的购物车的所有商品信息
 		List<CartItem> itemList = getCartItemList(request);
 
 		CartItem cartItem = null;
@@ -138,31 +128,59 @@ public class CartService {
 				break;
 			}
 		}
-		if(cartItem == null) {
-			//未找到该商品
-			System.out.println("购物车中没有"+itemId+"商品");
-			//更新购物车列表，并重新写入cookie
+		if (cartItem == null) {
+			// 未找到该商品
+			System.out.println("购物车中没有" + itemId + "商品");
+			// 更新购物车列表，并重新写入cookie
 			CookieUtils.setCookie(request, response, "TT_CART", JsonUtils.objectToJson(itemList), true);
-			me.setStatus(404);
-			return me;
-		}
-		else {
-			//找到该商品
+			return MessageUtil.build(404);
+		} else {
+			// 找到该商品
 			boolean flag = itemList.remove(cartItem);
-			if(flag) {
-				System.out.println("购物车删除"+itemId+"商品成功");
-				//更新购物车列表，并重新写入cookie
+			if (flag) {
+				System.out.println("购物车删除" + itemId + "商品成功");
+				// 更新购物车列表，并重新写入cookie
 				CookieUtils.setCookie(request, response, "TT_CART", JsonUtils.objectToJson(itemList), true);
-				me.setStatus(200);
-				return me;
-			}
-			else {
-				System.out.println("购物车删除"+itemId+"商品失败");
-				//更新购物车列表，并重新写入cookie
+				return MessageUtil.build(200) ;
+			} else {
+				System.out.println("购物车删除" + itemId + "商品失败");
+				// 更新购物车列表，并重新写入cookie
 				CookieUtils.setCookie(request, response, "TT_CART", JsonUtils.objectToJson(itemList), true);
-				me.setStatus(500);
-				return me;
+				return MessageUtil.build(500);
 			}
 		}
+	}
+
+	public Message deleteSelectedItem(List<Long> itemIds, HttpServletRequest request, HttpServletResponse response) {
+		// 获取当前cookie中的购物车的所有商品信息
+		List<CartItem> itemList = getCartItemList(request);
+		List<Integer> results = new ArrayList<Integer>();
+
+		for (int i = 0; i < itemIds.size(); i++) {
+			CartItem cartItem = null;
+			for (int j = 0; j < itemList.size(); j++) {
+				// 找到该商品并删除
+				if (itemList.get(j).getId().equals(itemIds.get(i))) {
+					cartItem = itemList.get(j);
+					if (itemList.remove(cartItem)) 
+						results.add(200);
+					else 
+						results.add(500);
+
+					break;
+				}
+			}
+			if (cartItem == null) 
+				results.add(500);
+		}
+
+		for (int i = 0; i < results.size(); i++) {
+			if (results.get(i).equals(500)) {
+				CookieUtils.setCookie(request, response, "TT_CART", JsonUtils.objectToJson(itemList), true);
+				return MessageUtil.build(500);
+			}
+		}
+		CookieUtils.setCookie(request, response, "TT_CART", JsonUtils.objectToJson(itemList), true);
+		return MessageUtil.build(200);
 	}
 }

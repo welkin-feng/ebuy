@@ -31,11 +31,13 @@ public class ContentCategoryController {
 		if (li != null && !li.isEmpty()) 
 			for (TbContentCategory tbcc : li) 
 				delete(tbcc.getId());
+			}
+		}
 
 		int x = contentCategoryService.delete(id);
 		return MessageUtil.generateStatus(x);
 	}
-
+	
 	@RequestMapping("/update")
 	@ResponseBody
 	public Message update(Long id, String name) {

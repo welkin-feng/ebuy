@@ -10,13 +10,13 @@
 <title>我的信息 - 淘淘</title>
 <meta name="Keywords" content="java,淘淘java" />
 <meta name="description" content="在淘淘中找到了29910件java的类似商品，其中包含了“图书”，“电子书”，“教育音像”，“骑行运动”等类型的java的商品。" />
-<link rel="stylesheet" type="text/css" href="/css/base.css" media="all" />
-<link rel="stylesheet" type="text/css" href="/css/myjd.common.css" media="all" />
-<link rel="stylesheet" type="text/css" href="/css/myjd.info.css" media="all" />
-<script type="text/javascript" src="/js/jquery-1.6.4.js"></script>
+<link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/base.css" media="all" />
+<link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/myjd.common.css" media="all" />
+<link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/myjd.info.css" media="all" />
+<script type="text/javascript" src="<%=request.getContextPath() %>/js/jquery-1.6.4.js"></script>
 </head>
 <body>
-<script type="text/javascript" src="/js/base-2011.js" charset="utf-8"></script>
+<script type="text/javascript" src="<%=request.getContextPath() %>/js/base-2011.js" charset="utf-8"></script>
 <!-- header start -->
 <jsp:include page="commons/header.jsp" />
 <!-- header end -->
@@ -30,9 +30,9 @@
             <div class="mod-main">
                         <div class="mt">
                             <ul class="extra-l">
-                                <li class="fore-1"><a href="http://i.jd.com/user/info">基本信息</a></li>
-                                <li class="fore-2"><a href="http://i.jd.com/user/userinfo/showImg.html">头像照片</a></li>
-                                <li class="fore-3"><a class="curr" href="http://i.jd.com/user/userinfo/more.html">更多个人信息</a></li>
+                                <li class="fore-1"><a class="base-info" href="http://i.jd.com/user/info">基本信息</a></li>
+                                <li class="fore-2"><a class="img-info" href="http://i.jd.com/user/userinfo/showImg.html">头像照片</a></li>
+                                <li class="fore-3"><a class="curr more-info" href="http://i.jd.com/user/userinfo/more.html">更多个人信息</a></li>
 								
                             </ul>
                         </div>
@@ -105,5 +105,25 @@
 <!-- footer start -->
 <jsp:include page="commons/footer.jsp" />
 <!-- footer end -->
+
+<script type="text/javascript">
+	$(function() {
+		//为基本信息按钮绑定点击事件
+		$(".base-info").bind("click", function(){
+			var url = "http://localhost:8000/portal/userInfo.html?userName=${tbUser.username}";
+			$(".base-info").attr("href", url);
+		});
+		//为头像照片按钮绑定点击事件
+		$(".img-info").bind("click", function(){
+			var url = "http://localhost:8000/portal/imgInfo.html?userName=${tbUser.username}";
+			$(".img-info").attr("href", url);
+		});
+		//为更多个人信息按钮绑定点击事件
+		$(".more-info").bind("click", function(){
+			var url = "http://localhost:8000/portal/moreInfo.html?userName=${tbUser.username}";
+			$(".more-info").attr("href", url);
+		});
+	});
+</script>
 </body>
 </html>

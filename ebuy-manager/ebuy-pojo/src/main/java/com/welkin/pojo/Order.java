@@ -1,10 +1,6 @@
-package com.welkin.order.pojo;
+package com.welkin.pojo;
 
 import java.util.List;
-
-import com.welkin.pojo.TbOrder;
-import com.welkin.pojo.TbOrderItem;
-import com.welkin.pojo.TbOrderShipping;
 
 public class Order extends TbOrder {
 

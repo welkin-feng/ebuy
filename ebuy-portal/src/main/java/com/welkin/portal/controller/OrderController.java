@@ -16,10 +16,10 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.welkin.commons.CookieUtils;
 import com.welkin.commons.MessageUtil;
+import com.welkin.pojo.Order;
 import com.welkin.pojo.TbOrder;
 import com.welkin.pojo.TbUser;
 import com.welkin.portal.pojo.CartItem;
-import com.welkin.portal.pojo.Order;
 import com.welkin.portal.service.CartService;
 import com.welkin.portal.service.OrderService;
 import com.welkin.portal.utils.HttpClientUtils;

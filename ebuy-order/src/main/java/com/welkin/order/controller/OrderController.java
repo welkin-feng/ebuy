@@ -8,8 +8,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.welkin.commons.JsonUtils;
 import com.welkin.commons.Message;
 import com.welkin.commons.MessageUtil;
-import com.welkin.order.pojo.Order;
 import com.welkin.order.service.OrderService;
+import com.welkin.pojo.Order;
 
 /**
  * 订单Controller

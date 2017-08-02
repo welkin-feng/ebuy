@@ -4,6 +4,7 @@ import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import com.welkin.dao.RedisDao;
@@ -22,6 +23,8 @@ public class ContentCategoryService {
 	private TbContentMapper tbContentMapper;
 	@Autowired
 	private RedisDao redis;
+	@Value("${TB_CONTENT_KEY}")
+	private String TB_CONTENT_KEY;
 
 	public int delete(Long id) {
 		//在删除之前拿到pid
@@ -34,6 +37,7 @@ public class ContentCategoryService {
 		com.welkin.pojo.TbContentExample.Criteria c = ex.createCriteria();
 		c.andCategoryIdEqualTo(id);
 		int x2 = tbContentMapper.deleteByExample(ex);
+		redis.del(TB_CONTENT_KEY);
 
 		List<TbContentCategory> subli = findByParentId(pid);
 		if(subli==null || subli.isEmpty()) {

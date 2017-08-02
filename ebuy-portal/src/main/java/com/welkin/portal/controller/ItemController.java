@@ -16,9 +16,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.fasterxml.jackson.core.JsonParseException;
-import com.fasterxml.jackson.databind.JsonMappingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.welkin.commons.JsonUtils;
 import com.welkin.pojo.TbItemDesc;
 import com.welkin.pojo.TbItemParamItem;
@@ -130,7 +127,7 @@ public class ItemController {
 
 		// 将json的字符串转换成自定类
 		TbItemParamItem tbItemParamItem = JsonUtils.jsonToObject(str, TbItemParamItem.class);
-		
+
 		String res = tbItemParamItem.getParamData();
 		PrintWriter out = null;
 		try {

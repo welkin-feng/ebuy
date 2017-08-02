@@ -14,7 +14,6 @@ import com.welkin.dao.RedisDao;
 import com.welkin.mapper.TbOrderItemMapper;
 import com.welkin.mapper.TbOrderMapper;
 import com.welkin.mapper.TbOrderShippingMapper;
-import com.welkin.order.dao.RedisClient;
 import com.welkin.pojo.TbOrder;
 import com.welkin.pojo.TbOrderItem;
 import com.welkin.pojo.TbOrderShipping;
@@ -38,6 +37,13 @@ public class OrderService {
 	@Value("${ORDER_DETAIL_GEN_KEY}")
 	private String ORDER_DETAIL_GEN_KEY;
 	
+	/**
+	 * 
+	 * @param order
+	 * @param itemList
+	 * @param orderShipping
+	 * @return 将订单 id 放入 Message 中返回
+	 */
 	public Message createOrder(TbOrder order, List<TbOrderItem> itemList, TbOrderShipping orderShipping) {
 		//向订单表中插入记录
 		//获得订单号

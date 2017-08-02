@@ -5,10 +5,12 @@ import java.util.List;
 
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import com.welkin.commons.Message;
 import com.welkin.commons.MessageUtil;
+import com.welkin.dao.RedisDao;
 import com.welkin.mapper.TbOrderItemMapper;
 import com.welkin.mapper.TbOrderMapper;
 import com.welkin.mapper.TbOrderShippingMapper;
@@ -21,7 +23,6 @@ import com.welkin.pojo.TbOrderShipping;
 
 @Service
 public class OrderService {
-
 	@Autowired
 	private TbOrderMapper orderMapper;
 	@Autowired
@@ -29,20 +30,22 @@ public class OrderService {
 	@Autowired
 	private TbOrderShippingMapper orderShippingMapper;
 	@Autowired
-	private RedisClient jedisClient;
-	
-	private String ORDER_GEN_KEY = "ORDER_GEN_KEY";
-	private String ORDER_INIT_ID = "100544";
-	private String ORDER_DETAIL_GEN_KEY = "ORDER_DETAIL_GEN_KEY";
+	private RedisDao redis;
+	@Value("${ORDER_GEN_KEY}")
+	private String ORDER_GEN_KEY;
+	@Value("${ORDER_INIT_ID}")
+	private String ORDER_INIT_ID;	// = "100544";
+	@Value("${ORDER_DETAIL_GEN_KEY}")
+	private String ORDER_DETAIL_GEN_KEY;
 	
 	public Message createOrder(TbOrder order, List<TbOrderItem> itemList, TbOrderShipping orderShipping) {
 		//向订单表中插入记录
 		//获得订单号
-		String string = jedisClient.get(ORDER_GEN_KEY);
+		String string = redis.get(ORDER_GEN_KEY);
 		if (StringUtils.isBlank(string)) {
-			jedisClient.set(ORDER_GEN_KEY, ORDER_INIT_ID);
+			redis.set(ORDER_GEN_KEY, ORDER_INIT_ID);
 		}
-		long orderId = jedisClient.incr(ORDER_GEN_KEY);
+		long orderId = redis.incr(ORDER_GEN_KEY);
 		//补全pojo的属性
 		order.setOrderId(orderId + "");
 		//状态：1、未付款，2、已付款，3、未发货，4、已发货，5、交易成功，6、交易关闭
@@ -58,7 +61,7 @@ public class OrderService {
 		for (TbOrderItem tbOrderItem : itemList) {
 			//补全订单明细
 			//取订单明细id
-			long orderDetailId = jedisClient.incr(ORDER_DETAIL_GEN_KEY);
+			long orderDetailId = redis.incr(ORDER_DETAIL_GEN_KEY);
 			tbOrderItem.setId(orderDetailId + "");
 			tbOrderItem.setOrderId(orderId + ""); 
 			//向订单明细插入记录

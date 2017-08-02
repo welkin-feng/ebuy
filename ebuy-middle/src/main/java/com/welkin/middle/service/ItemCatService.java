@@ -4,11 +4,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import com.welkin.commons.JsonUtils;
+import com.welkin.dao.RedisDao;
 import com.welkin.mapper.TbItemCatMapper;
-import com.welkin.middle.dao.RedisDao;
 import com.welkin.middle.pojo.CatPojo;
 import com.welkin.middle.pojo.CatResult;
 import com.welkin.pojo.TbItemCat;
@@ -21,9 +22,13 @@ public class ItemCatService {
 	private TbItemCatMapper tbItemCatMapper;
 	@Autowired
 	private RedisDao redis;
+	@Value("@{TB_ITEM_CAT_KEY}")
+	private String TB_ITEM_CAT_KEY;
+	@Value("@{PARENT_ID_FIELD}")
+	private String PARENT_ID_FIELD;
 
 	public String getAllCat() {
-		String value = redis.hgetKey("ItemCatService", "getAllCat");
+		String value = redis.hget(TB_ITEM_CAT_KEY, PARENT_ID_FIELD);
 		if (value != null && !value.equals("")) {
 			System.out.println("redis hit!!!");
 			return value;
@@ -34,7 +39,7 @@ public class ItemCatService {
 		res.setData(getCatItems(0L));
 
 		value = JsonUtils.objectToJson(res);
-		redis.hsetKey("ItemCatService", "getAllCat", value);
+		redis.hset(TB_ITEM_CAT_KEY, PARENT_ID_FIELD, value);
 		return value;
 	}
 
@@ -56,11 +61,11 @@ public class ItemCatService {
 				CatPojo cp = new CatPojo();
 				cp.setUrl("/product/" + cate.getId() + ".html");
 				// 判断当前商品类型的parentId 是否为0
-				if (cate.getParentId() == 0) {
+				if (cate.getParentId() == 0) 
 					cp.setName("<a href='/products/" + cate.getId() + ".html'>" + cate.getName() + "</a>");
-				} else {
+				else 
 					cp.setName(cate.getName());
-				}
+
 				// 封装 info 属性
 				cp.setInfo(getCatItems(cate.getId()));
 				// 封装了数据的对象存储在集合中

@@ -4,11 +4,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import com.welkin.commons.JsonUtils;
 import com.welkin.mapper.TbContentMapper;
-import com.welkin.middle.dao.RedisDao;
+import com.welkin.dao.RedisDao;
 import com.welkin.middle.pojo.AdItem;
 import com.welkin.pojo.TbContent;
 import com.welkin.pojo.TbContentExample;
@@ -20,18 +21,25 @@ public class ContentService {
 	private TbContentMapper tbContentMapper;
 	@Autowired
 	private RedisDao redis;
+	@Value("${TB_CONTENT_KEY}")
+	private String TB_CONTENT_KEY;
+	@Value("${CATEGORY_ID_FIELD}")
+	private String CATEGORY_ID_FIELD;
+	@Value("${AD_LIST_FIELD}")
+	private String AD_LIST_FIELD;
+	
 
-	public String findById(Long gid) {
-		String value = redis.hgetKey("ContentService", gid + "");
+	public String findById(Long cid) {
+		String value = redis.hget(TB_CONTENT_KEY, CATEGORY_ID_FIELD + cid);
 		if (value != null && !value.equals(""))
 			return value;
 		TbContentExample ex = new TbContentExample();
 		Criteria c = ex.createCriteria();
-		c.andCategoryIdEqualTo(gid);
+		c.andCategoryIdEqualTo(cid);
 		List<TbContent> li = tbContentMapper.selectByExample(ex);
 		
 		value = JsonUtils.objectToJson(li);
-		redis.hsetKey("ContentService", gid + "", value);
+		redis.hset(TB_CONTENT_KEY, CATEGORY_ID_FIELD + cid, value);
 
 		return value;
 	}
@@ -43,7 +51,7 @@ public class ContentService {
 	 */
 	public String findAdList(Long catId) {
 		// 读取缓冲
-		String value = redis.hgetKey("ContentService", catId + "");
+		String value = redis.hget(TB_CONTENT_KEY, AD_LIST_FIELD + catId);
 		if (value != null && !value.equals(""))
 			return value;
 
@@ -68,7 +76,7 @@ public class ContentService {
 			mlist.add(item);
 		}
 		value = JsonUtils.objectToJson(mlist);
-		redis.hsetKey("ContentService", catId + "", value);
+		redis.hset(TB_CONTENT_KEY,  AD_LIST_FIELD + catId, value);
 
 		return value;
 	}

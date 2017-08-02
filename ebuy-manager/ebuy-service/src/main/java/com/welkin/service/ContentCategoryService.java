@@ -54,7 +54,7 @@ public class ContentCategoryService {
 		return tbContentCategoryMapper.updateByPrimaryKeySelective(record);
 	}
 
-	public int save(TbContentCategory cc) {
+	public Long save(TbContentCategory cc) {
 		cc.setIsParent(false);
 		cc.setStatus(1);
 		cc.setSortOrder(1);
@@ -71,7 +71,9 @@ public class ContentCategoryService {
 			x2 = tbContentCategoryMapper.updateByPrimaryKeySelective(pcc);
 		}
 
-		return x1 & x2;
+		if ((x1 & x2) > 0)
+			return cc.getId();
+		return null;
 	}
 
 	public List<TbContentCategory> findByParentId(Long id) {

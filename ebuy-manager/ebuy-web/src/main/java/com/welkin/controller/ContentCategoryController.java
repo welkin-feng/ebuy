@@ -53,8 +53,10 @@ public class ContentCategoryController {
 		TbContentCategory cc = new TbContentCategory();
 		cc.setParentId(parentId);
 		cc.setName(name);
-		int x = contentCategoryService.save(cc);
-		return MessageUtil.generateStatus(x);
+		Long id = contentCategoryService.save(cc);
+		if(id != null)
+			return MessageUtil.build(200, id);
+		return MessageUtil.build(500, null);
 	}
 
 	// 查询返回内容分类的信息

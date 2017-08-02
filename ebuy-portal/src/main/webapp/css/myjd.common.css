@@ -801,7 +801,7 @@
 	margin-right: 4px;
 	overflow: hidden;
 	cursor: pointer;
-	background: url(images/myjd-common-icon.png) -8px -8px
+	background: url(<%=request.getContextPath() %>/images/myjd-common-icon.png) -8px -8px
 }
 
 #menu dl dt.hc {
@@ -1492,7 +1492,7 @@
 }
 
 #myjd-shortcut .myjd-set dt b {
-	background: url(images/myjd-common-icon.png) -8px -24px no-repeat;
+	background: url(<%=request.getContextPath() %>/images/myjd-common-icon.png) -8px -24px no-repeat;
 	display: inline-block;
 	vertical-align: middle;
 	width: 12px;
@@ -1586,7 +1586,7 @@
 }
 
 #myjd-shortcut .myjd-info dt b {
-	background: url(images/myjd-common-icon.png) -8px -24px no-repeat;
+	background: url(<%=request.getContextPath() %>/images/myjd-common-icon.png) -8px -24px no-repeat;
 	display: inline-block;
 	vertical-align: middle;
 	width: 12px;

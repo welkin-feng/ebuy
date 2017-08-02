@@ -38,14 +38,14 @@
 #regist .text-1,.thickbox-form .text-1{width:100px;float:left;}
 #regist .blank,.thickbox-form .blank{width:16px;height:16px;position:absolute;left:243px;top:7px;padding:3px;float:none;}
 #regist .img img,.thickbox-form .img img{height:26px;margin:0 5px;}
-#regist .succeed,.thickbox-form .succeed{background:url(images/sucess.png) center no-repeat #ffffff;}
-#regist .error-ico,.thickbox-form .error-ico{background:url(images/error.png) center no-repeat #ffffff;}
-#regist .cue-ico,.thickbox-form .cue-ico{background:url(images/cue.png) center no-repeat #ffffff;}
+#regist .succeed,.thickbox-form .succeed{background:url(<%=request.getContextPath() %>/images/sucess.png) center no-repeat #ffffff;}
+#regist .error-ico,.thickbox-form .error-ico{background:url(<%=request.getContextPath() %>/images/error.png) center no-repeat #ffffff;}
+#regist .cue-ico,.thickbox-form .cue-ico{background:url(<%=request.getContextPath() %>/images/cue.png) center no-repeat #ffffff;}
 #authcode_box{
     padding-top: 5px;
     line-height:26px;
 }
-#regist .btn-regist{width:270px;height:36px;color:#FFF; font-family:"microsoft yahei";font-size:16px;text-indent:-9999px;font-weight:800;overflow:hidden;background:url(images/regist-btn.jpg) no-repeat ;}
+#regist .btn-regist{width:270px;height:36px;color:#FFF; font-family:"microsoft yahei";font-size:16px;text-indent:-9999px;font-weight:800;overflow:hidden;background:url(<%=request.getContextPath() %>/images/regist-btn.jpg) no-repeat ;}
 
 #recom_tips{
     border: 1px solid #ddd;
@@ -116,13 +116,13 @@
 #regist #referrer,.thickbox-form #referrer{color:#999;font-size:12px;}
 #pwdstrength{color:#999;line-height:22px;padding-right:10px;clear: both;float: none;position:absolute;top:41px;right:-9px;}
 #pwdstrength b{float:left;width:104px;height:13px;overflow:hidden;margin-top:5px;*margin-top:3px;}
-.strengthA b{background:url(images/pwdstrength.gif) no-repeat 0 0;}
-.strengthB b{background:url(images/pwdstrength.gif) no-repeat 0 -13px;}
-.strengthC b{background:url(images/pwdstrength.gif) no-repeat 0 -26px;}
+.strengthA b{background:url(<%=request.getContextPath() %>/images/pwdstrength.gif) no-repeat 0 0;}
+.strengthB b{background:url(<%=request.getContextPath() %>/images/pwdstrength.gif) no-repeat 0 -13px;}
+.strengthC b{background:url(<%=request.getContextPath() %>/images/pwdstrength.gif) no-repeat 0 -26px;}
 
 /*service*/
 .service{overflow:hidden;zoom:1;margin-bottom:13px;padding:15px;background:#F7F7F7;}
-.service li{float:left;overflow:hidden;height:14px;padding:0 17px;border-left:1px solid #ccc;background-image:url(images/bg20110922.png);background-repeat:no-repeat;font-size:0;line-height:100px;}
+.service li{float:left;overflow:hidden;height:14px;padding:0 17px;border-left:1px solid #ccc;background-image:url(<%=request.getContextPath() %>/images/bg20110922.png);background-repeat:no-repeat;font-size:0;line-height:100px;}
 .service li.fore{border:none;}
 .service .bl1{width:162px;background-position:17px 0;}
 .service .bl2{width:187px;background-position:17px -15px;}
@@ -181,19 +181,19 @@
     right: 8px;
 }
 #regist .item-ifo .i-name,.thickbox-form .item-ifo .i-name {
-    background:url(images/one4.jpg) no-repeat scroll 0 0 transparent;
+    background:url(<%=request.getContextPath() %>/images/one4.jpg) no-repeat scroll 0 0 transparent;
     height: 16px;
     top: 9px;
     width: 16px;
 }
 #regist .item-ifo .i-pass,.thickbox-form .item-ifo .i-pass {
-    background: url(images/one5.jpg) no-repeat scroll 0 0 transparent;
+    background: url(<%=request.getContextPath() %>/images/one5.jpg) no-repeat scroll 0 0 transparent;
     height: 19px;
     top: 10px;
     width: 14px;
 }
 #regist .item-ifo .i-phone,.thickbox-form .item-ifo .i-phone {
-    background: url("images/one6.jpg") no-repeat scroll 0 0 transparent;
+    background: url("<%=request.getContextPath() %>/images/one6.jpg") no-repeat scroll 0 0 transparent;
     height: 21px;
     top: 8px;
     width: 14px;
@@ -222,8 +222,8 @@
  #intelligent-regName{width:268px;}
 #regist  #authcode.text{color:#333;float:left;}
 #regist .item-new{padding-top:0;height:49px;}
-#regist .hover-btn{background:url(images/hover-btn.jpg) no-repeat;}
-#regist .wait-btn{background:url(images/wait-btn.jpg) no-repeat;}
+#regist .hover-btn{background:url(<%=request.getContextPath() %>/images/hover-btn.jpg) no-repeat;}
+#regist .wait-btn{background:url(<%=request.getContextPath() %>/images/wait-btn.jpg) no-repeat;}
 #hnschool ,#schoolid,  #hnseli{display:none;}
 .o-intelligent-regName{z-index:3;}
 #sendMobileCode{float:left;margin-right:0;}
@@ -249,7 +249,7 @@
     padding:0 10px;
 }
 #capslock i{
-    background:url(images/tip-cue.png) center center no-repeat;
+    background:url(<%=request.getContextPath() %>/images/tip-cue.png) center center no-repeat;
     display: inline-block;
     height: 30px;
     width:20px;
@@ -259,7 +259,7 @@
 }
 #capslock s{
     position: absolute;
-    background:url(images/tip-arrow.png) center center no-repeat;
+    background:url(<%=request.getContextPath() %>/images/tip-arrow.png) center center no-repeat;
     height: 12px;
     width:18px;
     bottom:-10px;
@@ -333,7 +333,7 @@
     height: 0;
     width: 48px;
     height: 48px;
-    background: url(images/icon48.png) no-repeat
+    background: url(<%=request.getContextPath() %>/images/icon48.png) no-repeat
 }
 
 .icon-box .succ-icon {

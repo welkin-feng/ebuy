@@ -85,7 +85,7 @@
 #c-tabs .p-btn .btn-text:hover{ text-decoration:none;background: -webkit-gradient(linear, 0 0, 0 100%, from(#F8F8F8), to(#F8F8F8));background: -moz-linear-gradient(top,#F8F8F8, #F8F8F8);-ms-filter: progid:DXImageTransform.Microsoft.gradient(startColorStr=#F8F8F8, endColorStr=#F8F8F8);filter: progid:DXImageTransform.Microsoft.gradient(startColorStr=#F8F8F8, endColorStr=#F8F8F8);-webkit-box-shadow:0px 1px 0 0 rgba(7,0,2,.1);-moz-box-shadow:0px 1px 0 0  rgba(7,0,2,.1);box-shadow:0px 1px 0 0 rgba(7,0,2,.1);}
 #c-tabs .p-btn a:hover{color:#333}
 #some-buy{position:relative;width:878px;height:245px;}
-#recommend-left,#recommend-rigth{position:absolute;top:112px;width:17px;height:37px;background:url(images/footprint-arr.png) no-repeat;cursor:pointer;}
+#recommend-left,#recommend-rigth{position:absolute;top:112px;width:17px;height:37px;background:url(<%=request.getContextPath() %>/images/footprint-arr.png) no-repeat;cursor:pointer;}
 #recommend-left{left:10px;}
 #recommend-rigth{right:10px;background-position:-17px 0;}
 #cart-feedback{line-height:20px;text-align:right}
@@ -117,17 +117,17 @@
 #w-jtips .Jtips-con{padding:10px 20px 20px;border:1px solid #ddd;background:#fff;-moz-box-shadow: 0 0 2px 2px #eee;-webkit-box-shadow: 0 0 2px 2px #eee;box-shadow: 0 0 2px 2px #eee;}
 #w-jtips .Jtips-close{display:none;}
 
-#w-jtips .Jtips-arr{background: url(images/arrow2.gif) 0 0 no-repeat;}
+#w-jtips .Jtips-arr{background: url(<%=request.getContextPath() %>/images/arrow2.gif) 0 0 no-repeat;}
 #w-jtips.Jtips-bottom .Jtips-arr{left:65px;}
 
 
 .qr-code{position:absolute;top:0;right:0;padding-right:76px;z-index:1;}
-.qr-code .sao{display:block;position:absolute;top:0;right:0;background:url(images/qr-code-sao.png) no-repeat;width:76px; height:77px; cursor:default}
-.qr-code .sao02{display:block;position:absolute;top:0;right:0;background:url(images/qr-code-sao02.png) no-repeat;width:76px; height:77px; cursor:default}
+.qr-code .sao{display:block;position:absolute;top:0;right:0;background:url(<%=request.getContextPath() %>/images/qr-code-sao.png) no-repeat;width:76px; height:77px; cursor:default}
+.qr-code .sao02{display:block;position:absolute;top:0;right:0;background:url(<%=request.getContextPath() %>/images/qr-code-sao02.png) no-repeat;width:76px; height:77px; cursor:default}
 #w-jtips.code-Jtips{margin:-26px 0 0 77px;}
 #w-jtips.code-Jtips .Jtips-con{padding:30px 25px 20px 25px; text-align:center;}
 #w-jtips.code-Jtips .Jtips-arr{display:none;}
 #w-jtips.code-Jtips h3{font-size:14px;margin:20px 0 0;text-align:left;}
-#w-jtips.code-Jtips .Jtips-close{background:url(images/qr-close.png) 0 0 no-repeat;display:block;width:53px;height:25px;line-height:100px;overflow:hidden;top:347px;right:30px;}
-#qr-code-item.qr-code-item s{display:inline-block;height:18px;width:18px;background:url(images/qrcode.png) 0 -28px;overflow:hidden;margin:-5px 5px 0 0; vertical-align:middle;}
+#w-jtips.code-Jtips .Jtips-close{background:url(<%=request.getContextPath() %>/images/qr-close.png) 0 0 no-repeat;display:block;width:53px;height:25px;line-height:100px;overflow:hidden;top:347px;right:30px;}
+#qr-code-item.qr-code-item s{display:inline-block;height:18px;width:18px;background:url(<%=request.getContextPath() %>/images/qrcode.png) 0 -28px;overflow:hidden;margin:-5px 5px 0 0; vertical-align:middle;}
 #qr-code-item.curr s{background-position:0 -10px;}

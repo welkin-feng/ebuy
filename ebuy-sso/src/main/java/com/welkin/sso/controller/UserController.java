@@ -17,55 +17,54 @@ import com.welkin.commons.MessageUtil;
 import com.welkin.pojo.TbUser;
 import com.welkin.sso.service.UserService;
 
-
 @Controller
 @RequestMapping("/user")
 public class UserController {
 
 	@Autowired
 	private UserService userService;
-	
+
 	@RequestMapping("/check/{param}/{type}")
 	@ResponseBody
 	public Object checkData(@PathVariable String param, @PathVariable Integer type, String callback) {
 		Message result = null;
-		//参数有效性校验
-		if (StringUtils.isBlank(param)) 
+		// 参数有效性校验
+		if (StringUtils.isBlank(param))
 			result = MessageUtil.build(400, "校验内容不能为空");
-		if (type == null) 
+		if (type == null)
 			result = MessageUtil.build(400, "校验内容类型不能为空");
-		if (type != 1 && type != 2 && type != 3 ) 
+		if (type != 1 && type != 2 && type != 3)
 			result = MessageUtil.build(400, "校验内容类型错误");
-		
-		//校验出错
+
+		// 校验出错
 		if (null != result) {
 			if (null != callback) {
 				MappingJacksonValue mappingJacksonValue = new MappingJacksonValue(result);
 				mappingJacksonValue.setJsonpFunction(callback);
 				return mappingJacksonValue;
 			} else {
-				return result; 
+				return result;
 			}
 		}
-		//调用服务
+		// 调用服务
 		try {
 			result = userService.checkData(param, type);
-			
+
 		} catch (Exception e) {
 			result = MessageUtil.build(500, e.getMessage());
 		}
-		
+
 		if (null != callback) {
 			MappingJacksonValue mappingJacksonValue = new MappingJacksonValue(result);
 			mappingJacksonValue.setJsonpFunction(callback);
 			return mappingJacksonValue;
 		} else {
-			return result; 
+			return result;
 		}
 	}
-	
-	//创建用户
-	@RequestMapping(value="/register", method=RequestMethod.POST)
+
+	// 创建用户
+	@RequestMapping(value = "/register", method = RequestMethod.POST)
 	@ResponseBody
 	public Message createUser(TbUser user) {
 		try {
@@ -76,20 +75,20 @@ public class UserController {
 			return MessageUtil.build(500, e.getMessage());
 		}
 	}
-	
-	//用户登录
-	@RequestMapping(value="/login", method=RequestMethod.POST)
+
+	// 用户登录
+	@RequestMapping(value = "/login", method = RequestMethod.POST)
 	@ResponseBody
-	public Message userLogin(String username, String password,
-			HttpServletRequest request, HttpServletResponse response) {
+	public Message userLogin(String username, String password, HttpServletRequest request,
+			HttpServletResponse response) {
 		try {
-			return  userService.userLogin(username, password, request, response);
+			return userService.userLogin(username, password, request, response);
 		} catch (Exception e) {
 			e.printStackTrace();
 			return MessageUtil.build(500, e.getMessage());
 		}
 	}
-	
+
 	@RequestMapping("/token/{token}")
 	@ResponseBody
 	public Object getUserByToken(@PathVariable String token, String callback) {
@@ -100,9 +99,9 @@ public class UserController {
 			e.printStackTrace();
 			result = MessageUtil.build(500, e.getMessage());
 		}
-		
-		//判断是否为jsonp调用
-		if (StringUtils.isBlank(callback)) 
+
+		// 判断是否为jsonp调用
+		if (StringUtils.isBlank(callback))
 			return result;
 		else {
 			MappingJacksonValue mappingJacksonValue = new MappingJacksonValue(result);
@@ -110,5 +109,5 @@ public class UserController {
 			return mappingJacksonValue;
 		}
 	}
-	
+
 }

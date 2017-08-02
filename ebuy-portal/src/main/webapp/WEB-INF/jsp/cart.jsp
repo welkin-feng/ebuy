@@ -13,7 +13,7 @@
    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
    <link rel="stylesheet" href="<%=request.getContextPath() %>/css/base.css">
    <link href="<%=request.getContextPath() %>/css/purchase.2012.css?v=201410141639" rel="stylesheet" type="text/css">
-   <title>我的购物车 - 淘淘商城</title>
+   <title>我的购物车</title>
    <script>
    	var pageConfig  = {};
    </script>
@@ -22,7 +22,7 @@
 <jsp:include page="commons/shortcut.jsp" />
 <!--shortcut end-->
 <div class="w w1 header clearfix">
-	<div id="logo"><a href="/"><img clstag="clickcart|keycount|xincart|logo" src="<%=request.getContextPath() %>/images/taotao-logo.gif" title="返回淘淘商城首页" alt="返回淘淘商城首页"></a></div>
+	<div id="logo"><a href="/"><img clstag="clickcart|keycount|xincart|logo" src="<%=request.getContextPath() %>/images/taotao-logo.gif" title="返回商城首页" alt="返回商城首页"></a></div>
     <div class="language"><a href="javascript:void(0);" onclick="toEnCart()"></a></div>
 	<div class="progress clearfix">
 		<ul class="progress-1">
@@ -62,12 +62,12 @@
 		            <div class="cell p-checkbox"><input data-bind="cbid:1" class="checkbox" type="checkbox" name="checkItem" checked="true" value="${cart.id}"></div>
 		            <div class="cell p-goods">
 		                <div class="p-img">
-		                	<a href="/item/${cart.id }.html" target="_blank">
-		                		<img clstag="clickcart|keycount|xincart|p-imglistcart" src="${cart.images[0]}" alt="${cart.title}" width="52" height="52">
+		                	<a href="<%=request.getContextPath() %>/item/${cart.id }.html" target="_blank">
+		                		<img clstag="clickcart|keycount|xincart|p-imglistcart" src="<%=request.getContextPath() %>/${cart.images[0]}" alt="${cart.title}" width="52" height="52">
 		                	</a>
 		                </div>    
 		                <div class="p-name">
-		                	<a href="/item/${cart.id }.html" clstag="clickcart|keycount|xincart|productnamelink" target="_blank">${cart.title}</a>
+		                	<a href="<%=request.getContextPath() %>/item/${cart.id }.html" clstag="clickcart|keycount|xincart|productnamelink" target="_blank">${cart.title}</a>
 		                	<span class="promise411 promise411_11345721" id="promise411_11345721"></span>
 		                </div>    
 		            </div>
@@ -82,7 +82,7 @@
 		                    <a href="javascript:void(0);" class="increment" clstag="clickcart|keycount|xincart|add1" id="increment">+</a>
 		                </div>
 		            </div>
-		            <div class="cell p-remove"><a id="remove-11345721-1" data-more="removed-87.20-1" clstag="clickcart|keycount|xincart|btndel318558" class="cart-remove" href="/cart/delete/${cart.id}.html">删除</a>
+		            <div class="cell p-remove"><a id="remove-11345721-1" data-more="removed-87.20-1" clstag="clickcart|keycount|xincart|btndel318558" class="cart-remove" href="<%=request.getContextPath() %>/cart/delete/${cart.id}.html">删除</a>
 		            </div>
 		        </div>
 	        </div> 
@@ -120,15 +120,15 @@
           <div class="cart-total-2014">
               <div class="cart-button">
                   <span class="check-comm-btns" id="checkout-jd">
-                      <a class="checkout" href="/order/order-cart.html" clstag="clickcart|keycount|xincart|gotoOrderInfo" id="toSettlement">去结算<b></b></a>
+                      <a class="checkout" href="<%=request.getContextPath() %>/order/order-cart.html" clstag="clickcart|keycount|xincart|gotoOrderInfo" id="toSettlement">去结算<b></b></a>
                   </span>
                   <span class="combine-btns" style="display:none">
                         <span class="fore1" style="display: none;">
                           <a href="" class="combine-btn">不支持合并付款</a>
                       </span>
                       <span class="fore2 hide" style="display: inline;">
-                          <a href="javascript:goToOverseaOrder();" class="checkout-jdInt">去淘淘国际结算<b></b></a>
-                          <a href="javascript:goToOrder();" class="checkout-jd">去淘淘结算<b></b></a>
+                          <a href="javascript:goToOverseaOrder();" class="checkout-jdInt">去国际商城结算<b></b></a>
+                          <a href="javascript:goToOrder();" class="checkout-jd">去商城结算<b></b></a>
                       </span>
                   </span>
               </div>
@@ -255,7 +255,7 @@
 				data += n+",";				
 			});
 			alert(data);
-			var url = "/cart/deleteSelected.html?cartList=" + data;
+			var url = "<%=request.getContextPath() %>/cart/deleteSelected.html?cartList=" + data;
 			$("#remove-batch").attr("href", url);
 			controller.calculateTotalPrice();
 			//window.location.href = url;

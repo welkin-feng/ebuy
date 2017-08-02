@@ -5,7 +5,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-	<title>${item.title } - 淘淘</title>
+	<title>${item.title }</title>
 	<script>var jdpts = new Object(); jdpts._st = new Date().getTime();</script>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 	<link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/taotao.css" media="all" />
@@ -55,7 +55,7 @@
 <script type="text/javascript">pageConfig.product.marketPrice='';</script>
 <ul id="summary">
 	<li id="summary-price">
-		<div class="dt">淘&nbsp;淘&nbsp;价：</div>
+		<div class="dt">商&nbsp;城&nbsp;价：</div>
 		<div class="dd">
 			<strong class="p-price"  id="jd-price">￥<fmt:formatNumber groupingUsed="false" maxFractionDigits="2" minFractionDigits="2" value="${item.price / 100 }"/> </strong>
 			<a id="notice-downp" href="#none" target="_blank" clstag="shangpin|keycount|product|jiangjia">(降价通知)</a>
@@ -85,7 +85,7 @@
 	</li>
 	<li id="summary-service" class="hide">
 		<div class="dt">服&#x3000;&#x3000;务：</div>
-		<div class="dd">由 淘淘 发货并提供售后服务。</div>
+		<div class="dd">由 商城 发货并提供售后服务。</div>
 	</li>
 	<li id="summary-tips"  class="hide">
 		<div class="dt">温馨提示：</div>
@@ -102,7 +102,7 @@
 </ul><!--summary end-->
 		<div id="brand-bar" clstag="shangpin|keycount|product|btn-coll">
 	<dl class="slogens">
-		<dt>淘淘·正品保证</dt>
+		<dt>正品保证</dt>
 		<dd class="fore1">
 			<a target="_blank" href="http://help.360buy.com/help/question-67.html"><b></b><span>货到</span><span>付款</span></a>
 		</dd>
@@ -158,12 +158,12 @@
 							<c:choose>
 								<c:when test="${status.index == 0 }">
 									<li>
-										<img data-img="1" class="img-hover"  alt="${item.title}" src="${pic}" width="50" height="50" data-url="${pic}">
+										<img data-img="1" class="img-hover"  alt="${item.title}" src="<%=request.getContextPath() %>/${pic}" width="50" height="50" data-url="${pic}">
 									</li>
 								</c:when>
 								<c:otherwise>
 									<li>
-										<img data-img="1" alt="${item.title}" src="${pic}" width="50" height="50" data-url="${pic}">
+										<img data-img="1" alt="${item.title}" src="<%=request.getContextPath() %>/${pic}" width="50" height="50" data-url="${pic}">
 									</li>
 								</c:otherwise>
 							</c:choose>
@@ -261,8 +261,8 @@
 <script type="text/javascript">
 	var itemControl = {
 			param:{
-				descUrl:"/item/desc/",
-				paramUrl:"/item/param/"
+				descUrl:"<%=request.getContextPath() %>/item/desc/",
+				paramUrl:"<%=request.getContextPath() %>/item/param/"
 			},
 			//请求商品描述
 			getItemDesc:function(itemId) {

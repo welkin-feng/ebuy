@@ -34,6 +34,12 @@
 <div id="o-slide">
 <div class="slide" id="slide">
 <script type="text/javascript">
+$(function(){
+	
+});
+</script>
+<script type="text/javascript">
+
 ;(function(cfg, doc) {
     if ( !cfg.DATA_MSlide ) {
         cfg.DATA_MSlide=[];
@@ -168,7 +174,7 @@ pageConfig.DATA_MScroll =[
         x = pageConfig.FN_GetCompatibleData(a[i]);
         e.push("<li class=\"item\"><a href=\"");
         e.push(x.href);
-        e.push("\"><img src=\"images/blank.gif\" style=\"background:url(");
+        e.push("\"><img src=\"<%=request.getContextPath() %>/images/blank.gif\" style=\"background:url(");
         e.push(x.src);
         e.push(") no-repeat #fff center 0;\" alt=\"");
         e.push(x.alt);
@@ -192,7 +198,7 @@ pageConfig.DATA_MScroll =[
 	            {
 	                "width": 310,
 	                "height": 70,
-	                "src": "images/5440ce68Na00d019e.jpg",
+	                "src": "<%=request.getContextPath() %>/images/5440ce68Na00d019e.jpg",
 	                "href": "http://c.fa.jd.com/adclick?sid=2&cid=601&aid=3614&bid=4196&unit=35984&advid=109277&guv=&url=http://sale.jd.com/mall/FQLUNlG53wbX7m.html",
 	                "alt": "",
 	                "widthB": 210,
@@ -257,7 +263,7 @@ pageConfig.DATA_MScroll =[
 <!--virtuals end-->
 <span class="clr"></span>
 </div>
-<!-- 幻灯片, 公信力, 淘淘快报, 虚拟产品 end -->
+<!-- 幻灯片, 公信力, 快报, 虚拟产品 end -->
  
 <div id="floors-list">
 <div class="w w1" data-fid="0" id="electronics">
@@ -375,6 +381,6 @@ pageConfig.DATA_Tabs = {"1615":{"1":{"d":"g15\/M00\/13\/1E\/rBEhWFJ4sNUIAAAAAAHJ
 <jsp:include page="commons/footer.jsp" />
 <!-- footer end -->
  
-<script type="text/javascript" src="js/home.js" charset="utf-8"></script>
+<script type="text/javascript" src="<%=request.getContextPath() %>/js/home.js" charset="utf-8"></script>
 </body>
 </html>

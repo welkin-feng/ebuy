@@ -16,18 +16,18 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <title>出错了 -淘淘商城</title>
 <!--结算页面样式-->
-<link rel="stylesheet" type="text/css" href="/css/base.css" media="all" />
-<link type="text/css" rel="stylesheet" href="/css/order-commons.css"
+<link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/base.css" media="all" />
+<link type="text/css" rel="stylesheet" href="<%=request.getContextPath() %>/css/order-commons.css"
 	source="widget" />
-<script type="text/javascript" src="/js/jquery-1.6.4.js"></script>
-<script type="text/javascript" src="/js/base.js"></script>
-<script type="text/javascript" src="/js/order.common.js"></script>
-<script type="text/javascript" src="/js/jquery.checkout.js"></script>
+<script type="text/javascript" src="<%=request.getContextPath() %>/js/jquery-1.6.4.js"></script>
+<script type="text/javascript" src="<%=request.getContextPath() %>/js/base.js"></script>
+<script type="text/javascript" src="<%=request.getContextPath() %>/js/order.common.js"></script>
+<script type="text/javascript" src="<%=request.getContextPath() %>/js/jquery.checkout.js"></script>
 </head>
 <body id="mainframe">
 	<div class="w w1 header clearfix">
 		<div id="logo">
-			<a href="/"><img src="/images/taotao-logo.gif" alt="淘淘商城"></a>
+			<a href="/"><img src="<%=request.getContextPath() %>/images/taotao-logo.gif" alt="淘淘商城"></a>
 		</div>
 	</div>
 
@@ -41,7 +41,7 @@
 	width: 750px;
 	height: 220px;
 	background:
-		url(/images/errordog.jpg)
+		url(<%=request.getContextPath() %>/images/errordog.jpg)
 		0 0;
 	position: relative
 }
@@ -110,7 +110,7 @@
 
 
 	<!-- footer start -->
-	<jsp:include page="../commons/footer.jsp" />
+	<jsp:include page="<%=request.getContextPath() %>/commons/footer.jsp" />
 	<!-- footer end -->
 </body>
 </html>

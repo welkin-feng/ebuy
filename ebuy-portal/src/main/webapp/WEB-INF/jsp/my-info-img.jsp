@@ -7,9 +7,9 @@
 <head>
 <meta http-equiv="Cache-Control" content="max-age=300" />
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>我的信息 - 淘淘</title>
-<meta name="Keywords" content="java,淘淘java" />
-<meta name="description" content="在淘淘中找到了29910件java的类似商品，其中包含了“图书”，“电子书”，“教育音像”，“骑行运动”等类型的java的商品。" />
+<title>我的信息</title>
+<meta name="Keywords" content="java" />
+<meta name="description" content="在商城中找到了29910件java的类似商品，其中包含了“图书”，“电子书”，“教育音像”，“骑行运动”等类型的java的商品。" />
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/base.css" media="all" />
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/myjd.common.css" media="all" />
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/myjd.info.css" media="all" />
@@ -115,17 +115,17 @@
 	$(function() {
 		//为基本信息按钮绑定点击事件
 		$(".base-info").bind("click", function(){
-			var url = "http://localhost:8000/portal/userInfo.html?userName=${tbUser.username}";
+			var url = "<%=request.getContextPath() %>/userInfo.html?userName=${tbUser.username}";
 			$(".base-info").attr("href", url);
 		});
 		//为头像照片按钮绑定点击事件
 		$(".img-info").bind("click", function(){
-			var url = "http://localhost:8000/portal/imgInfo.html?userName=${tbUser.username}";
+			var url = "<%=request.getContextPath() %>/imgInfo.html?userName=${tbUser.username}";
 			$(".img-info").attr("href", url);
 		});
 		//为更多个人信息按钮绑定点击事件
 		$(".more-info").bind("click", function(){
-			var url = "http://localhost:8000/portal/moreInfo.html?userName=${tbUser.username}";
+			var url = "<%=request.getContextPath() %>/moreInfo.html?userName=${tbUser.username}";
 			$(".more-info").attr("href", url);
 		});
 	});

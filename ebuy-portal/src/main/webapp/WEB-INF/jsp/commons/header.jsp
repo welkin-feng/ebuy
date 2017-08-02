@@ -1,12 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<script type="text/javascript" src="js/base-v1.js" charset="utf-8"></script>
+<script type="text/javascript" src="<%=request.getContextPath() %>/js/base-v1.js" charset="utf-8"></script>
 <!--shortcut start-->
 <jsp:include page="shortcut.jsp" />
 <!--shortcut end-->
 <div id="o-header-2013">
 	<div class="w" id="header-2013">
-		<div id="logo-2013" class="ld"><a href="/" hidefocus="true" clstag="homepage|keycount|home2013|02a"><b></b><img src="images/taotao-logo.gif" width="270" height="60" alt="淘淘"></a></div>
+		<div id="logo-2013" class="ld"><a href="/" hidefocus="true" clstag="homepage|keycount|home2013|02a"><b></b><img src="<%=request.getContextPath() %>/images/taotao-logo.gif" width="270" height="60" alt="淘淘"></a></div>
 		<!--logo end-->
 		<div id="search-2013">
 			<div class="i-search ld">
@@ -22,7 +22,7 @@
 		<!--search end-->
 		<div id="my360buy-2013">
 			<dl>
-				<dt class="ld"><s></s><a href="http://localhost:8015/user/showLogin" clstag="homepage|keycount|home2012|04a">我的淘淘</a><b></b></dt>
+				<dt class="ld"><s></s><a href="http://localhost:8015/user/showLogin" clstag="homepage|keycount|home2012|04a">我的商城</a><b></b></dt>
 				<dd>
 					<div class="loading-style1"><b></b>加载中，请稍候...</div>
 				</dd>
@@ -51,85 +51,85 @@
 				<div id="_JD_ALLSORT" class="mc">
 					<div class="item fore1">
 						<span data-split="1"><h3>
-								<a href="/products/1.html">图书、音像、电子书刊</a>
+								<a href="<%=request.getContextPath() %>/products/1.html">图书、音像、电子书刊</a>
 							</h3>
 							<s></s></span>
 					</div>
 					<div class="item fore2">
 						<span data-split="1"><h3>
-								<a href="/products/74.html">家用电器</a>
+								<a href="<%=request.getContextPath() %>/products/74.html">家用电器</a>
 							</h3>
 							<s></s></span>
 					</div>
 					<div class="item fore3">
 						<span data-split="1"><h3>
-								<a href="/products/161.html">电脑、办公</a>
+								<a href="<%=request.getContextPath() %>/products/161.html">电脑、办公</a>
 							</h3>
 							<s></s></span>
 					</div>
 					<div class="item fore4">
 						<span data-split="1"><h3>
-								<a href="/products/249.html">个护化妆</a>
+								<a href="<%=request.getContextPath() %>/products/249.html">个护化妆</a>
 							</h3>
 							<s></s></span>
 					</div>
 					<div class="item fore5">
 						<span data-split="1"><h3>
-								<a href="/products/290.html">钟表</a>
+								<a href="<%=request.getContextPath() %>/products/290.html">钟表</a>
 							</h3>
 							<s></s></span>
 					</div>
 					<div class="item fore6">
 						<span data-split="1"><h3>
-								<a href="/products/296.html">母婴</a>
+								<a href="<%=request.getContextPath() %>/products/296.html">母婴</a>
 							</h3>
 							<s></s></span>
 					</div>
 					<div class="item fore7">
 						<span data-split="1"><h3>
-								<a href="/products/378.html">食品饮料、保健食品</a>
+								<a href="<%=request.getContextPath() %>/products/378.html">食品饮料、保健食品</a>
 							</h3>
 							<s></s></span>
 					</div>
 					<div class="item fore8">
 						<span data-split="1"><h3>
-								<a href="/products/438.html">汽车用品</a>
+								<a href="<%=request.getContextPath() %>/products/438.html">汽车用品</a>
 							</h3>
 							<s></s></span>
 					</div>
 					<div class="item fore9">
 						<span data-split="1"><h3>
-								<a href="/products/495.html">玩具乐器</a>
+								<a href="<%=request.getContextPath() %>/products/495.html">玩具乐器</a>
 							</h3>
 							<s></s></span>
 					</div>
 					<div class="item fore10">
 						<span data-split="1"><h3>
-								<a href="/products/558.html">手机</a>
+								<a href="<%=request.getContextPath() %>/products/558.html">手机</a>
 							</h3>
 							<s></s></span>
 					</div>
 					<div class="item fore11">
 						<span data-split="1"><h3>
-								<a href="/products/580.html">数码</a>
+								<a href="<%=request.getContextPath() %>/products/580.html">数码</a>
 							</h3>
 							<s></s></span>
 					</div>
 					<div class="item fore12">
 						<span data-split="1"><h3>
-								<a href="/products/633.html">家居家装</a>
+								<a href="<%=request.getContextPath() %>/products/633.html">家居家装</a>
 							</h3>
 							<s></s></span>
 					</div>
 					<div class="item fore13">
 						<span data-split="1"><h3>
-								<a href="/products/699.html">厨具</a>
+								<a href="<%=request.getContextPath() %>/products/699.html">厨具</a>
 							</h3>
 							<s></s></span>
 					</div>
 					<div class="item fore14">
 						<span data-split="1"><h3>
-								<a href="/products/749.html">服饰内衣</a>
+								<a href="<%=request.getContextPath() %>/products/749.html">服饰内衣</a>
 							</h3>
 							<s></s></span>
 					</div>

@@ -10,14 +10,14 @@
 <title>${query} - 商品搜索 </title>
 <meta name="Keywords" content="java,java" />
 <meta name="description" content="在商城中找到了*件${query}的类似商品" />
-<link rel="stylesheet" type="text/css" href="css/base.css" media="all" />
-<link rel="stylesheet" type="text/css" href="css/psearch20131008.css" media="all" />
-<link rel="stylesheet" type="text/css" href="css/psearch.onebox.css" media="all" />
-<link rel="stylesheet" type="text/css" href="css/pop_compare.css" media="all" />
-<script type="text/javascript" src="js/jquery-1.6.4.js"></script>
+<link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/base.css" media="all" />
+<link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/psearch20131008.css" media="all" />
+<link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/psearch.onebox.css" media="all" />
+<link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/pop_compare.css" media="all" />
+<script type="text/javascript" src="<%=request.getContextPath() %>/js/jquery-1.6.4.js"></script>
 </head>
 <body>
-<script type="text/javascript" src="js/base-2011.js" charset="utf-8"></script>
+<script type="text/javascript" src="<%=request.getContextPath() %>/js/base-2011.js" charset="utf-8"></script>
 <!-- header start -->
 <jsp:include page="commons/header.jsp" />
 <!-- header end -->
@@ -28,13 +28,13 @@
 <div  id="pagin-btm" class="pagin fr" clstag="search|keycount|search|pre-page2">
 	<span class="prev-disabled">上一页<b></b></span>
 	<a href="javascript:void(0)" class="current">1</a>
-	<a href="search?keyword=java&enc=utf-8&qr=&qrst=UNEXPAND&rt=1&page=2">2</a>
-	<a href="search?keyword=java&enc=utf-8&qr=&qrst=UNEXPAND&rt=1&page=3">3</a>
-	<a href="search?keyword=java&enc=utf-8&qr=&qrst=UNEXPAND&rt=1&page=4">4</a>
-	<a href="search?keyword=java&enc=utf-8&qr=&qrst=UNEXPAND&rt=1&page=5">5</a>
-	<a href="search?keyword=java&enc=utf-8&qr=&qrst=UNEXPAND&rt=1&page=6">6</a>
+	<a href="<%=request.getContextPath() %>/search?keyword=java&enc=utf-8&qr=&qrst=UNEXPAND&rt=1&page=2">2</a>
+	<a href="<%=request.getContextPath() %>/search?keyword=java&enc=utf-8&qr=&qrst=UNEXPAND&rt=1&page=3">3</a>
+	<a href="<%=request.getContextPath() %>/search?keyword=java&enc=utf-8&qr=&qrst=UNEXPAND&rt=1&page=4">4</a>
+	<a href="<%=request.getContextPath() %>/search?keyword=java&enc=utf-8&qr=&qrst=UNEXPAND&rt=1&page=5">5</a>
+	<a href="<%=request.getContextPath() %>/search?keyword=java&enc=utf-8&qr=&qrst=UNEXPAND&rt=1&page=6">6</a>
 	<span class="text">…</span>
-	<a href="search?keyword=java&enc=utf-8&qr=&qrst=UNEXPAND&rt=1&page=2" class="next">下一页<b></b></a>
+	<a href="<%=request.getContextPath() %>/search?keyword=java&enc=utf-8&qr=&qrst=UNEXPAND&rt=1&page=2" class="next">下一页<b></b></a>
 	<span class="page-skip"><em>&nbsp;&nbsp;共${totalPages}页&nbsp;&nbsp;&nbsp;&nbsp;到第</em></span>
 </div>
 </div>
@@ -67,8 +67,8 @@
 <!-- footer start -->
 <jsp:include page="commons/footer.jsp" />
 <!-- footer end -->
-<script type="text/javascript" src="js/jquery.hashchange.js"></script>
-<script type="text/javascript" src="js/search_main.js"></script>
+<script type="text/javascript" src="<%=request.getContextPath() %>/js/jquery.hashchange.js"></script>
+<script type="text/javascript" src="<%=request.getContextPath() %>/js/search_main.js"></script>
 <script type="text/javascript">
 //${paginator.totalPages}
 SEARCH.query = "${query}";

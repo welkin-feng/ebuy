@@ -12,23 +12,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" /> 
     <meta name="format-detection" content="telephone=no" />
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <title>订单结算页 -淘淘商城</title>
+    <title>订单结算页</title>
 	<!--结算页面样式-->	
-	<link rel="stylesheet" type="text/css" href="/css/base.css" media="all" />
-    <link type="text/css" rel="stylesheet"  href="/css/order-commons.css" source="widget"/>	
-	<script type="text/javascript" src="/js/jquery-1.6.4.js"></script>
-	<script type="text/javascript" src="/js/base.js"></script>	
-	<script type="text/javascript" src="/js/order.common.js"></script>
-	<script type="text/javascript" src="/js/jquery.checkout.js"></script>
+	<link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/base.css" media="all" />
+    <link type="text/css" rel="stylesheet"  href="<%=request.getContextPath() %>/css/order-commons.css" source="widget"/>	
+	<script type="text/javascript" src="<%=request.getContextPath() %>/js/jquery-1.6.4.js"></script>
+	<script type="text/javascript" src="<%=request.getContextPath() %>/js/base.js"></script>	
+	<script type="text/javascript" src="<%=request.getContextPath() %>/js/order.common.js"></script>
+	<script type="text/javascript" src="<%=request.getContextPath() %>/js/jquery.checkout.js"></script>
 </head>	<body id="mainframe">
 <jsp:include page="commons/shortcut.jsp" />
 <!--shortcut end-->
 
 <div class="w w1 header clearfix">
-    <div id="logo"><a href="/"><img src="/images/taotao-logo.gif" alt="淘淘商城"></a></div>
+    <div id="logo"><a href="/"><img src="<%=request.getContextPath() %>/images/taotao-logo.gif" alt="淘淘商城"></a></div>
 </div>
 
-<form id="orderForm" class="hide" action="/order/create.html" method="post">
+<form id="orderForm" class="hide" action="<%=request.getContextPath() %>/order/create.html" method="post">
 		<input type="hidden" name="paymentType" value="1"/>
 		<c:forEach items="${cartList }" var="cart" varStatus="status">
 			<c:set var="totalPrice"  value="${ totalPrice + (cart.price * cart.num)}"/>
@@ -172,7 +172,7 @@
 <div class="step-tit">
 	<h3>送货清单</h3>
 	<div class="extra-r">
-					<a href="/cart/show.html" id="cartRetureUrl" class="return-edit ftx-05">返回修改购物车</a>
+					<a href="<%=request.getContextPath() %>/cart/show.html" id="cartRetureUrl" class="return-edit ftx-05">返回修改购物车</a>
 			</div>
 </div>
 <div class="step-cont" id="skuPayAndShipment-cont">
@@ -187,13 +187,13 @@
 		<div class="goods-item goods-item-extra">
 
 			<div class="p-img">
-				<a target="_blank" href="/item/${cart.id}.html">
-					<img src="${cart.images[0]}" alt="">
+				<a target="_blank" href="<%=request.getContextPath() %>/item/${cart.id}.html">
+					<img src="<%=request.getContextPath() %>/${cart.images[0]}" alt="">
 				</a>
 			</div>
 			<div class="goods-msg">
 				<div class="p-name">
-					<a href="/item/${cart.id}.html" target="_blank">
+					<a href="<%=request.getContextPath() %>/item/${cart.id}.html" target="_blank">
 						${cart.title } 
 					</a>
 				</div>

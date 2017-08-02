@@ -18,7 +18,7 @@
 		</dependency>
 		<dependency>
 			<groupId>com.welkin-git.ebuy</groupId>
-			<artifactId>ebuy-pojo</artifactId>
+			<artifactId>ebuy-mapping</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
 		

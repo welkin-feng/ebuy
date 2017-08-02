@@ -26,7 +26,7 @@ public class TbItemController {
 	@ResponseBody
 	public Message save(TbItem po, @RequestParam(value = "desc", required = false) String desc,
 			@RequestParam(value = "itemParams", required = false) String params) {
-		int x = tbItemService.save(po, desc, params);
+		boolean x = tbItemService.save(po, desc, params);
 		return MessageUtil.generateStatus(x);
 
 		/*

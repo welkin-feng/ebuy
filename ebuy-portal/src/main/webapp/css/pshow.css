@@ -123,7 +123,7 @@ a:hover {
 #recommend,#product-detail,#comments-list,#consult,#discuss {
 	overflow: visible;
 	padding-top: 0px;
-	background: url(../images/tab.png) 0 -41px repeat-x;
+	background: url(images/tab.png) 0 -41px repeat-x;
 	_clear: both
 }
 
@@ -239,12 +239,12 @@ a.css3-btn-gray,a.css3-btn-gray:hover,a.css3-btn-gray:visited {
 
 .spec-control,#store-selector .text b,#choose .selected b,.slogens b,#brand-bar .slogens .fore2,#brand-bar .slogens .fore4,.star,.wrap-input a,#brand-bar .slogens dt,#brand-bar .seller-btn a,.itemover-title button,.topic .icon,#ranklist .tabcon span,#comment .btn-comment,#recomment .master s,.topic-best,.master s,.suits li s,#recommend .infos s,#favorable-suit .infos s,.btn-buy,#product-detail .detail-correction b,div.nav-minicart-buynow a,#consult .btn-search,#comments-list .tl,.item-warnning s,.share-list-item a,.share-ft b,#view-bigimg,#tab-services table td .btn-buy,#evaluate s,#evaluate-detail s,.li-img a b,#store-selector .close,.extra-ico,.f-sercvice-list b,.btn-append-extra,.u-name a b,#more-fitting-link b,#summary-countdown s,.s-item .active b,#product-detail .p-tab s,.m3 .p-info s
 	{
-	background-image: url(../images/newicon20140417.png);
+	background-image: url(images/newicon20140417.png);
 	background-repeat: no-repeat
 }
 
 #choose-btns .btn a b,.nav-minicart-btn a {
-	background-image: url(../images/p-btns-20140611.png);
+	background-image: url(images/p-btns-20140611.png);
 	background-repeat: no-repeat
 }
 
@@ -671,7 +671,7 @@ a.css3-btn-gray,a.css3-btn-gray:hover,a.css3-btn-gray:visited {
 	overflow: hidden;
 	vertical-align: middle;
 	background:
-		url(../images/20130330A_2.png) -95px
+		url(images/20130330A_2.png) -95px
 		-55px no-repeat
 }
 
@@ -723,7 +723,7 @@ a.css3-btn-gray,a.css3-btn-gray:hover,a.css3-btn-gray:visited {
 	display: inline-block;
 	width: 16px;
 	height: 16px;
-	background: url(../images/newicon20140417.png) -133px -293px no-repeat;
+	background: url(images/newicon20140417.png) -133px -293px no-repeat;
 	*zoom: 1
 }
 
@@ -737,7 +737,7 @@ a.css3-btn-gray,a.css3-btn-gray:hover,a.css3-btn-gray:visited {
 	height: 16px;
 	line-height: 16px;
 	margin-right: 5px;
-	background-image: url(../images/promise20141021.png);
+	background-image: url(images/promise20141021.png);
 	background-repeat: no-repeat;
 	*zoom: 1;
 	vertical-align: middle
@@ -1000,7 +1000,7 @@ a.css3-btn-gray,a.css3-btn-gray:hover,a.css3-btn-gray:visited {
 	height: 16px;
 	line-height: 16px;
 	margin-right: 5px;
-	background-image: url(../images/promise20141021.png);
+	background-image: url(images/promise20141021.png);
 	background-repeat: no-repeat;
 	*zoom: 1;
 	vertical-align: middle
@@ -1013,7 +1013,7 @@ a.css3-btn-gray,a.css3-btn-gray:hover,a.css3-btn-gray:visited {
 	height: 16px;
 	line-height: 16px;
 	margin-right: 5px;
-	background-image: url(../images/promise20141021.png);
+	background-image: url(images/promise20141021.png);
 	background-repeat: no-repeat;
 	*zoom: 1;
 	vertical-align: middle
@@ -1409,7 +1409,7 @@ a.css3-btn-gray,a.css3-btn-gray:hover,a.css3-btn-gray:visited {
 #choose-btns #choose-btn-append a.btn-append-zydz b,#choose-btns #choose-btn-append a.btn-append-zydz:hover b,.cat-3-1195 #choose-btns #choose-btn-append a.btn-append-zydz:hover b
 	{
 	background:
-		url(../images/54238aaaN17189794.png)
+		url(images/54238aaaN17189794.png)
 		0 0 no-repeat
 }
 
@@ -1690,7 +1690,7 @@ a.css3-btn-gray,a.css3-btn-gray:hover,a.css3-btn-gray:visited {
 	height: 50px;
 	top: 100px;
 	background-image:
-		url(../images/footprint-arr.png);
+		url(images/footprint-arr.png);
 	background-repeat: no-repeat
 }
 
@@ -2060,23 +2060,23 @@ div#itemover-related-list {
 }
 
 #view-360 a {
-	background: url(../images/360_flash.png) no-repeat 0 0
+	background: url(images/360_flash.png) no-repeat 0 0
 }
 
 #view-video a {
-	background: url(../images/360_video.png) no-repeat 0 0
+	background: url(images/360_video.png) no-repeat 0 0
 }
 
 * html #view-360 a {
 	background-image: none;
 	filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod=scale,
-		src='../images/360_flash.png')
+		src='images/360_flash.png')
 }
 
 * html #view-video a {
 	background-image: none;
 	filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod=scale,
-		src='../images/360_video.png')
+		src='images/360_video.png')
 }
 
 #spec-forward:hover {
@@ -2156,7 +2156,7 @@ div#itemover-related-list {
 	left: 362px;
 	width: 400px;
 	height: 400px;
-	background: url(../images/loading.gif) #fff no-repeat center center;
+	background: url(images/loading.gif) #fff no-repeat center center;
 	border: 1px solid #e4e4e4;
 	display: none;
 	text-align: center;
@@ -2638,7 +2638,7 @@ div#itemover-related-list {
 	width: 59px;
 	height: 24px;
 	line-height: 24px;
-	background: url(../images/im20131028.gif) 0 0 no-repeat
+	background: url(images/im20131028.gif) 0 0 no-repeat
 }
 
 #j-im.djd-im,#j-im.djd-im:hover,#j-im.djd-im:visited,#consult #j-im-extra.djd-im,#consult #j-im-extra.djd-im:hover,#consult #j-im-extra.djd-im:visited
@@ -5040,7 +5040,7 @@ a.d-offline {
 #product-detail .nav-fixed {
 	position: fixed;
 	top: 0;
-	background: #fff url(../images/tab.png) 0 -39px repeat-x;
+	background: #fff url(images/tab.png) 0 -39px repeat-x;
 	padding-bottom: 2px;
 	padding-top: 2px
 }
@@ -6953,7 +6953,7 @@ div.actived .wiki-arrow,div.actived .word-wiki-detail {
 	height: 25px;
 	line-height: 100px;
 	overflow: hidden;
-	background: url(../images/p-btns-20140611.png) 0 -399px no-repeat;
+	background: url(images/p-btns-20140611.png) 0 -399px no-repeat;
 	*zoom: 1
 }
 
@@ -7982,7 +7982,7 @@ a.compare-active {
 	width: 18px;
 	height: 18px;
 	background:
-		url(../images/newicon20140417.png)
+		url(images/newicon20140417.png)
 		no-repeat -132px -292px
 }
 
@@ -8943,7 +8943,7 @@ div.share-binding p {
 	height: 43px;
 	padding-left: 10px;
 	padding-right: 70px;
-	background: url(../images/m-buy.png) right 3px no-repeat;
+	background: url(images/m-buy.png) right 3px no-repeat;
 	position: relative;
 	bottom: -4px;
 	cursor: pointer;
@@ -9008,7 +9008,7 @@ div.share-binding p {
 	display: block;
 	width: 18px;
 	height: 17px;
-	background: url(../images/m-buy.png) 0 -47px no-repeat;
+	background: url(images/m-buy.png) 0 -47px no-repeat;
 	position: absolute;
 	z-index: 1;
 	right: -5px;
@@ -9019,7 +9019,7 @@ div.share-binding p {
 	height: 12px;
 	width: 24px;
 	overflow: hidden;
-	background: url(../images/m-buy.png) -36px -50px no-repeat;
+	background: url(images/m-buy.png) -36px -50px no-repeat;
 	display: block;
 	position: absolute;
 	bottom: 5px;

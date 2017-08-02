@@ -481,7 +481,7 @@ a:hover {
 	height: 40px;
 	padding: 12px 0 0;
 	background-image:
-		url(../images/20130330C.png);
+		url(images/20130330C.png);
 	background-repeat: no-repeat;
 	font-family: "microsoft yahei";
 	color: #fff;
@@ -523,19 +523,19 @@ a:hover {
 }
 
 img.err-product,img.err-poster {
-	background: url(../images/error-jd.gif)
+	background: url(images/error-jd.gif)
 		no-repeat 50% 50%
 }
 
 img.err-price {
 	width: 81px;
 	height: 22px;
-	background: url(../images/error-3.gif)
+	background: url(images/error-3.gif)
 		no-repeat 50% 50%
 }
 
 .loading-style1 b,.loading-style2 {
-	background: url(../images/loading-jd.gif)
+	background: url(images/loading-jd.gif)
 		no-repeat 50% 50%
 }
 
@@ -555,7 +555,7 @@ img.err-price {
 
 .slide {
 	position: relative;
-	background: url(../images/loading-jd.gif)
+	background: url(images/loading-jd.gif)
 		no-repeat center center
 }
 
@@ -606,7 +606,7 @@ img.err-price {
 
 #sidepanel a,#sidepanel b {
 	background-image:
-		url(../images/20130330A_2.png);
+		url(images/20130330A_2.png);
 	background-repeat: no-repeat
 }
 
@@ -715,7 +715,7 @@ img.err-price {
 	width: 5px;
 	height: 9px;
 	background-image:
-		url(../images/bg_hotsale.gif);
+		url(images/bg_hotsale.gif);
 	background-repeat: no-repeat;
 	overflow: hidden
 }
@@ -850,7 +850,7 @@ img.err-price {
 	width: 15px;
 	height: 15px;
 	background:
-		url(../images/bg_thickbox.gif)
+		url(images/bg_thickbox.gif)
 		no-repeat 0 -18px;
 	font-size: 0;
 	line-height: 100px
@@ -866,7 +866,7 @@ img.err-price {
 	width: 21px;
 	height: 21px;
 	background:
-		url(../images/thickbox_close.png)
+		url(images/thickbox_close.png)
 		no-repeat 0 0;
 	font-size: 0;
 	line-height: 100px
@@ -892,7 +892,7 @@ img.err-price {
 }
 
 .thickloading {
-	background: url(../images/loading-jd.gif)
+	background: url(images/loading-jd.gif)
 		#fff no-repeat center center
 }
 
@@ -950,7 +950,7 @@ img.err-price {
 	width: 13px;
 	height: 13px;
 	background:
-		url(../images/bg_hotsale.gif)
+		url(images/bg_hotsale.gif)
 		no-repeat -51px -632px;
 	cursor: pointer
 }
@@ -1003,7 +1003,7 @@ img.err-price {
 	width: 140px;
 	height: 30px;
 	padding-left: 22px;
-	background: url(../images/loading.gif)
+	background: url(images/loading.gif)
 		no-repeat 0 center;
 	margin: 0 auto;
 	line-height: 30px;
@@ -1022,7 +1022,7 @@ img.err-price {
 .model-prompt .con b {
 	position: absolute;
 	background-image:
-		url(../images/bg_prompt.gif);
+		url(images/bg_prompt.gif);
 	background-repeat: no-repeat
 }
 
@@ -1115,7 +1115,7 @@ img.err-price {
 
 #shortcut-2013 .fl b,#shortcut-2013 .fr b {
 	background-image:
-		url(../images/20130330A_2.png);
+		url(images/20130330A_2.png);
 	background-repeat: no-repeat
 }
 
@@ -1163,7 +1163,7 @@ img.err-price {
 	left: 0;
 	width: 13px;
 	height: 13px;
-	background: url(../images/20130725.png)
+	background: url(images/20130725.png)
 		no-repeat 0 0;
 	cursor: pointer
 }
@@ -1316,7 +1316,7 @@ img.err-price {
 #logo-2013 a:hover b,#logo-2013 a:active b {
 	display: none;
 	background:
-		url(../images/20130330A_2.png) #fff
+		url(images/20130330A_2.png) #fff
 		no-repeat 0 -312px
 }
 
@@ -1612,7 +1612,7 @@ img.err-price {
 }
 
 #shelper-2013 .list-text .resultful {
-	background-image: url(../images/8.png);
+	background-image: url(images/8.png);
 	background-repeat: no-repeat;
 	background-position: 302px 8px
 }
@@ -1701,7 +1701,7 @@ img.err-price {
 
 #my360buy-2013 dt,#my360buy-2013 dl.hover dt {
 	background-image:
-		url(../images/20130330A_2.png);
+		url(images/20130330A_2.png);
 	background-repeat: no-repeat
 }
 
@@ -1857,7 +1857,7 @@ img.err-price {
 	width: 50px;
 	height: 50px;
 	background:
-		url(../images/20130330A_2.png)
+		url(images/20130330A_2.png)
 		no-repeat 0 -250px;
 	overflow: hidden;
 	line-height: 150px;
@@ -1925,7 +1925,7 @@ img.err-price {
 
 #settleup-2013 dt,#settleup-2013 dl.hover dt,#settleup-2013 .nogoods b {
 	background-image:
-		url(../images/20130330A_2.png);
+		url(images/20130330A_2.png);
 	background-repeat: no-repeat
 }
 
@@ -1956,7 +1956,7 @@ img.err-price {
 	top: -13px;
 	left: 20px;
 	background-image:
-		url(../images/20130330A_2.png);
+		url(images/20130330A_2.png);
 	background-position: -133px -279px;
 	padding-left: 6px;
 	color: #fff
@@ -1968,7 +1968,7 @@ img.err-price {
 	height: 20px;
 	padding-right: 6px;
 	background-image:
-		url(../images/20130330A_2.png);
+		url(images/20130330A_2.png);
 	background-position: 100% -250px
 }
 
@@ -2296,7 +2296,7 @@ img.err-price {
 #categorys-2013 .mt b,#categorys-2013 h3,#categorys-2013 s,#categorys-2013.hover .mt b
 	{
 	background-image:
-		url(../images/20130330A_2.png);
+		url(images/20130330A_2.png);
 	background-repeat: no-repeat
 }
 
@@ -2600,7 +2600,7 @@ img.err-price {
 	display: block;
 	width: 194px;
 	height: 30px;
-	background-image: url(../images/28.png);
+	background-image: url(images/28.png);
 	background-repeat: no-repeat;
 	line-height: 80px;
 	overflow: hidden
@@ -2656,7 +2656,7 @@ img.err-price {
 	line-height: 28px;
 	margin-right: 20px;
 	background-image:
-		url(../images/virtuals-cat-ico20140826.png);
+		url(images/virtuals-cat-ico20140826.png);
 	background-repeat: no-repeat
 }
 
@@ -2690,7 +2690,7 @@ img.err-price {
 
 #service-2013 dl b {
 	background-image:
-		url(../images/20130330A_2.png);
+		url(images/20130330A_2.png);
 	background-repeat: no-repeat
 }
 
@@ -2828,7 +2828,7 @@ img.err-price {
 	height: 16px;
 	margin-right: 5px;
 	background:
-		url(../images/update.png)
+		url(images/update.png)
 		no-repeat
 }
 
@@ -2921,7 +2921,7 @@ img.err-price {
 	width: 13px;
 	height: 22px;
 	background-image:
-		url(../images/20130330A_2.png);
+		url(images/20130330A_2.png);
 	background-repeat: no-repeat;
 	background-position: -128px -360px;
 	-webkit-transition: all .2s ease;
@@ -2949,7 +2949,7 @@ img.err-price {
 	width: 49px;
 	height: 23px;
 	background:
-		url(../images/20130330A_2.png)
+		url(images/20130330A_2.png)
 		no-repeat 0 -438px;
 	left: 88px;
 	top: 5px
@@ -2986,7 +2986,7 @@ img.err-price {
 	display: inline-block;
 	line-height: 29px;
 	background-image:
-		url(../images/20130330A_2.png);
+		url(images/20130330A_2.png);
 	background-repeat: no-repeat
 }
 
@@ -3055,7 +3055,7 @@ img.err-price {
 	width: 220px;
 	height: 65px;
 	background:
-		url(../images/537b084eN94336622.png)
+		url(images/537b084eN94336622.png)
 }
 
 #shortcut-2013 #jd-vip {
@@ -3074,7 +3074,7 @@ img.err-price {
 	width: 24px;
 	height: 11px;
 	overflow: hidden;
-	background: url(../images/vip.png)
+	background: url(images/vip.png)
 }
 
 /
@@ -3123,7 +3123,7 @@ img.err-price {
 
 #branch-office {
 	background-image:
-		url(../images/20130330B_1.png);
+		url(images/20130330B_1.png);
 	background-repeat: no-repeat;
 	margin-bottom: 0
 }
@@ -3294,7 +3294,7 @@ img.err-price {
 
 #mscroll .ctrl b {
 	background-image:
-		url(../images/20130330B_1.png);
+		url(images/20130330B_1.png);
 	background-repeat: no-repeat
 }
 
@@ -3365,12 +3365,12 @@ img.err-price {
 }
 
 #mscroll #mscroll-ctrl-prev:hover b {
-	background: url(../images/15.png)
+	background: url(images/15.png)
 		no-repeat 0 0
 }
 
 #mscroll #mscroll-ctrl-next:hover b {
-	background: url(../images/15.png)
+	background: url(images/15.png)
 		no-repeat 0 -37px
 }
 
@@ -3648,7 +3648,7 @@ img.err-price {
 	margin-top: 10px;
 	margin-bottom: 5px;
 	background-image:
-		url(../images/virtuals-20140606.png);
+		url(images/virtuals-20140606.png);
 	background-repeat: no-repeat
 }
 
@@ -3722,7 +3722,7 @@ img.err-price {
 
 #virtuals-2014 .mt li .hot {
 	background:
-		url(../images/541f893aN662da9bc.png)
+		url(images/541f893aN662da9bc.png)
 		no-repeat;
 	width: 24px;
 	height: 14px;
@@ -4038,7 +4038,7 @@ img.err-price {
 
 #group .p-detail,#group .ctrl {
 	background-image:
-		url(../images/20130330B_1.png);
+		url(images/20130330B_1.png);
 	background-repeat: no-repeat
 }
 
@@ -4155,7 +4155,7 @@ img.err-price {
 
 .catalogue .floor .b1,.catalogue .floor .b2,.catalogue .floor .b4 {
 	background-image:
-		url(../images/20130330C.png);
+		url(images/20130330C.png);
 	background-repeat: no-repeat
 }
 
@@ -5023,7 +5023,7 @@ img.err-price {
 
 .brands .smt .extra b {
 	background-image:
-		url(../images/20130330B_1.png);
+		url(images/20130330B_1.png);
 	background-repeat: no-repeat
 }
 
@@ -5092,7 +5092,7 @@ img.err-price {
 	top: -5px;
 	width: 115px;
 	height: 22px;
-	background: url(../images/18.png) 0
+	background: url(images/18.png) 0
 		0 no-repeat;
 	line-height: 1000px;
 	overflow: hidden
@@ -5163,7 +5163,7 @@ img.err-price {
 
 .ranking .smc span {
 	background-image:
-		url(../images/20130330B_1.png);
+		url(images/20130330B_1.png);
 	background-repeat: no-repeat
 }
 
@@ -5452,7 +5452,7 @@ img.err-price {
 	top: -5px;
 	width: 115px;
 	height: 22px;
-	background: url(../images/18.png) 0
+	background: url(images/18.png) 0
 		-27px no-repeat;
 	line-height: 1000px;
 	overflow: hidden
@@ -5475,7 +5475,7 @@ img.err-price {
 	width: 20px;
 	height: 20px;
 	background-image:
-		url(../images/20130330B_1.png);
+		url(images/20130330B_1.png);
 	background-repeat: no-repeat;
 	overflow: hidden
 }
@@ -5532,7 +5532,7 @@ img.err-price {
 	height: 3em;
 	padding-right: 50px;
 	background:
-		url(../images/20130330B_1.png)
+		url(images/20130330B_1.png)
 		no-repeat 240px -80px;
 	color: #999
 }
@@ -5656,7 +5656,7 @@ img.err-price {
 	height: 21px;
 	padding: 1px 0 1px 25px;
 	background:
-		url(../images/20130330B_1.png)
+		url(images/20130330B_1.png)
 		no-repeat -251px -46px;
 	border: 1px inset #bbb;
 	line-height: 21px;
@@ -5714,7 +5714,7 @@ img.err-price {
 
 #treasure .research b,#guidelayer .close,#guidelayer .corner {
 	background-image:
-		url(../images/20120209D.png);
+		url(images/20120209D.png);
 	background-repeat: no-repeat
 }
 
@@ -5987,7 +5987,7 @@ img.err-price {
 .backpanel .bp-item a {
 	display: block;
 	background-image:
-		url(../images/backpanel20140708.png);
+		url(images/backpanel20140708.png);
 	background-color: #aaa;
 	background-repeat: no-repeat;
 	padding: 5px 0 0 7px;
@@ -6208,7 +6208,7 @@ img.err-price {
 	line-height: 1000px;
 	overflow: hidden;
 	background:
-		url(../images/floor-sort20131202.png)
+		url(images/floor-sort20131202.png)
 		0 -139px no-repeat;
 	cursor: pointer;
 	_right: 20px;
@@ -6371,7 +6371,7 @@ a.floor-sort:hover span {
 	overflow: hidden;
 	line-height: 1000px;
 	background:
-		url(../images/floor-sort20131202.png)
+		url(images/floor-sort20131202.png)
 		-5px -84px no-repeat;
 	cursor: move
 }
@@ -6387,7 +6387,7 @@ a.floor-sort:hover span {
 	overflow: hidden;
 	line-height: 1000px;
 	background-image:
-		url(../images/floor-sort20131202.png);
+		url(images/floor-sort20131202.png);
 	background-repeat: no-repeat;
 	vertical-align: top;
 	cursor: pointer;
@@ -6486,7 +6486,7 @@ a.floor-sort:hover span {
 	top: 3px;
 	margin-right: 5px;
 	background:
-		url(../images/floor-sort20131202.png)
+		url(images/floor-sort20131202.png)
 		-5px -118px no-repeat
 }
 
@@ -6523,7 +6523,7 @@ a.floor-sort:hover span {
 	top: -5px;
 	width: 115px;
 	height: 22px;
-	background: url(../images/18.png) 0
+	background: url(images/18.png) 0
 		-54px no-repeat;
 	line-height: 1000px;
 	overflow: hidden
@@ -6573,7 +6573,7 @@ a.floor-sort:hover span {
 	position: relative;
 	top: 3px;
 	margin: 0 4px;
-	background: url(../images/17.png)
+	background: url(images/17.png)
 		-5px -3px no-repeat;
 	height: 18px;
 	width: 12px;
@@ -6599,7 +6599,7 @@ a.floor-sort:hover span {
 	position: absolute;
 	right: -5px;
 	top: -5px;
-	background: url(../images/17.png)
+	background: url(images/17.png)
 		-35px 0;
 	width: 19px;
 	height: 19px;
@@ -6670,7 +6670,7 @@ a.floor-sort:hover span {
 	height: 100%;
 	left: 0;
 	top: 0;
-	background: url(../images/blank.gif);
+	background: url(images/blank.gif);
 	z-index: 2
 }
 
@@ -6781,7 +6781,7 @@ a.floor-sort:hover span {
 	display: block;
 	height: 60px;
 	background:
-		url(../images/index.showcase.tg.png)
+		url(images/index.showcase.tg.png)
 		no-repeat 0 28px
 }
 
@@ -6982,7 +6982,7 @@ a.floor-sort:hover span {
 	margin-left: -18px;
 	margin-top: 9px;
 	background:
-		url(../images/index-jd-wx-qrcode.png)
+		url(images/index-jd-wx-qrcode.png)
 		no-repeat
 }
 
@@ -7004,7 +7004,7 @@ a.floor-sort:hover span {
 	z-index: 10;
 	border: 1px solid #ddd;
 	background:
-		url(../images/index-jd-wx-qrcode.png)
+		url(images/index-jd-wx-qrcode.png)
 		no-repeat 0 -30px #fff;
 	-moz-box-shadow: 0 0 10px rgba(0, 0, 0, .12);
 	-webkit-box-shadow: 0 0 10px rgba(0, 0, 0, .12);

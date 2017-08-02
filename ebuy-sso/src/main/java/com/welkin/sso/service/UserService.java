@@ -17,26 +17,23 @@ import com.welkin.commons.CookieUtils;
 import com.welkin.commons.JsonUtils;
 import com.welkin.commons.Message;
 import com.welkin.commons.MessageUtil;
+import com.welkin.dao.RedisDao;
 import com.welkin.mapper.TbUserMapper;
 import com.welkin.pojo.TbUser;
 import com.welkin.pojo.TbUserExample;
 import com.welkin.pojo.TbUserExample.Criteria;
-import com.welkin.sso.dao.RedisClient;
 import com.welkin.sso.service.UserService;
 
 @Service
 public class UserService {
-
 	@Autowired
-	private TbUserMapper userMapper;
-
+	private TbUserMapper tbUserMapper;
 	@Autowired
-	private RedisClient jedisClient;
-
+	private RedisDao redis;
 	@Value("${REDIS_USER_SESSION_KEY}")
 	private String REDIS_USER_SESSION_KEY;
-
-	private Integer SSO_SESSION_EXPIRE = 1800;
+	@Value("${SSO_SESSION_EXPIRE}")
+	private Integer SSO_SESSION_EXPIRE; // = 1800;
 
 	public Message checkData(String content, Integer type) {
 		// 创建查询条件
@@ -54,10 +51,9 @@ public class UserService {
 			criteria.andEmailEqualTo(content);
 
 		// 执行查询
-		List<TbUser> list = userMapper.selectByExample(example);
+		List<TbUser> list = tbUserMapper.selectByExample(example);
 		if (list == null || list.size() == 0)
 			return MessageUtil.generateStatus(true);
-
 		return MessageUtil.generateStatus(false);
 	}
 
@@ -66,7 +62,7 @@ public class UserService {
 		user.setCreated(new Date());
 		// md5加密
 		user.setPassword(DigestUtils.md5DigestAsHex(user.getPassword().getBytes()));
-		userMapper.insert(user);
+		tbUserMapper.insert(user);
 		return MessageUtil.generateStatus(true);
 	}
 
@@ -83,14 +79,14 @@ public class UserService {
 		TbUserExample example = new TbUserExample();
 		Criteria criteria = example.createCriteria();
 		criteria.andUsernameEqualTo(username);
-		List<TbUser> list = userMapper.selectByExample(example);
+		List<TbUser> list = tbUserMapper.selectByExample(example);
 		// 如果没有此用户名
 		if (null == list || list.size() == 0)
 			return MessageUtil.build(400, "用户名或密码错误");
-		
+
 		TbUser user = list.get(0);
 		// 比对密码
-		if (!DigestUtils.md5DigestAsHex(password.getBytes()).equals(user.getPassword())) 
+		if (!DigestUtils.md5DigestAsHex(password.getBytes()).equals(user.getPassword()))
 			return MessageUtil.build(400, "用户名或密码错误");
 
 		// 生成token
@@ -98,27 +94,23 @@ public class UserService {
 		// 保存用户之前，把用户对象中的密码清空。
 		user.setPassword(null);
 		// 把用户信息写入redis
-		jedisClient.set(REDIS_USER_SESSION_KEY + ":" + token, JsonUtils.objectToJson(user));
+		redis.set(REDIS_USER_SESSION_KEY + ":" + token, JsonUtils.objectToJson(user));
 		// 设置session的过期时间
-		jedisClient.expire(REDIS_USER_SESSION_KEY + ":" + token, SSO_SESSION_EXPIRE);
-
+		redis.expire(REDIS_USER_SESSION_KEY + ":" + token, SSO_SESSION_EXPIRE);
 		// 添加写cookie的逻辑，cookie的有效期是关闭浏览器就失效。
 		CookieUtils.setCookie(request, response, "TT_TOKEN", token);
-
 		// 返回token
 		return MessageUtil.generateStatus(true);
 	}
 
 	public Message getUserByToken(String token) {
-
 		// 根据token从redis中查询用户信息
-		String json = jedisClient.get(REDIS_USER_SESSION_KEY + ":" + token);
+		String json = redis.get(REDIS_USER_SESSION_KEY + ":" + token);
 		// 判断是否为空
-		if (StringUtils.isBlank(json)) 
+		if (StringUtils.isBlank(json))
 			return MessageUtil.build(400, "此session已经过期，请重新登录");
-
 		// 更新过期时间
-		jedisClient.expire(REDIS_USER_SESSION_KEY + ":" + token, SSO_SESSION_EXPIRE);
+		redis.expire(REDIS_USER_SESSION_KEY + ":" + token, SSO_SESSION_EXPIRE);
 		// 返回用户信息
 		return MessageUtil.build(200, JsonUtils.jsonToObject(json, TbUser.class));
 	}

@@ -48,7 +48,7 @@ function call(callType,url,param,successDivId,messageDivId){
 		async: false,
 		success : function(dataResult,textStatus) {
 		    //服务器返回异常处理,如果有消息div则放入,没有则弹出
-			if(textStatus == 5000){
+			if(textStatus == 500){
 				if(messageDivId != null){
 					isReturn = false;
 				    $("#"+messageDivId).html(dataResult);

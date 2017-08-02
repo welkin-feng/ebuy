@@ -1,6 +1,5 @@
 package com.welkin.portal.service;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -12,9 +11,6 @@ import javax.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
-import com.fasterxml.jackson.core.JsonParseException;
-import com.fasterxml.jackson.databind.JsonMappingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.welkin.commons.CookieUtils;
 import com.welkin.commons.JsonUtils;
 import com.welkin.commons.Message;
@@ -166,7 +162,6 @@ public class CartService {
 						results.add(200);
 					else 
 						results.add(500);
-
 					break;
 				}
 			}

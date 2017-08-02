@@ -8,7 +8,7 @@
         http://www.springframework.org/schema/context/spring-context.xsd">
 	<!-- 加载配置文件 -->
 	<context:property-placeholder location="classpath:resource/*.properties" />
-	<context:component-scan base-package="com.welkin.sso.dao" />
+	<context:component-scan base-package="com.welkin.dao" />
 	<!-- 连接池配置 -->
 	<bean id="jedisPoolConfig" class="redis.clients.jedis.JedisPoolConfig">
 		<!-- 最大连接数 -->

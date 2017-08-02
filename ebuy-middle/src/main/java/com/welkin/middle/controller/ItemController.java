@@ -23,11 +23,8 @@ public class ItemController {
 	@RequestMapping(value = "/query/item", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
 	@ResponseBody
 	public String findItemByItemId(Long itemId) {
-
 		System.out.println("itemId:" + itemId);
-
 		String item = itemService.queryItemByItemId(itemId);
-
 		return item;
 	}
 
@@ -40,11 +37,8 @@ public class ItemController {
 	@RequestMapping(value = "/query/itemDesc", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
 	@ResponseBody
 	public String findItemDescByItemId(Long itemId) {
-
 		System.out.println("itemId:" + itemId);
-
 		String itemDesc = itemService.queryItemDescByItemId(itemId);
-
 		return itemDesc;
 	}
 
@@ -58,7 +52,6 @@ public class ItemController {
 	@ResponseBody
 	public String findItemParamItemByItemId(Long itemId) {
 		String itemParamItem = itemService.queryItemParamItemByItemId(itemId);
-
 		return itemParamItem;
 	}
 

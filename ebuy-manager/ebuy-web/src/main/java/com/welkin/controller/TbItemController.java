@@ -38,8 +38,8 @@ public class TbItemController {
 
 	}
 
-	@RequestMapping("/list")
 	// spring 提供了 @ResponseBody 注解将java的对象自动转换成json对象并发送给客户端
+	@RequestMapping("/list")
 	@ResponseBody
 	public Pager itemlist(int page, int rows) {
 		System.out.println("page:" + page + ",rows:" + rows);
@@ -50,9 +50,7 @@ public class TbItemController {
 	@RequestMapping("/cat/list")
 	@ResponseBody
 	public List<TreeNode> findCats(@RequestParam(value = "id", defaultValue = "0") Long parent_id) {
-		System.out.println("parent id: " + parent_id);
 		List<TbItemCat> li = tbItemService.findByParentId(parent_id);
-
 		List<TreeNode> mli = new ArrayList<TreeNode>();
 		// 遍历分类集合
 		for (TbItemCat cat : li) {
@@ -65,7 +63,6 @@ public class TbItemController {
 			mli.add(m);
 		}
 		System.out.println("商品分类" + li.size());
-
 		return mli;
 	}
 

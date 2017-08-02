@@ -18,13 +18,12 @@ public class SearchService {
 	
 	public SearchResult search(String queryString, int page) {
 		System.out.println("search q = " + queryString);
-		// 调用taotao-search的服务
-		//查询参数
+		// 查询参数
 		Map<String, String> param = new HashMap<>();
 		param.put("q", queryString);
 		param.put("page", page + "");
 		try {
-			//调用服务
+			// 调用search的服务
 			String json = HttpClientUtils.doGet(SEARCH_URL, param);
 			System.out.println(json);
 			//把字符串转换成java对象

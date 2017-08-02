@@ -66,8 +66,8 @@ public class TbItemOpController {
 	@RequestMapping("/delete")
 	@ResponseBody
 	public Message delete(@RequestParam(value = "ids", required = true) ArrayList<Long> ids) {
-		int x = tbItemOpService.delete(ids);
-		return MessageUtil.generateStatus(x);
+		boolean flag = tbItemOpService.delete(ids);
+		return MessageUtil.generateStatus(flag);
 	}
 
 	// 下架商品
@@ -93,7 +93,7 @@ public class TbItemOpController {
 		System.out.println("商品描述:" + desc);
 		System.out.println("商品规格:" + itemParam);
 
-		int x = tbItemOpService.updateItem(po, desc, itemParam);
+		boolean x = tbItemOpService.updateItem(po, desc, itemParam);
 		return MessageUtil.generateStatus(x);
 	}
 }

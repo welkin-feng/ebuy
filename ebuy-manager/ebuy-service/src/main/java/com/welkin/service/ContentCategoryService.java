@@ -6,6 +6,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.welkin.dao.RedisDao;
 import com.welkin.mapper.TbContentCategoryMapper;
 import com.welkin.mapper.TbContentMapper;
 import com.welkin.pojo.TbContentCategory;
@@ -19,13 +20,13 @@ public class ContentCategoryService {
 	private TbContentCategoryMapper tbContentCategoryMapper;
 	@Autowired
 	private TbContentMapper tbContentMapper;
+	@Autowired
+	private RedisDao redis;
 
 	public int delete(Long id) {
-
 		//在删除之前拿到pid
 		Long pid = tbContentCategoryMapper.selectByPrimaryKey(id).getParentId();
 		
-
 		// 删内容类别
 		int x1 = tbContentCategoryMapper.deleteByPrimaryKey(id);
 		// 删内容类别下面的所有内容
@@ -34,10 +35,6 @@ public class ContentCategoryService {
 		c.andCategoryIdEqualTo(id);
 		int x2 = tbContentMapper.deleteByExample(ex);
 
-		
-		//空指针错误
-		//System.out.println("-----------------------pid=" +pid);
-		
 		List<TbContentCategory> subli = findByParentId(pid);
 		if(subli==null || subli.isEmpty()) {
 			TbContentCategory record = new TbContentCategory();
@@ -45,7 +42,6 @@ public class ContentCategoryService {
 			record.setIsParent(false);
 			tbContentCategoryMapper.updateByPrimaryKeySelective(record);
 		}
-		
 
 		return x1 & x2;
 	}

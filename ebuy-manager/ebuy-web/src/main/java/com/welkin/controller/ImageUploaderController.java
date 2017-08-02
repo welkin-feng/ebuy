@@ -10,8 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
+import com.welkin.commons.JsonUtils;
 import com.welkin.service.ImageUploaderService;
 
 @Controller
@@ -39,15 +38,7 @@ public class ImageUploaderController {
 		}
 
 		// 将对象转换成字符串
-		ObjectMapper om = new ObjectMapper();
-		String s = null;
-		try {
-			s = om.writeValueAsString(m);
-		} catch (JsonProcessingException e) {
-			e.printStackTrace();
-		}
-		return s;
-
+		return JsonUtils.objectToJson(m);
 	}
 
 }

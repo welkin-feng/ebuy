@@ -4,10 +4,12 @@ import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import com.github.pagehelper.PageHelper;
 import com.welkin.commons.Pager;
+import com.welkin.dao.RedisDao;
 import com.welkin.mapper.TbItemCatMapper;
 import com.welkin.mapper.TbItemDescMapper;
 import com.welkin.mapper.TbItemMapper;
@@ -31,6 +33,14 @@ public class TbItemService {
 	private TbItemDescMapper tbItemDescMapper;
 	@Autowired
 	private TbItemParamItemMapper tbItemParamItemMapper;
+	@Autowired
+	private RedisDao redis;
+	@Value("${TB_ITEM_KEY}")
+	private String TB_ITEM_KEY;
+	@Value("${TB_ITEM_DESC_KEY}")
+	private String TB_ITEM_DESC_KEY;
+	@Value("${TB_ITEM_PARAM_ITEM_KEY}")
+	private String TB_ITEM_PARAM_ITEM_KEY;
 
 	/**
 	 * 根据itemid查询ItemDesc
@@ -38,9 +48,7 @@ public class TbItemService {
 	 * @return
 	 */
 	public TbItemDesc findTbItemDescById(Long itemId) {
-		TbItemDesc itemdesc = tbItemDescMapper.selectByPrimaryKey(itemId);
-
-		return itemdesc;
+		return tbItemDescMapper.selectByPrimaryKey(itemId);
 	}
 
 	/**
@@ -66,15 +74,17 @@ public class TbItemService {
 	 * @param paramStr 当前商品规格信息
 	 * @return
 	 */
-	public int save(TbItem po, String desc, String paramStr) {
+	public boolean save(TbItem po, String desc, String paramStr) {
 		po.setId(System.currentTimeMillis());
 		po.setStatus((byte) 1);
 		po.setCreated(new Date());
 		po.setUpdated(new Date());
 		int x1 = tbItemMapper.insert(po);
 		int x2 = 1, x3 = 1;
+		boolean flag2 = false, flag3 = false;
 
 		if (desc != null) {
+			flag2 = true;
 			TbItemDesc tbItemDesc = new TbItemDesc();
 			tbItemDesc.setItemId(po.getId());
 			tbItemDesc.setItemDesc(desc);
@@ -83,6 +93,7 @@ public class TbItemService {
 			x2 = tbItemDescMapper.insert(tbItemDesc);
 		}
 		if (paramStr != null) {
+			flag3 = true;
 			TbItemParamItem tbItemParamItem = new TbItemParamItem();
 			tbItemParamItem.setItemId(po.getId());
 			tbItemParamItem.setParamData(paramStr);
@@ -91,7 +102,15 @@ public class TbItemService {
 			x3 = tbItemParamItemMapper.insert(tbItemParamItem);
 		}
 
-		return x1 & x2 & x3;
+		if ((x1 & x2 & x3) > 0) {
+			redis.del(TB_ITEM_KEY);
+			if (flag2)
+				redis.del(TB_ITEM_DESC_KEY);
+			if (flag3)
+				redis.del(TB_ITEM_PARAM_ITEM_KEY);
+			return true;
+		}
+		return false;
 	}
 
 	/**
@@ -100,23 +119,20 @@ public class TbItemService {
 	 * @param rows 每页显示记录数量
 	 * @return 封装了分页信息的对象
 	 */
-	public Pager selectPager(Integer page, Integer rows) {
-		Pager pager = new Pager();
-		// 查询前开始分页
-		// page: 第几页, rows：每页的记录数量
-		PageHelper.startPage(page, rows);
+public Pager selectPager(Integer page, Integer rows) {
+	Pager pager = new Pager();
+	// 查询前开始分页
+	// page: 第几页, rows：每页的记录数量
+	PageHelper.startPage(page, rows);
 
-		TbItemExample ex = new TbItemExample();
-		List<TbItem> li = tbItemMapper.selectByExample(ex);
-		// 获取查询集合
-		// PageInfo<要查询的实体类> pi = new PageInfo<>(查询后的集合对象);
-		// PageInfo<TbItem> pi = new PageInfo<>(li);
+	TbItemExample ex = new TbItemExample();
+	List<TbItem> li = tbItemMapper.selectByExample(ex);
 
-		pager.setRows(li);
-		// pager.setTotal(pi.getTotal());
-		pager.setTotal((long) tbItemMapper.countByExample(ex));
-		return pager;
-	}
+	pager.setRows(li);
+	// pager.setTotal(pi.getTotal());
+	pager.setTotal((long) tbItemMapper.countByExample(ex));
+	return pager;
+}
 
 	/**
 	 * 功能：按父id查询当前类型的所有分类

@@ -5,12 +5,14 @@ import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.welkin.commons.JsonUtils;
 import com.welkin.commons.Pager;
+import com.welkin.dao.RedisDao;
 import com.welkin.mapper.TbItemCatMapper;
 import com.welkin.mapper.TbItemMapper;
 import com.welkin.mapper.TbItemParamItemMapper;
@@ -30,11 +32,15 @@ public class TbItemParamService {
 	@Autowired
 	private TbItemParamMapper tbItemParamMapper;
 	@Autowired
-	private TbItemCatMapper tbItemCatMapper;
-	@Autowired
 	private TbItemMapper tbItemMapper;
 	@Autowired
+	private TbItemCatMapper tbItemCatMapper;
+	@Autowired
 	private TbItemParamItemMapper tbItemParamItemMapper;
+	@Autowired
+	private RedisDao redis;
+	@Value("${TB_ITEM_PARAM_ITEM_KEY}")
+	private String TB_ITEM_PARAM_ITEM_KEY;
 
 	/**
 	 * 功能：更新产品类型规格基本信息，并同时更新该类型所有商品的规格信息
@@ -56,9 +62,9 @@ public class TbItemParamService {
 		c2.andCidEqualTo(tbItemParam.getItemCatId());
 		List<TbItem> tbItems = tbItemMapper.selectByExample(ex2);
 		List<Long> tbItems_ItemId = new ArrayList<Long>();
-		for (int i = 0; i < tbItems.size(); i++) {
+		for (int i = 0; i < tbItems.size(); i++) 
 			tbItems_ItemId.add(tbItems.get(i).getId());
-		}
+		
 		// 根据所有商品id从Tb_Item_param_item查询所有商品规格信息
 		TbItemParamItemExample ex3 = new TbItemParamItemExample();
 		com.welkin.pojo.TbItemParamItemExample.Criteria c3 = ex3.createCriteria();
@@ -70,9 +76,10 @@ public class TbItemParamService {
 			tbItemParamItem.setUpdated(new Date());
 			updateByTbItemParamItemRes += tbItemParamItemMapper.updateByExampleSelective(tbItemParamItem, ex3);
 		}
-		if (updateTbItemParamRes > 0 && updateByTbItemParamItemRes > 0)
+		if (updateTbItemParamRes > 0 && updateByTbItemParamItemRes > 0) {
+			redis.del(TB_ITEM_PARAM_ITEM_KEY);
 			return true;
-
+		}
 		return false;
 	}
 

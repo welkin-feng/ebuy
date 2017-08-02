@@ -14,7 +14,7 @@ public class IndexController {
 	private String MIDDLE_URL;
 	@Value("${MIDDLE_ADLIST_URL}")
 	private String MIDDLE_ADLIST_URL;
-	
+
 	@RequestMapping("/{pager}")
 	public String gopager(@PathVariable String pager) {
 		return pager;
@@ -31,25 +31,23 @@ public class IndexController {
 		return "index";
 	}
 
-	/*@RequestMapping(value = "/itemcat/all", produces = MediaType.APPLICATION_JSON_VALUE + ";charset=utf-8")
-	@ResponseBody
-	public String findAllCat(String callback, HttpServletRequest request, HttpServletResponse response) throws UnsupportedEncodingException {
-		// 设置编码格式
-		try {
-			request.setCharacterEncoding("utf-8");
-		} catch (UnsupportedEncodingException e1) {
-			e1.printStackTrace();
-		}
-		response.setContentType("text/html;charset=utf-8");
-		response.setHeader("Cache-Control", "no-cache");
-		
-		System.out.println("商品分类信息");
-		String url = MIDDLE_URL + MIDDLE_ITEMCAT_URL;
-		Map<String, String> param = new HashMap<>();
-		param.put("callback", callback);
-		String r = HttpClientUtils.doPost(url, param);
-
-		System.out.println("return :" + r);
-		return r;
-	}*/
+	/*
+	 * @RequestMapping(value = "/itemcat/all", produces =
+	 * MediaType.APPLICATION_JSON_VALUE + ";charset=utf-8")
+	 * 
+	 * @ResponseBody public String findAllCat(String callback,
+	 * HttpServletRequest request, HttpServletResponse response) throws
+	 * UnsupportedEncodingException { // 设置编码格式 try {
+	 * request.setCharacterEncoding("utf-8"); } catch
+	 * (UnsupportedEncodingException e1) { e1.printStackTrace(); }
+	 * response.setContentType("text/html;charset=utf-8");
+	 * response.setHeader("Cache-Control", "no-cache");
+	 * 
+	 * System.out.println("商品分类信息"); String url = MIDDLE_URL +
+	 * MIDDLE_ITEMCAT_URL; Map<String, String> param = new HashMap<>();
+	 * param.put("callback", callback); String r = HttpClientUtils.doPost(url,
+	 * param);
+	 * 
+	 * System.out.println("return :" + r); return r; }
+	 */
 }

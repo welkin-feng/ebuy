@@ -31,12 +31,15 @@ public class HttpClientUtils {
 
 	/**
 	 * 模拟发送get请求
-	 * @param url	get请求的url地址
-	 * @param params	传递参数
-	 * @return	服务器的响应数据
-	 * @throws URISyntaxException 
-	 * @throws IOException 
-	 * @throws ClientProtocolException 
+	 * 
+	 * @param url
+	 *            get请求的url地址
+	 * @param params
+	 *            传递参数
+	 * @return 服务器的响应数据
+	 * @throws URISyntaxException
+	 * @throws IOException
+	 * @throws ClientProtocolException
 	 */
 	public static String doGet(String url, Map<String, String> params) {
 		CloseableHttpResponse response = null;
@@ -48,7 +51,7 @@ public class HttpClientUtils {
 			URIBuilder uribuild = new URIBuilder(url);
 			// 3 为get请求传递参数
 			List<NameValuePair> list = new ArrayList<NameValuePair>();
-			if(params != null && params.size() > 0) {
+			if (params != null && params.size() > 0) {
 				for (Entry<String, String> en : params.entrySet()) {
 					// 封装请求参数的对象
 					BasicNameValuePair nv = new BasicNameValuePair(en.getKey(), en.getValue());
@@ -68,7 +71,7 @@ public class HttpClientUtils {
 			// 8 得到响应对象中的实体
 			HttpEntity entity = response.getEntity();
 			// 9 将响应实体中的字符集进行处理
-			res =  EntityUtils.toString(entity, "UTF-8");
+			res = EntityUtils.toString(entity, "UTF-8");
 		} catch (ClientProtocolException e) {
 			e.printStackTrace();
 		} catch (ParseException e) {
@@ -94,7 +97,7 @@ public class HttpClientUtils {
 
 	public static String doPost(String url, Map<String, String> params) {
 		String res = null;
-		CloseableHttpResponse response=null;
+		CloseableHttpResponse response = null;
 		try {
 			// 1 创建客户端
 			CloseableHttpClient client = HttpClients.createDefault();
@@ -124,7 +127,6 @@ public class HttpClientUtils {
 
 			// 9 通过响应对象得到服务器状态
 			// int resCode = response.getStatusLine().getStatusCode();
-			
 
 			// 10得到响应对象中实体
 			HttpEntity entity = response.getEntity();
@@ -140,7 +142,7 @@ public class HttpClientUtils {
 			e.printStackTrace();
 		} catch (IOException e) {
 			e.printStackTrace();
-		}finally {
+		} finally {
 			try {
 				response.close();
 			} catch (IOException e) {

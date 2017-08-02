@@ -34,9 +34,9 @@ public class CartService {
 	public List<CartItem> getCartItemList(HttpServletRequest request) {
 		// 从cookie中取商品列表
 		String cartJson = CookieUtils.getCookieValue(request, "TT_CART", true);
-		if (cartJson == null) 
+		if (cartJson == null)
 			return new ArrayList<>();
-		
+
 		// 把json转换成商品列表
 		try {
 			List<CartItem> list = JsonUtils.jsonToList(cartJson, CartItem.class);
@@ -84,7 +84,7 @@ public class CartService {
 			String json = HttpClientUtils.doPost(MIDDLE_URL + MIDDLE_QUERY_ITEM_URL, params);
 			// System.out.println("json:"+json);
 			TbItem item = JsonUtils.jsonToObject(json, TbItem.class);
-			
+
 			// 为购物车中商品对象赋值
 			cartItem = new CartItem();
 			cartItem.setId(itemId);
@@ -137,7 +137,7 @@ public class CartService {
 				System.out.println("购物车删除" + itemId + "商品成功");
 				// 更新购物车列表，并重新写入cookie
 				CookieUtils.setCookie(request, response, "TT_CART", JsonUtils.objectToJson(itemList), true);
-				return MessageUtil.build(200) ;
+				return MessageUtil.build(200);
 			} else {
 				System.out.println("购物车删除" + itemId + "商品失败");
 				// 更新购物车列表，并重新写入cookie
@@ -158,14 +158,14 @@ public class CartService {
 				// 找到该商品并删除
 				if (itemList.get(j).getId().equals(itemIds.get(i))) {
 					cartItem = itemList.get(j);
-					if (itemList.remove(cartItem)) 
+					if (itemList.remove(cartItem))
 						results.add(200);
-					else 
+					else
 						results.add(500);
 					break;
 				}
 			}
-			if (cartItem == null) 
+			if (cartItem == null)
 				results.add(500);
 		}
 

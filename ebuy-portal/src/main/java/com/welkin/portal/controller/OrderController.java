@@ -1,6 +1,5 @@
 package com.welkin.portal.controller;
 
-
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -27,7 +26,7 @@ import com.welkin.portal.utils.HttpClientUtils;
 @Controller
 @RequestMapping("/order")
 public class OrderController {
-	
+
 	@Autowired
 	private CartService cartService;
 	@Autowired
@@ -40,47 +39,46 @@ public class OrderController {
 	@RequestMapping("/myorders")
 	public ModelAndView showMyorders(HttpServletRequest request) {
 		ModelAndView mv = new ModelAndView("my-orders");
-		
+
 		List<TbOrder> orderlist = orderService.getOrdersByUser(getTbUser(request).getId());
-		/*List<TbOrderItem> itemlist = new ArrayList<TbOrderItem>();
-		itemlist.clear();
-		for (TbOrder tbOrder : orderlist) {
-			itemlist = orderService.getItemsByOrderId(tbOrder.getOrderId());
-		}*/
-		
+		/*
+		 * List<TbOrderItem> itemlist = new ArrayList<TbOrderItem>();
+		 * itemlist.clear(); for (TbOrder tbOrder : orderlist) { itemlist =
+		 * orderService.getItemsByOrderId(tbOrder.getOrderId()); }
+		 */
+
 		mv.addObject("orderlist", orderlist);
-		
+
 		return mv;
 	}
-	
+
 	@RequestMapping("/order-cart")
 	public String showOrderCart(HttpServletRequest request, HttpServletResponse response, Model model) {
-		//取购物车商品列表
+		// 取购物车商品列表
 		List<CartItem> list = cartService.getCartItemList(request);
-		//传递给页面
+		// 传递给页面
 		model.addAttribute("cartList", list);
-		
+
 		return "order-cart";
 	}
-	
+
 	@RequestMapping("/create")
-	public String createOrder(Order order, Model model, 
-			HttpServletRequest request, HttpServletResponse response) {
-		
+	public String createOrder(Order order, Model model, HttpServletRequest request, HttpServletResponse response) {
+
 		try {
 			TbUser user = getTbUser(request);
-			
-			//在order对象中补全用户信息
+
+			// 在order对象中补全用户信息
 			order.setUserId(user.getId());
 			order.setBuyerNick(user.getUsername());
-			//调用服务
+			// 调用服务
 			String orderId = orderService.createOrder(order);
-			
+
 			model.addAttribute("orderId", orderId);
 			model.addAttribute("payment", order.getPayment());
 			model.addAttribute("date", new DateTime().plusDays(3).toString("yyyy-MM-dd"));
-			
-			//订单结算成功后将Cookie中购物车商品清空
+
+			// 订单结算成功后将Cookie中购物车商品清空
 			CookieUtils.deleteCookie(request, response, "TT_CART");
 			return "success";
 		} catch (Exception e) {
@@ -91,18 +89,18 @@ public class OrderController {
 	}
 
 	private TbUser getTbUser(HttpServletRequest request) {
-		//从Request中取用户信息
-		//TbUser user = (TbUser) request.getAttribute("user");
-		
-		//System.out.println("user:" + user);
+		// 从Request中取用户信息
+		// TbUser user = (TbUser) request.getAttribute("user");
+
+		// System.out.println("user:" + user);
 		String userToken = CookieUtils.getCookieValue(request, "TT_TOKEN");
-		//System.out.println("userToken:" + userToken);
-		
+		// System.out.println("userToken:" + userToken);
+
 		String url = SSO_URL + SSO_USER_TOKEN + userToken;
 		String tbUserJsonData = HttpClientUtils.doPost(url);
-		
-		TbUser user =  (TbUser) MessageUtil.jsonToMessage(tbUserJsonData, TbUser.class).getData();
+
+		TbUser user = (TbUser) MessageUtil.jsonToMessage(tbUserJsonData, TbUser.class).getData();
 		return user;
 	}
-	
+
 }

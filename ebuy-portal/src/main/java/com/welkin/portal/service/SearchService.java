@@ -15,7 +15,7 @@ import com.welkin.portal.utils.HttpClientUtils;
 public class SearchService {
 	@Value("${SEARCH_URL}")
 	private String SEARCH_URL;
-	
+
 	public SearchResult search(String queryString, int page) {
 		System.out.println("search q = " + queryString);
 		// 查询参数
@@ -26,7 +26,7 @@ public class SearchService {
 			// 调用search的服务
 			String json = HttpClientUtils.doGet(SEARCH_URL, param);
 			System.out.println(json);
-			//把字符串转换成java对象
+			// 把字符串转换成java对象
 			Message m = MessageUtil.jsonToMessage(json, SearchResult.class);
 			if (m.getStatus() == 200)
 				return (SearchResult) m.getData();
@@ -35,5 +35,5 @@ public class SearchService {
 		}
 		return null;
 	}
-	
+
 }

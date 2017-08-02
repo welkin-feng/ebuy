@@ -48,7 +48,7 @@ public class SearchDao {
 		for (SolrDocument solrDocument : solrDocumentList) {
 			// 创建一商品对象
 			Item item = new Item();
-			item.setId(Long.parseLong((String) solrDocument.get("id")) );
+			item.setId(Long.parseLong((String) solrDocument.get("id")));
 			// 取高亮显示的结果
 			List<String> list = highlighting.get(solrDocument.get("id")).get("item_title");
 			String title = "";
@@ -68,7 +68,7 @@ public class SearchDao {
 		result.setItemList(itemList);
 		return result;
 	}
-	
+
 	public boolean update() throws SolrServerException, IOException {
 		List<Item> list = itemMapper.getItemList();
 		for (Item item : list) {
@@ -79,12 +79,12 @@ public class SearchDao {
 			document.addField("item_price", item.getPrice());
 			document.addField("item_image", item.getImage());
 			document.addField("item_category_name", item.getCategory_name());
-			//将文档写入索引库
+			// 将文档写入索引库
 			solrClient.add(document);
 		}
-		//提交修改
+		// 提交修改
 		UpdateResponse res = solrClient.commit();
-		if(res.getStatus() != 0) 
+		if (res.getStatus() != 0)
 			return false;
 		else
 			return true;

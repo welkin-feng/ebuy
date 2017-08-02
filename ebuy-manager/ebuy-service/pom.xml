@@ -16,6 +16,11 @@
 			<artifactId>ebuy-mapping</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
+		<dependency>
+			<groupId>com.welkin-git.ebuy</groupId>
+			<artifactId>ebuy-dao</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
 
 		<!-- 业务由spring容器管理 -->
 		<dependency>

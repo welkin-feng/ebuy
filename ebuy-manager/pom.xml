@@ -56,5 +56,6 @@
 		<module>ebuy-web</module>
 		<module>ebuy-service</module>
 		<module>ebuy-mapping</module>
+		<module>ebuy-dao</module>
 	</modules>
 </project>

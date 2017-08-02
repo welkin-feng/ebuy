@@ -16,6 +16,11 @@
 			<artifactId>ebuy-mapping</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
+		<dependency>
+			<groupId>com.welkin-git.ebuy</groupId>
+			<artifactId>ebuy-dao</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
 		
 		<!-- Spring -->
 		<dependency>
@@ -37,12 +42,6 @@
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-aspects</artifactId>
-		</dependency>
-		
-		<!-- Redis客户端 -->
-		<dependency>
-			<groupId>redis.clients</groupId>
-			<artifactId>jedis</artifactId>
 		</dependency>
 
 	</dependencies>

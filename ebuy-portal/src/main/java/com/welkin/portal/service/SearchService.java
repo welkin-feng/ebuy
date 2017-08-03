@@ -25,7 +25,6 @@ public class SearchService {
 		try {
 			// 调用search的服务
 			String json = HttpClientUtils.doGet(SEARCH_URL, param);
-			System.out.println(json);
 			// 把字符串转换成java对象
 			Message m = MessageUtil.jsonToMessage(json, SearchResult.class);
 			if (m.getStatus() == 200)

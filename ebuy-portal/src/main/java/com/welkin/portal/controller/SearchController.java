@@ -26,10 +26,6 @@ public class SearchController {
 	public String search(@RequestParam("q") String queryString,
 			@RequestParam(value = "page", defaultValue = "1") Integer page, Model model)
 			throws UnsupportedEncodingException {
-
-		// if (queryString != null) {
-		// queryString = new String(queryString.getBytes("iso8859-1"), "utf-8");
-		// }
 		SearchResult searchResult = searchService.search(queryString, page);
 		// 向页面传递参数
 		model.addAttribute("query", queryString);

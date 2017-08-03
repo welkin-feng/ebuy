@@ -31,7 +31,6 @@ public class SearchController {
 		try {
 			queryString = new String(queryString.getBytes("iso8859-1"), "utf-8");
 			searchResult = searchService.search(queryString, page, rows);
-			System.out.println("searchResult: " + searchResult);
 		} catch (Exception e) {
 			e.printStackTrace();
 			return MessageUtil.build(500, e.getMessage());

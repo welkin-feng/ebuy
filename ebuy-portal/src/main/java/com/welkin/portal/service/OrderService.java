@@ -32,22 +32,19 @@ public class OrderService {
 	private String ORDER_CREATE_URL = "/create";
 
 	public String createOrder(Order order) {
-		// 调用创建订单服务之前补全用户信息。
-		// 从cookie中后取TT_TOKEN的内容，根据token调用sso系统的服务根据token换取用户信息。
-
-		// 调用order的服务提交订单。
-		// String json = HttpClientUtil.doPostJson(ORDER_BASE_URL +
-		// ORDER_CREATE_URL, JsonUtils.objectToJson(order));
+		
 		String jsonStr = JsonUtils.objectToJson(order);
 		Map<String, String> param = new HashMap<String, String>();
 		param.put("jsonStr", jsonStr);
+		// 调用order的服务提交订单。
 		// 得到的 json 中包含状态码和订单 id
 		String json = HttpClientUtils.doPost(ORDER_URL + ORDER_CREATE_URL, param);
-
+		
 		// 把 json 转换成 Message
-		Message m = MessageUtil.jsonToMessage(json, Long.class);
+		Message m = MessageUtil.jsonToMessage(json);
 		if (m.getStatus() == 200) {
 			Object orderId = m.getData();
+			System.out.println("orderId: " + orderId.toString());
 			return orderId.toString();
 		}
 		return "";

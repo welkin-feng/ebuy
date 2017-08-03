@@ -26,8 +26,10 @@ public class OrderController {
 	public Message createOrder(String jsonStr) {
 		
 		try {
+			System.out.println("json : " + jsonStr);
 			Order order = JsonUtils.jsonToObject(jsonStr, Order.class);
 			Message result = orderService.createOrder(order, order.getOrderItems(), order.getOrderShipping());
+			System.out.println("创建订单状态：" + result.getStatus());
 			// 将订单 id 放入 Message 中返回
 			return result;
 		} catch (Exception e) {

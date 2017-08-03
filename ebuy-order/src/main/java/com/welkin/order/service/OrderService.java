@@ -34,6 +34,9 @@ public class OrderService {
 	private String ORDER_INIT_ID; // = "100544";
 	@Value("${ORDER_DETAIL_GEN_KEY}")
 	private String ORDER_DETAIL_GEN_KEY;
+	@Value("${ORDER_DETAIL_INIT_ID}")
+	private String ORDER_DETAIL_INIT_ID;
+	
 
 	/**
 	 * 
@@ -43,6 +46,7 @@ public class OrderService {
 	 * @return 将订单 id 放入 Message 中返回
 	 */
 	public Message createOrder(TbOrder order, List<TbOrderItem> itemList, TbOrderShipping orderShipping) {
+		Date date = new Date();
 		// 向订单表中插入记录
 		// 获得订单号
 		String string = redis.get(ORDER_GEN_KEY);
@@ -54,13 +58,17 @@ public class OrderService {
 		order.setOrderId(orderId + "");
 		// 状态：1、未付款，2、已付款，3、未发货，4、已发货，5、交易成功，6、交易关闭
 		order.setStatus(1);
-		Date date = new Date();
+		
 		order.setCreateTime(date);
 		order.setUpdateTime(date);
 		// 0：未评价 1：已评价
 		order.setBuyerRate(0);
 		// 向订单表插入数据
 		orderMapper.insert(order);
+		String orderInitId = redis.get(ORDER_GEN_KEY);
+		if (StringUtils.isBlank(orderInitId)) {
+			redis.set(ORDER_DETAIL_GEN_KEY, ORDER_DETAIL_INIT_ID);
+		}
 		// 插入订单明细
 		for (TbOrderItem tbOrderItem : itemList) {
 			// 补全订单明细
@@ -69,15 +77,18 @@ public class OrderService {
 			tbOrderItem.setId(orderDetailId + "");
 			tbOrderItem.setOrderId(orderId + "");
 			// 向订单明细插入记录
-			orderItemMapper.insert(tbOrderItem);
+			int x1 = orderItemMapper.insert(tbOrderItem);
+			if (x1 <= 0)
+				return MessageUtil.generateStatus(false);
 		}
 		// 插入物流表
 		// 补全物流表的属性
 		orderShipping.setOrderId(orderId + "");
 		orderShipping.setCreated(date);
 		orderShipping.setUpdated(date);
-		orderShippingMapper.insert(orderShipping);
-
-		return MessageUtil.build(200, orderId);
+		int x2 = orderShippingMapper.insert(orderShipping);
+		if(x2 > 0)
+			return MessageUtil.build(200, orderId);
+		return MessageUtil.generateStatus(false);
 	}
 }

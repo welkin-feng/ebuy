@@ -32,8 +32,7 @@ public class MessageUtil {
 	}
 
 	/**
-	 * if x > 0 , status = 200; 
-	 * else if x <= 0, status =500
+	 * if x > 0 , status = 200; else if x <= 0, status =500
 	 * 
 	 * @param x
 	 * @return
@@ -47,8 +46,8 @@ public class MessageUtil {
 	}
 
 	/**
-	 * flag == true, Message(200, true); 
-	 * flag == false, Message(200, false)
+	 * flag == true, Message(200, true); flag == false, Message(200, false)
+	 * 
 	 * @param flag
 	 * @return
 	 */
@@ -61,6 +60,7 @@ public class MessageUtil {
 
 	/**
 	 * 将json结果集转化为 Message 对象，如果 clazz 参数不为 null，则设置 Massage.data 为这个类的对象
+	 * 
 	 * @param <T>
 	 * 
 	 * @param jsonData
@@ -90,7 +90,11 @@ public class MessageUtil {
 			return null;
 		}
 	}
-	
+
+	public static Message jsonToMessage(String jsonData) {
+		return jsonToMessage(jsonData, null);
+	}
+
 	/**
 	 * 将Message类转化为json格式的String
 	 * 
@@ -100,7 +104,5 @@ public class MessageUtil {
 	public static String messageToJson(Message m) {
 		return JsonUtils.objectToJson(m);
 	}
-
-	
 
 }

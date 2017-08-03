@@ -150,8 +150,6 @@
 				$.ajax({
 	            	url : REGISTER.param.surl + "/user/check/"+escape($("#regName").val())+"/1?r=" + Math.random(),
 	            	success : function(data) {
-	            		alert(data);
-	            		alert(data.data);
 	            		if (data.data) {
 	            			//检查手机号是否存在
 	            			$.ajax({

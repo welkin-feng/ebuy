@@ -80,7 +80,7 @@
 					if (data.status == 200) {
 						alert("登录成功！");
 						if (redirectUrl == "") {
-							location.href = "http://"+<%=LOCAL_HOST_IP%>+":8000/portal/";
+							location.href = "http://<%=LOCAL_HOST_IP%>:8000/portal/";
 						} else {
 							location.href = redirectUrl;
 						}

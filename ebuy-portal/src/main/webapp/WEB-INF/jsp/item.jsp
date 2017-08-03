@@ -41,7 +41,7 @@
 <!-- header end -->
 <div class="w">
 	<div class="breadcrumb">
-		<strong><a href="http://channel.jd.com/electronic.html">家用电器</a></strong><span>&nbsp;&gt;&nbsp;<a href="http://channel.jd.com/737-794.html" >大 家 电</a>&nbsp;&gt;&nbsp;<a href="http://list.jd.com/737-794-798.html" >平板电视</a>&nbsp;&gt;&nbsp;</span><script type="text/javascript">pageConfig.product.cat=[737,794,798];</script><span><a href="http://www.jd.com/pinpai/798-20710.html" >长虹（CHANGHONG）</a>&nbsp;&gt;&nbsp;<a href="http://item.jd.com/1221882.html" >长虹LED42538ES</a></span>
+		
 	</div>
 </div><!--breadcrumb end-->
 <div class="w">
@@ -135,7 +135,7 @@
 		        <li id="choose-result"><div class="dt"></div><div class="dd"></div></li>
 				<li id="choose-btns">
 					<div id="choose-btn-append"  class="btn">
-							<a class="btn-append " id="InitCartUrl" href="<%=request.getContextPath() %>/cart/add/${item.id}.html" clstag="shangpin|keycount|product|initcarturl">加入购物车<b></b></a>
+							<a class="btn-append " id="InitCartUrl" href="javascript:void(0)" clstag="shangpin|keycount|product|initcarturl">加入购物车<b></b></a>
 					</div>
 					<div id="choose-btn-easybuy" class="btn"></div>
 					<div id="choose-btn-divide" class="btn"></div>
@@ -158,12 +158,12 @@
 							<c:choose>
 								<c:when test="${status.index == 0 }">
 									<li>
-										<img data-img="1" class="img-hover"  alt="${item.title}" src="<%=request.getContextPath() %>/${pic}" width="50" height="50" data-url="${pic}">
+										<img data-img="1" class="img-hover"  alt="${item.title}" src="${pic}" width="50" height="50" data-url="${pic}">
 									</li>
 								</c:when>
 								<c:otherwise>
 									<li>
-										<img data-img="1" alt="${item.title}" src="<%=request.getContextPath() %>/${pic}" width="50" height="50" data-url="${pic}">
+										<img data-img="1" alt="${item.title}" src="${pic}" width="50" height="50" data-url="${pic}">
 									</li>
 								</c:otherwise>
 							</c:choose>
@@ -206,40 +206,40 @@
 	<li clstag="shangpin|keycount|product|psaleservice" data-widget="tab-item"><a href="javascript:;" >售后保障</a></li>
 	<li clstag="shangpin|keycount|product|zhinan" data-widget='tab-item'><a href='javascript:;'>京博士</a></li>
 </ul>
-			</div>
+</div>
 			<div class="mc" data-widget="tab-content" id="product-detail-1">
 				<ul class="detail-list">
-					<li title="长虹LED42538ES">商品名称：长虹LED42538ES</li>
-					<li>商品编号：1221882</li>
-					<li>品牌：<a href="http://www.jd.com/pinpai/798-20710.html" target="_blank">长虹（CHANGHONG）</a></li>
-					<li>上架时间：2014-09-24 15:45:26</li>
+					
+					 <li title="长虹LED42538ES">商品名称：</li>
+					<li>商品编号：</li>
+					<li>品牌：</li>
+					<li>上架时间：2016-09-24 15:45:26</li>
 					<li>商品毛重：13.5kg</li>
 					<li>商品产地：中国大陆</li>
-										<li>分辨率：全高清（1920*1080）</li><li>居室场景：卧室电视 ，客厅电视</li><li>品类：LED电视（主流）</li><li>3D：不支持</li><li>功能：普通电视</li><li>尺寸：40-43英寸</li>
 				</ul>
 				<div class="detail-correction">
 					<b></b>如果您发现商品信息不准确，欢迎纠错
 				</div>
 				<div id="item-desc" class="detail-content">
-						${itemDesc.itemDesc }
+						${itemDesc.itemDesc}
 				</div>
 			</div>
 			<div class="mc hide" data-widget="tab-content" id="product-detail-2">
 				${itemParam}
 			</div>
-				<div class="mc  hide" data-widget="tab-content" id="product-detail-3"><div class="item-detail">液晶电视×1、底座×1、遥控器×1、使用说明书×1、电源线×1</div></div><div class="mc  hide" data-widget="tab-content" id="product-detail-4"></div><div class="mc hide " data-widget="tab-content" id="product-detail-5"><div class="item-detail">本产品全国联保，享受三包服务，质保期为：一年质保<br />本产品提供上门安装调试、提供上门检测和维修等售后服务，自收到商品之日起，如您所购买家电商品出现质量问题，请先联系厂家进行检测 ，凭厂商提供的故障检测证明，在“我的淘淘-客户服务-返修退换货”页面提交退换申请，将有专业售后人员提供服务。淘淘承诺您：30天内可为您退货或换货，180天内无需修理直接换货，超过180天按国家三包规定享受服务。<br />您可以查询本品牌在各地售后服务中心的联系方式，<a  class="link_1" href="http://www.changhong.com">请点击这儿查询......</a><br />
+				<div class="mc  hide" data-widget="tab-content" id="product-detail-3"><div class="item-detail">手机×1、充电器×1、耳机×1、使用说明书×1、产品包装盒×1</div></div><div class="mc  hide" data-widget="tab-content" id="product-detail-4"></div><div class="mc hide " data-widget="tab-content" id="product-detail-5"><div class="item-detail">本产品全国联保，享受三包服务，质保期为：一年质保<br />本产品提供上门安装调试、提供上门检测和维修等售后服务，自收到商品之日起，如您所购买家电商品出现质量问题，请先联系厂家进行检测 ，凭厂商提供的故障检测证明，在“我的商城-客户服务-返修退换货”页面提交退换申请，将有专业售后人员提供服务。商城承诺您：30天内可为您退货或换货，180天内无需修理直接换货，超过180天按国家三包规定享受服务。<br />您可以查询本品牌在各地售后服务中心的联系方式，<a  class="link_1" href="http://www.changhong.com">请点击这儿查询......</a><br />
 						<br/>售后服务电话：400-811-1666<br/>品牌官方网站：<a href="http://www.changhong.com" target="_blank">http://www.changhong.com</a>
 
 						</div></div><div id="product-detail-6" class="mc hide" data-widget="tab-content"></div>
 			<!--知识库二级标签、标题-->
             <div id="promises">
 	<strong>服务承诺：</strong><br />
-	淘淘向您保证所售商品均为正品行货，淘淘自营商品开具机打发票或电子发票。凭质保证书及淘淘发票，可享受全国联保服务（奢侈品、钟表除外；奢侈品、钟表由淘淘联系保修，享受法定三包售后服务），与您亲临商场选购的商品享受相同的质量保证。淘淘还为您提供具有竞争力的商品价格和<a href="http://www.jd.com/help/kdexpress.aspx" target="_blank">运费政策</a>，请您放心购买！
+	商城向您保证所售商品均为正品行货，商城自营商品开具机打发票或电子发票。凭质保证书及商城发票，可享受全国联保服务（奢侈品、钟表除外；奢侈品、钟表由商城联系保修，享受法定三包售后服务），与您亲临商场选购的商品享受相同的质量保证。商城还为您提供具有竞争力的商品价格和<a href="http://www.jd.com/help/kdexpress.aspx" target="_blank">运费政策</a>，请您放心购买！
 	<br /><br />
 	注：因厂家会在没有任何提前通知的情况下更改产品包装、产地或者一些附件，本司不能确保客户收到的货物与商城图片、产地、附件说明完全一致。只能确保为原厂正货！并且保证与当时市场上同样主流新品一致。若本商城没有及时更新，请大家谅解！ 
 </div>
 <div id="state">
-	<strong>权利声明：</strong><br />淘淘上的所有商品信息、客户评价、商品咨询、网友讨论等内容，是淘淘重要的经营资源，未经许可，禁止非法转载使用。
+	<strong>权利声明：</strong><br />商城上的所有商品信息、客户评价、商品咨询、网友讨论等内容，是商城重要的经营资源，未经许可，禁止非法转载使用。
 	<p><b>注：</b>本站商品信息均来自于合作方，其真实性、准确性和合法性由信息拥有者（合作方）负责。本站不提供任何保证，并不承担任何法律责任。</p>
 </div>
 		</div><!--product-detail end-->
@@ -261,8 +261,8 @@
 <script type="text/javascript">
 	var itemControl = {
 			param:{
-				descUrl:"<%=request.getContextPath() %>/item/desc/",
-				paramUrl:"<%=request.getContextPath() %>/item/param/"
+				descUrl:"/portal/item/desc/",
+				paramUrl:"/portal/item/param/"
 			},
 			//请求商品描述
 			getItemDesc:function(itemId) {
@@ -308,13 +308,46 @@
 		var itemId = "${item.id}";
 		//给商品规格参数tab页绑定事件
 		$("#p-con-attr").bind("click", function(){
-			
 			itemControl.getItemParam(itemId);
 		});
 		//延迟一秒加载商品描述信息
 		setTimeout(function(){
 			itemControl.getItemDesc(itemId);
 		},1000);
+		//为添加到购物车按钮添加点击事件
+		$("#InitCartUrl").bind("click", function(){
+			var buyNumber = $("#buy-num").attr("value");
+			var url = "/portal/cart/add/${item.id}.html?number=" + buyNumber;
+			$("#InitCartUrl").attr("href", url);
+			//window.location.href = url;
+		});
+		//生成breadcrumb
+		var cid = ${item.cid};
+		var find_category_url = "/portal/item/category/" + cid + ".html";
+		$.get(find_category_url, function(data) {
+			var params = JSON.parse(data);
+			var num = 0;
+			var categories = new Array();
+			for(var i in params){
+				categories[i] = params[i];
+				num++;
+			}
+			var _str = "";
+			for (var j=categories.length-1; j>=0; j--){
+				if(j == categories.length-1) {
+					_str += "<strong><a href=\"" + "" + "\"" + ">" + categories[j] + "</a></strong>";
+					_str += "&nbsp;&gt;&nbsp;";
+				}
+				else if(j == 0) {
+					_str += "<span><a href=\"" + "" + "\"" + ">" + categories[j] + "</a></span>";
+				}
+				else {
+					_str += "<span><a href=\"" + "" + "\"" + ">" + categories[j] + "</a></span>";
+					_str += "&nbsp;&gt;&nbsp;";
+				}
+			}
+			$(".breadcrumb").append(_str);
+		});
 	});
 </script>
 </body>

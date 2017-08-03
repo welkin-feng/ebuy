@@ -122,13 +122,13 @@ a:hover {
 #filter, #notfound b, #re-search .text, #re-search .button, #plist .item-book .summary .close
 	{
 	background:
-		url(<%=request.getContextPath() %>/images/search2012052301.jpg)
+		url(/portal/images/search2012052301.jpg)
 		no-repeat
 }
 
 #filter .up b, #filter .down b, #store-selector .close, #filter .instock b,
 	.svote span, #filter .activity b {
-	background: url(<%=request.getContextPath() %>/images/20130606B.png) no-repeat
+	background: url(/portal/images/20130606B.png) no-repeat
 }
 
 #refilter {
@@ -205,7 +205,7 @@ a:hover {
 	width: 16px;
 	height: 16px;
 	margin-top: 1px;
-	background: url(<%=request.getContextPath() %>/images/20130606B.png) no-repeat -59px -28px;
+	background: url(/portal/images/20130606B.png) no-repeat -59px -28px;
 	cursor: pointer
 }
 
@@ -310,7 +310,7 @@ a:hover {
 	height: 6px;
 	overflow: hidden;
 	*top: -4px;
-	background: url(<%=request.getContextPath() %>/images/20130415i.png) no-repeat
+	background: url(/portal/images/20130415i.png) no-repeat
 }
 
 #refilter .more b.open {
@@ -345,7 +345,7 @@ a:hover {
 #refilter .item .show-more a i {
 	display: inline-block;
 	background:
-		url(<%=request.getContextPath() %>/images/2013100702.gif)
+		url(/portal/images/2013100702.gif)
 		no-repeat scroll 0 0;
 	height: 5px;
 	overflow: hidden;
@@ -763,7 +763,7 @@ a:hover {
 	top: 7px;
 	width: 17px;
 	height: 18px;
-	background: url(<%=request.getContextPath() %>/images/20130606B.png) no-repeat 0 -47px
+	background: url(/portal/images/20130606B.png) no-repeat 0 -47px
 }
 
 .dialogbox .gift a {
@@ -1021,7 +1021,7 @@ a:hover {
 	display: block;
 	width: 8px;
 	height: 8px;
-	background: url(<%=request.getContextPath() %>/images/2013100701.gif) no-repeat
+	background: url(/portal/images/2013100701.gif) no-repeat
 }
 
 .attr .a-values .o-more {
@@ -1175,7 +1175,7 @@ a:hover {
 	overflow: hidden;
 	width: 7px;
 	height: 7px;
-	background: url(<%=request.getContextPath() %>/images/20130606B.png) no-repeat -37px -62px;
+	background: url(/portal/images/20130606B.png) no-repeat -37px -62px;
 	cursor: pointer
 }
 
@@ -1413,7 +1413,7 @@ a:hover {
 
 .attr-select .v-tabs a, .attr-select .f-list a {
 	padding-left: 18px;
-	background: url(<%=request.getContextPath() %>/images/20130606B.png) no-repeat -70px 1px;
+	background: url(/portal/images/20130606B.png) no-repeat -70px 1px;
 	color: #005AA0
 }
 
@@ -1428,7 +1428,7 @@ a:hover {
 }
 
 .attr-select .selected a, .attr-select .selected a:hover {
-	background: url(<%=request.getContextPath() %>/images/20130606B.png) no-repeat -70px -13px;
+	background: url(/portal/images/20130606B.png) no-repeat -70px -13px;
 	color: #E4393C
 }
 
@@ -1525,14 +1525,14 @@ a:hover {
 	width: auto;
 	padding-left: 18px;
 	margin-right: 10px;
-	background: url(<%=request.getContextPath() %>/images/20130606B.png) no-repeat -70px -13px;
+	background: url(/portal/images/20130606B.png) no-repeat -70px -13px;
 	color: #E4393C
 }
 
 .brand-attr .s-brands .selected a, .brand-attr .s-brands .attr-select a:hover
 	{
 	float: left;
-	background: url(<%=request.getContextPath() %>/images/20130415i.png) no-repeat -287px -14px;
+	background: url(/portal/images/20130415i.png) no-repeat -287px -14px;
 	color: #E4393C
 }
 
@@ -1743,7 +1743,7 @@ a:hover {
 
 .color-attr .v-colors a.multicolor span {
 	background:
-		url(<%=request.getContextPath() %>/images/20120808A.gif)
+		url(/portal/images/20120808A.gif)
 		no-repeat
 }
 
@@ -1817,7 +1817,7 @@ a:hover {
 }
 
 #select .mb .attr-extra b, #select .mb .close b, #select .mb .open b {
-	background: url(<%=request.getContextPath() %>/images/20130606B.png) no-repeat
+	background: url(/portal/images/20130606B.png) no-repeat
 }
 
 #select .mb .attr-extra b, #select .mb .close b {
@@ -1944,7 +1944,7 @@ a:hover {
 	width: 13px;
 	height: 13px;
 	background:
-		url(<%=request.getContextPath() %>/images/20130603A.png)
+		url(/portal/images/20130603A.png)
 		no-repeat -26px -25px;
 	font-size: 0
 }
@@ -1955,7 +1955,7 @@ a:hover {
 
 #babyQueryAttr .tips-con a.tc-btn-selected b, #babyQueryAttr .tips-con a.tc-btn-selected:hover b
 	{
-	background: url(<%=request.getContextPath() %>/images/20130606B.png) no-repeat -70px -14px
+	background: url(/portal/images/20130606B.png) no-repeat -70px -14px
 }
 
 #checkerror {
@@ -2230,7 +2230,7 @@ a:hover {
 	overflow: hidden;
 	width: 9px;
 	height: 6px;
-	background: url(<%=request.getContextPath() %>/images/20130606B.png) no-repeat -36px -55px
+	background: url(/portal/images/20130606B.png) no-repeat -36px -55px
 }
 
 #store-selector .content {
@@ -2339,7 +2339,7 @@ a:hover {
 	height: 5px;
 	overflow: hidden;
 	background:
-		url(<%=request.getContextPath() %>/images/20130606B.png)
+		url(/portal/images/20130606B.png)
 		no-repeat -76px -34px;
 	opacity: .5;
 	filter: alpha(opacity = 50)
@@ -2406,7 +2406,7 @@ a:hover {
 	#filter .instock .selected a:visited b, #filter .activity a:hover b,
 	#filter .activity a:active b, #filter .activity a.selected:link b,
 	#filter .activity a.selected:visited b {
-	background: url(<%=request.getContextPath() %>/images/20130415i.png) -287px -16px
+	background: url(/portal/images/20130415i.png) -287px -16px
 }
 
 #filter .activity .disabled, #filter .instock .disabled {
@@ -2437,7 +2437,7 @@ a:hover {
 }
 
 #filter .type .text b, #filter .hover .text b {
-	background: url(<%=request.getContextPath() %>/images/20130606B.png) no-repeat
+	background: url(/portal/images/20130606B.png) no-repeat
 }
 
 #filter .type .text b {
@@ -2607,7 +2607,7 @@ a:hover {
 	left: 0;
 	width: 13px;
 	height: 13px;
-	background-image: url(<%=request.getContextPath() %>/images/20130606B.png);
+	background-image: url(/portal/images/20130606B.png);
 	background-repeat: no-repeat;
 	font-size: 0
 }
@@ -2660,7 +2660,7 @@ a:hover {
 	display: block;
 	width: 20px;
 	height: 15px;
-	background: url(<%=request.getContextPath() %>/images/20130606B.png) no-repeat
+	background: url(/portal/images/20130606B.png) no-repeat
 }
 
 #filter .list-cutover a.grid-unselected b {
@@ -2792,7 +2792,7 @@ a:hover {
 	height: 30px;
 	padding-left: 48px;
 	margin: 0 auto;
-	background: url(<%=request.getContextPath() %>/images/loading-jd.gif)
+	background: url(/portal/images/loading-jd.gif)
 		no-repeat;
 	text-align: left;
 	color: #f60
@@ -2968,7 +2968,7 @@ a:hover {
 	padding-left: 26px;
 	line-height: 20px;
 	background:
-		url(<%=request.getContextPath() %>/images/btn2012062502.png)
+		url(/portal/images/btn2012062502.png)
 		no-repeat;
 	cursor: pointer;
 	color: #333
@@ -2985,7 +2985,7 @@ a:hover {
 	width: 67px;
 	height: 21px;
 	margin-right: 4px;
-	background: url(<%=request.getContextPath() %>/images/20130415i.png) no-repeat -97px -131px;
+	background: url(/portal/images/20130415i.png) no-repeat -97px -131px;
 	line-height: 20px;
 	text-align: center;
 	text-decoration: none;
@@ -3508,7 +3508,7 @@ a:hover {
 }
 
 #scroll_loading b {
-	background: url(<%=request.getContextPath() %>/images/loading-jd.gif)
+	background: url(/portal/images/loading-jd.gif)
 		no-repeat 50% 50%;
 	display: none;
 	width: 43px;
@@ -3550,7 +3550,7 @@ a:hover {
 
 .svote span {
 	height: 14px;
-	background: url(<%=request.getContextPath() %>/images/20130606B.png) no-repeat -64px -44px;
+	background: url(/portal/images/20130606B.png) no-repeat -64px -44px;
 	padding-left: 25px;
 	font: 400 12px/14px \5b8b\4f53
 }
@@ -3571,13 +3571,13 @@ a:hover {
 
 .star .star-white {
 	width: 76px;
-	background: url(<%=request.getContextPath() %>/images/20130606B.png) no-repeat 0 -70px
+	background: url(/portal/images/20130606B.png) no-repeat 0 -70px
 }
 
 .star .star-yellow {
 	position: relative;
 	z-index: 1;
-	background: url(<%=request.getContextPath() %>/images/20130606B.png) #fff no-repeat 0 -86px
+	background: url(/portal/images/20130606B.png) #fff no-repeat 0 -86px
 }
 
 .star .h0 {
@@ -3971,7 +3971,7 @@ a:hover {
 	height: 108px;
 	background: url(i/20130606A.png) no-repeat;
 	_background-image: none;
-	_filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='<%=request.getContextPath() %>/images/20130606A.png',
+	_filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='/portal/images/20130606A.png',
 		sizingMethod='noscale')
 }
 
@@ -4026,7 +4026,7 @@ a:hover {
 .pi-ebook {
 	background-image: url(i/icon2012030201.png);
 	_background-image: none;
-	_filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='<%=request.getContextPath() %>/images/icon2012030201.png',
+	_filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='/portal/images/icon2012030201.png',
 		sizingMethod='noscale');
 	width: 50px;
 	height: 50px
@@ -4035,7 +4035,7 @@ a:hover {
 .pi-dmusic {
 	background-image: url(i/20121211A.png);
 	_background-image: none;
-	_filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='<%=request.getContextPath() %>/images/20121211A.png',
+	_filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='/portal/images/20121211A.png',
 		sizingMethod='noscale');
 	width: 50px;
 	height: 50px
@@ -4142,7 +4142,7 @@ a:hover {
 }
 
 .p-scroll-btn, .product-follow a s {
-	background-image: url(<%=request.getContextPath() %>/images/20130606B.png);
+	background-image: url(/portal/images/20130606B.png);
 	background-repeat: no-repeat
 }
 
@@ -4482,7 +4482,7 @@ a.djd-im {
 	height: 27px;
 	padding-left: 24px;
 	margin: 0 10px 0 0;
-	background: url(<%=request.getContextPath() %>/images/djd-im.gif)
+	background: url(/portal/images/djd-im.gif)
 		no-repeat;
 	line-height: 25px;
 	text-align: center;
@@ -4498,7 +4498,7 @@ a.djd-im b {
 }
 
 a.d-offline {
-	background: url(<%=request.getContextPath() %>/images/jd-im.png)
+	background: url(/portal/images/jd-im.png)
 		no-repeat -142px -127px;
 	line-height: 100px
 }
@@ -4740,7 +4740,7 @@ a.d-offline {
 	height: 16px;
 	background: url(i/2013110402.png) no-repeat;
 	_background-image: none;
-	_filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='<%=request.getContextPath() %>/images/2013110402.png',
+	_filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='/portal/images/2013110402.png',
 		sizingMethod='noscale')
 }
 
@@ -4977,7 +4977,7 @@ a.d-offline {
 	margin: 0 2px;
 	border: 0;
 	background:
-		url(<%=request.getContextPath() %>/images/20120723A.gif)
+		url(/portal/images/20120723A.gif)
 		no-repeat;
 	cursor: pointer;
 	line-height: 21px;
@@ -5008,7 +5008,7 @@ a.d-offline {
 	padding-left: 26px;
 	line-height: 21px;
 	background:
-		url(<%=request.getContextPath() %>/images/btn2012062502.png)
+		url(/portal/images/btn2012062502.png)
 		no-repeat;
 	cursor: pointer;
 	color: #333
@@ -5216,7 +5216,7 @@ a.d-offline {
 	padding: 0;
 	margin-left: 5px;
 	border: 0;
-	background: url(<%=request.getContextPath() %>/images/20130415i.png) no-repeat -126px -52px;
+	background: url(/portal/images/20130415i.png) no-repeat -126px -52px;
 	line-height: 25px;
 	text-align: center;
 	cursor: pointer;
@@ -5239,7 +5239,7 @@ a.d-offline {
 	width: 23px;
 	padding-top: 24px;
 	background-image:
-		url(<%=request.getContextPath() %>/images/bg_pannel.jpg);
+		url(/portal/images/bg_pannel.jpg);
 	background-repeat: no-repeat;
 	text-align: center;
 	line-height: 13px
@@ -5675,7 +5675,7 @@ a.d-offline {
 	width: 16px;
 	height: 16px;
 	background:
-		url(<%=request.getContextPath() %>/images/search.paipai.icon.png)
+		url(/portal/images/search.paipai.icon.png)
 		no-repeat
 }
 

@@ -63,7 +63,7 @@
 		            <div class="cell p-goods">
 		                <div class="p-img">
 		                	<a href="<%=request.getContextPath() %>/item/${cart.id }.html" target="_blank">
-		                		<img clstag="clickcart|keycount|xincart|p-imglistcart" src="<%=request.getContextPath() %>/${cart.images[0]}" alt="${cart.title}" width="52" height="52">
+		                		<img clstag="clickcart|keycount|xincart|p-imglistcart" src="${cart.images[0]}" alt="${cart.title}" width="52" height="52">
 		                	</a>
 		                </div>    
 		                <div class="p-name">
@@ -268,7 +268,7 @@
 			//	num++;
 			//	$(this).parent().find(".quantity-text").attr("value", num);
 			//}
-			controller.calculateTotalPrice();
+			//controller.calculateTotalPrice();
 		});
 		//为商品数量减少按钮添加点击事件
 		$(".decrement").bind("click", function(){
@@ -277,7 +277,7 @@
 			//	num--;
 			//	$(this).parent().find(".quantity-text").attr("value", num);
 			//}
-			controller.calculateTotalPrice();
+			//controller.calculateTotalPrice();
 		});
 	});
 </script>

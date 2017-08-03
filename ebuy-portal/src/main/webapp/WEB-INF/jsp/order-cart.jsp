@@ -25,7 +25,7 @@
 <!--shortcut end-->
 
 <div class="w w1 header clearfix">
-    <div id="logo"><a href="/"><img src="<%=request.getContextPath() %>/images/taotao-logo.gif" alt="淘淘商城"></a></div>
+    <div id="logo"><a href="<%=request.getContextPath() %>"><img src="<%=request.getContextPath() %>/images/taotao-logo.gif" alt="商城"></a></div>
 </div>
 
 <form id="orderForm" class="hide" action="<%=request.getContextPath() %>/order/create.html" method="post">
@@ -40,12 +40,12 @@
 			<input type="hidden" name="orderItems[${status.index}].picPath" value="${cart.images[0]}"/>
 		</c:forEach>
 		<input type="hidden" name="payment" value="<fmt:formatNumber groupingUsed="false" maxFractionDigits="2" minFractionDigits="2" value="${totalPrice/100 }"/>"/>
-		<input type="hidden" name="orderShipping.receiverName" value="入云龙"/>
-		<input type="hidden" name="orderShipping.receiverMobile" value="15891588888"/>
-		<input type="hidden" name="orderShipping.receiverState" value="北京"/>
-		<input type="hidden" name="orderShipping.receiverCity" value="北京"/>
-		<input type="hidden" name="orderShipping.receiverDistrict" value="昌平区"/>
-		<input type="hidden" name="orderShipping.receiverAddress" value="西三旗 xxxxxxxxx"/>
+		<input type="hidden" name="orderShipping.receiverName" value="冯榕根"/>
+		<input type="hidden" name="orderShipping.receiverMobile" value="15888888888"/>
+		<input type="hidden" name="orderShipping.receiverState" value="辽宁省"/>
+		<input type="hidden" name="orderShipping.receiverCity" value="沈阳市"/>
+		<input type="hidden" name="orderShipping.receiverDistrict" value="和平区"/>
+		<input type="hidden" name="orderShipping.receiverAddress" value="三好街 xxxxxxxxx"/>
 </form>
 
 <!-- main -->
@@ -79,13 +79,13 @@
 						<b></b>
 						<div class="user-name">
 							<div class="fl">
-								<strong limit="4">入云龙</strong>&nbsp;&nbsp;收
+								<strong limit="4">冯榕根</strong>&nbsp;&nbsp;收
 							</div>
 							<div class="fr">158****8888</div>
 							<div class="clr"></div>
 						</div>
-						<div class="mt10" limit="15">北京 昌平区 五环外六环里</div>
-						<div class="adr-m" limit="30">西三旗 xxxxxxxxx</div>
+						<div class="mt10" limit="15">辽宁省 沈阳市 和平区</div>
+						<div class="adr-m" limit="30">三好街 xxxxxxxxx</div>
 						<div class="op-btns ar">
 							<a href="#none"
 								class="ftx-05 mr10 setdefault-consignee hide"
@@ -188,7 +188,7 @@
 
 			<div class="p-img">
 				<a target="_blank" href="<%=request.getContextPath() %>/item/${cart.id}.html">
-					<img src="<%=request.getContextPath() %>/${cart.images[0]}" alt="">
+					<img src="${cart.images[0]}" alt="">
 				</a>
 			</div>
 			<div class="goods-msg">
@@ -225,7 +225,7 @@
 			<ul>
 				<li class="mode-tab-item " id="jd_shipment_item"
 					onclick="doSwithTab('pay')"><span
-					id="jdShip-span-tip" class="m-txt">淘淘快递<i
+					id="jdShip-span-tip" class="m-txt">快递<i
 						class='qmark-icon qmark-tip'
 						data-tips='由淘淘公司负责配送，速度很快，还接受上门刷卡付款服务'></i></span><b></b></li>
 			</ul>

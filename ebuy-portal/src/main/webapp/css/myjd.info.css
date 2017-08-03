@@ -135,7 +135,7 @@
 }
 
 #user-info .u-pic .mask {
-	background: url(<%=request.getContextPath() %>/images/myjd-bg2.png) 0 0;
+	background: url(/portal/images/myjd-bg2.png) 0 0;
 	width: 104px;
 	height: 104px;
 	position: absolute;
@@ -182,7 +182,7 @@
 }
 
 #user-info .info-m .u-level .rank s {
-	background: url(<%=request.getContextPath() %>/images/rank2014.gif) no-repeat 0 0;
+	background: url(/portal/images/rank2014.gif) no-repeat 0 0;
 	display: inline-block;
 	height: 17px;
 	margin-right: 5px;
@@ -223,7 +223,7 @@
 	*zoom: 1;
 	vertical-align: middle;
 	height: 15px;
-	background: url(<%=request.getContextPath() %>/images/rank-sh.png) no-repeat
+	background: url(/portal/images/rank-sh.png) no-repeat
 }
 
 #user-info .info-m .rank-sh01 {

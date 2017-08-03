@@ -24,27 +24,15 @@
 <div class="w main">
 	<div class="crumb">全部结果&nbsp;&gt;&nbsp;<strong>"${query}"</strong></div>
 <div class="clr"></div>
-<div class="m clearfix" id="bottom_pager">
-<div  id="pagin-btm" class="pagin fr" clstag="search|keycount|search|pre-page2">
-	<span class="prev-disabled">上一页<b></b></span>
-	<a href="javascript:void(0)" class="current">1</a>
-	<a href="<%=request.getContextPath() %>/search?keyword=java&enc=utf-8&qr=&qrst=UNEXPAND&rt=1&page=2">2</a>
-	<a href="<%=request.getContextPath() %>/search?keyword=java&enc=utf-8&qr=&qrst=UNEXPAND&rt=1&page=3">3</a>
-	<a href="<%=request.getContextPath() %>/search?keyword=java&enc=utf-8&qr=&qrst=UNEXPAND&rt=1&page=4">4</a>
-	<a href="<%=request.getContextPath() %>/search?keyword=java&enc=utf-8&qr=&qrst=UNEXPAND&rt=1&page=5">5</a>
-	<a href="<%=request.getContextPath() %>/search?keyword=java&enc=utf-8&qr=&qrst=UNEXPAND&rt=1&page=6">6</a>
-	<span class="text">…</span>
-	<a href="<%=request.getContextPath() %>/search?keyword=java&enc=utf-8&qr=&qrst=UNEXPAND&rt=1&page=2" class="next">下一页<b></b></a>
-	<span class="page-skip"><em>&nbsp;&nbsp;共${totalPages}页&nbsp;&nbsp;&nbsp;&nbsp;到第</em></span>
-</div>
-</div>
+
 <div class="m psearch " id="plist">
 <ul class="list-h clearfix" tpl="2">
 <c:forEach items="${itemList}" var="item">
 <li class="item-book" bookid="11078102">
 	<div class="p-img">
-		<a target="_blank" href="item/${item.id }.html">
-			<img width="160" height="160" data-img="1" data-lazyload="${item.image}" />
+		<a target="_blank" href="item/${item.id}.html">
+			<img class="p-image-show" width="160" height="160" src="${item.image}" />
+			
 		</a>
 	</div>
 	<div class="p-name">
@@ -63,7 +51,22 @@
 </li>
 </c:forEach>
 </ul></div>
+<div class="m clearfix" id="bottom_pager">
+<div  id="pagin-btm" class="pagin fr" clstag="search|keycount|search|pre-page2">
+	<span class="prev-disabled">上一页<b></b></span>
+	<a href="javascript:void(0)" class="current">1</a>
+	<a href="<%=request.getContextPath() %>/search?keyword=java&enc=utf-8&qr=&qrst=UNEXPAND&rt=1&page=2">2</a>
+	<a href="<%=request.getContextPath() %>/search?keyword=java&enc=utf-8&qr=&qrst=UNEXPAND&rt=1&page=3">3</a>
+	<a href="<%=request.getContextPath() %>/search?keyword=java&enc=utf-8&qr=&qrst=UNEXPAND&rt=1&page=4">4</a>
+	<a href="<%=request.getContextPath() %>/search?keyword=java&enc=utf-8&qr=&qrst=UNEXPAND&rt=1&page=5">5</a>
+	<a href="<%=request.getContextPath() %>/search?keyword=java&enc=utf-8&qr=&qrst=UNEXPAND&rt=1&page=6">6</a>
+	<span class="text">…</span>
+	<a href="<%=request.getContextPath() %>/search?keyword=java&enc=utf-8&qr=&qrst=UNEXPAND&rt=1&page=2" class="next">下一页<b></b></a>
+	<span class="page-skip"><em>&nbsp;&nbsp;共${totalPages}页&nbsp;&nbsp;&nbsp;&nbsp;到第</em></span>
 </div>
+</div>
+</div>
+
 <!-- footer start -->
 <jsp:include page="commons/footer.jsp" />
 <!-- footer end -->
@@ -73,6 +76,13 @@
 //${paginator.totalPages}
 SEARCH.query = "${query}";
 SEARCH.bottom_page_html(${page},${totalPages},'');
+$(function(){
+	$(".item-book").each(function(){
+		var images = $(this).find("p-image-value").attr("value");
+		var image = images.split(",");
+		$(this).find("p-image-show").attr("src", image[0]);
+	});
+});
 </script>
 </body>
 </html>

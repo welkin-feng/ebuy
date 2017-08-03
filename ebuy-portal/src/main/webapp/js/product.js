@@ -123,7 +123,6 @@ function fq_showFq_html(t) {
 function fq_formatData() {
 //    var t = document.getElementById("Fqfk_Tip"), e = $("#InitCartUrl").attr("href");
 //    t.style.width = "500px";
-//    var i = "http://baitiao.jd.com/creditUser/list?from=dpy", s = '<div class="Tip_Title">            <em>                <img src="' + fq_serverSite + 'skin/images/tip_close.jpg" class="Tip_Close"/>            </em>\u767d\u6761/\u5206\u671f        </div>        <div class="Tip_Content" id="Tip_fq0">            <div style="position:relative;width:482px;height:310px;">                <img src="http://img13.360buyimg.com/da/jfs/t157/107/261896691/42066/92e14669/5385b7edNa8b9b2a3.png" />                <a href="http://help.jd.com/help/question-71.html#help211" title="\u94f6\u884c\u5206\u671f" style="position: absolute;bottom:3px;width:410px;height:32px;left:60px;background: url(http://misc.360buyimg.com/lib/img/e/blank.gif);"></a>                <a href=' + e + ' title="\u52a0\u5165\u8d2d\u7269\u8f66" style="position:absolute;top:61px;right:11px;width:98px;height:24px;background: url(http://misc.360buyimg.com/lib/img/e/blank.gif);" clstag="shangpin|keycount|product|initcarturlbt"></a>                <a href=' + i + ' title="\u7acb\u5373\u6fc0\u6d3b" style="position:absolute;top:61px;left:146px;width:67px;height:24px;background: url(http://misc.360buyimg.com/lib/img/e/blank.gif);"></a>            </div>        </div>';
    // t.innerHTML = s
 }
 function getCookie(t) {
@@ -1598,7 +1597,6 @@ var Refresh = {init: function() {
 var geminiCustomizedDot = geminiCustomizedDot || [], MBuy = {init: function() {
         this.chooseBtn = $("#choose-btns"), this.setQrcode()
     },setQrcode: function() {
-//        var t = this, e = '<div id="m-buy" clstag="shangpin|keycount|product|btn-erweima">    <div class="mt">\u5ba2\u6237\u7aef\u9996\u6b21\u4e0b\u5355</div>    <div id="m-countdown">        <strong class="hl_red">\u90015\u5143\u4eac\u5238</strong>    </div>    <div id="m-qrcode" class="hide">        <span class="close" onclick="$(\'#m-buy\').removeClass(\'hover\')"></span>        <span class="arr"></span>        <div class="m-qrcode-wrap">            <strong>\u5ba2\u6237\u7aef\u9996\u5355\u6ee159\u90015\u5143\u4eac\u5238\u4f4e\u4ef7\u79d2\u6740\u5546\u54c1\u62a2\u4e0d\u505c</strong>            <div id="m-qrcode-box">                <img src="http://misc.360buyimg.com/lib/img/e/blank.gif" width="155" height="155" />            </div>        </div>    </div></div>';
 //        return $("#m-buy").length > 0 ? !1 : (this.chooseBtn.append(e), this.mBuy = $("#m-buy"), this.mt = this.mBuy.find(".mt"), this.mBuy.Jdropdown({delay: 200,event: "click"}, function() {
 //            "true" !== t.mBuy.attr("loaded") && ($.ajax({url: "http://misc.360buyimg.com/product/js/2012/qrcode.js?ver=20140527",dataType: "script",scriptCharset: "gb2312",cache: !0}), t.mBuy.attr("loaded", "true"))
 //        }), void 0)

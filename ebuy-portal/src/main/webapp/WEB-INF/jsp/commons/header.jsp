@@ -3,6 +3,7 @@
 <script type="text/javascript" src="<%=request.getContextPath() %>/js/base-v1.js" charset="utf-8"></script>
 <!--shortcut start-->
 <jsp:include page="shortcut.jsp" />
+<% String LOCAL_HOST_IP = "172.28.10.253"; %> 
 <!--shortcut end-->
 <div id="o-header-2013">
 	<div class="w" id="header-2013">
@@ -22,7 +23,7 @@
 		<!--search end-->
 		<div id="my360buy-2013">
 			<dl>
-				<dt class="ld"><s></s><a href="http://localhost:8015/user/showLogin" clstag="homepage|keycount|home2012|04a">我的商城</a><b></b></dt>
+				<dt class="ld"><s></s><a href="http://<%=LOCAL_HOST_IP%>:8015/user/showLogin" clstag="homepage|keycount|home2012|04a">我的商城</a><b></b></dt>
 				<dd>
 					<div class="loading-style1"><b></b>加载中，请稍候...</div>
 				</dd>

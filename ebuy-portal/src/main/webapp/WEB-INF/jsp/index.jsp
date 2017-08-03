@@ -174,7 +174,7 @@ pageConfig.DATA_MScroll =[
         x = pageConfig.FN_GetCompatibleData(a[i]);
         e.push("<li class=\"item\"><a href=\"");
         e.push(x.href);
-        e.push("\"><img src=\"<%=request.getContextPath() %>/images/blank.gif\" style=\"background:url(");
+        e.push("\"><img src=\"www.baidu.com\" style=\"background:url(");
         e.push(x.src);
         e.push(") no-repeat #fff center 0;\" alt=\"");
         e.push(x.alt);

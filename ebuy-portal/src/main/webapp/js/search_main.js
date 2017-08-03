@@ -1433,7 +1433,7 @@ SEARCH.success_js = function(a) {
     this.get_ware_info();
     this.get_multi_shops();
     this.image_scroll('#plist li:not([done="1"]) .p-scroll');
-    pageConfig.FN_ImgError(document);
+//    pageConfig.FN_ImgError(document);
     $("img[data-lazyload]").Jlazyload({type: "image",placeholderClass: "err-product"});
     pageConfig.isInitContrast = false;
     pageConfig.FN_InitContrast();

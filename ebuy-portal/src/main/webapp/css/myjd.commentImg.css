@@ -36,7 +36,7 @@
 	top: -11px;
 	width: 21px;
 	height: 12px;
-	background: url(<%=request.getContextPath() %>/images/cicon.png) 0 0 no-repeat
+	background: url(/portal/images/cicon.png) 0 0 no-repeat
 }
 
 .comment-box .btn:hover {
@@ -47,7 +47,7 @@
 	background-color: red;
 	width: 105px;
 	height: 20px;
-	background: url(<%=request.getContextPath() %>/images/commstar.jpg) 0 -21px repeat-x;
+	background: url(/portal/images/commstar.jpg) 0 -21px repeat-x;
 	position: relative;
 	margin-top: 5px;
 	display: inline-block;
@@ -66,7 +66,7 @@
 }
 
 .comment-box .commstar a:hover, .comment-box .commstar .active {
-	background: url(<%=request.getContextPath() %>/images/commstar.jpg) left top repeat-x
+	background: url(/portal/images/commstar.jpg) left top repeat-x
 }
 
 .comment-box .commstar .star1 {
@@ -136,7 +136,7 @@
 	width: 13px;
 	height: 13px;
 	overflow: hidden;
-	background: url(<%=request.getContextPath() %>/images/cicon.png) -38px 0;
+	background: url(/portal/images/cicon.png) -38px 0;
 	margin-right: 5px
 }
 
@@ -148,7 +148,7 @@
 	width: 12px;
 	height: 14px;
 	overflow: hidden;
-	background: url(<%=request.getContextPath() %>/images/cicon.png) -53px 0;
+	background: url(/portal/images/cicon.png) -53px 0;
 	margin-right: 5px
 }
 
@@ -226,7 +226,7 @@
 	height: 15px;
 	vertical-align: middle;
 	overflow: hidden;
-	background: url(<%=request.getContextPath() %>/images/share.png) no-repeat;
+	background: url(/portal/images/share.png) no-repeat;
 	margin: -3px 5px 0 0
 }
 
@@ -470,7 +470,7 @@
 	background-color: red;
 	width: 105px;
 	height: 20px;
-	background: url(<%=request.getContextPath() %>/images/commstar.jpg) 0 -21px repeat-x;
+	background: url(/portal/images/commstar.jpg) 0 -21px repeat-x;
 	position: relative;
 	display: inline-block;
 	float: left
@@ -487,7 +487,7 @@
 }
 
 .service-box dl .commstar a:hover, .service-box dl .commstar .active {
-	background: url(<%=request.getContextPath() %>/images/commstar.jpg) left top repeat-x
+	background: url(/portal/images/commstar.jpg) left top repeat-x
 }
 
 .service-box dl .commstar .star1 {

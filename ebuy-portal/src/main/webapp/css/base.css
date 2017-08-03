@@ -494,7 +494,7 @@ a:hover {
 	height: 40px;
 	padding: 12px 0 0;
 	background-image:
-		url(<%=request.getContextPath() %>/images/20130330C.png);
+		url(/portal/images/20130330C.png);
 	background-repeat: no-repeat;
 	font-family: "microsoft yahei";
 	color: #fff;
@@ -536,19 +536,19 @@ a:hover {
 }
 
 img.err-product, img.err-poster {
-	background: url(<%=request.getContextPath() %>/images/error-jd.gif)
+	background: url(/portal/images/error-jd.gif)
 		no-repeat 50% 50%
 }
 
 img.err-price {
 	width: 81px;
 	height: 22px;
-	background: url(<%=request.getContextPath() %>/images/error-3.gif)
+	background: url(/portal/images/error-3.gif)
 		no-repeat 50% 50%
 }
 
 .loading-style1 b, .loading-style2 {
-	background: url(<%=request.getContextPath() %>/images/loading-jd.gif)
+	background: url(/portal/images/loading-jd.gif)
 		no-repeat 50% 50%
 }
 
@@ -568,7 +568,7 @@ img.err-price {
 
 .slide {
 	position: relative;
-	background: url(<%=request.getContextPath() %>/images/loading-jd.gif)
+	background: url(/portal/images/loading-jd.gif)
 		no-repeat center center
 }
 
@@ -619,7 +619,7 @@ img.err-price {
 
 #sidepanel a, #sidepanel b {
 	background-image:
-		url(<%=request.getContextPath() %>/images/20130330A_2.png);
+		url(/portal/images/20130330A_2.png);
 	background-repeat: no-repeat
 }
 
@@ -728,7 +728,7 @@ img.err-price {
 	width: 5px;
 	height: 9px;
 	background-image:
-		url(<%=request.getContextPath() %>/images/bg_hotsale.gif);
+		url(/portal/images/bg_hotsale.gif);
 	background-repeat: no-repeat;
 	overflow: hidden
 }
@@ -864,7 +864,7 @@ img.err-price {
 	width: 15px;
 	height: 15px;
 	background:
-		url(<%=request.getContextPath() %>/images/bg_thickbox.gif)
+		url(/portal/images/bg_thickbox.gif)
 		no-repeat 0 -18px;
 	font-size: 0;
 	line-height: 100px
@@ -880,7 +880,7 @@ img.err-price {
 	width: 21px;
 	height: 21px;
 	background:
-		url(<%=request.getContextPath() %>/images/thickbox_close.png)
+		url(/portal/images/thickbox_close.png)
 		no-repeat 0 0;
 	font-size: 0;
 	line-height: 100px
@@ -906,7 +906,7 @@ img.err-price {
 }
 
 .thickloading {
-	background: url(<%=request.getContextPath() %>/images/loading-jd.gif)
+	background: url(/portal/images/loading-jd.gif)
 		#fff no-repeat center center
 }
 
@@ -964,7 +964,7 @@ img.err-price {
 	width: 13px;
 	height: 13px;
 	background:
-		url(<%=request.getContextPath() %>/images/bg_hotsale.gif)
+		url(/portal/images/bg_hotsale.gif)
 		no-repeat -51px -632px;
 	cursor: pointer
 }
@@ -1017,7 +1017,7 @@ img.err-price {
 	width: 140px;
 	height: 30px;
 	padding-left: 22px;
-	background: url(<%=request.getContextPath() %>/images/loading.gif)
+	background: url(/portal/images/loading.gif)
 		no-repeat 0 center;
 	margin: 0 auto;
 	line-height: 30px;
@@ -1036,7 +1036,7 @@ img.err-price {
 .model-prompt .con b {
 	position: absolute;
 	background-image:
-		url(<%=request.getContextPath() %>/images/bg_prompt.gif);
+		url(/portal/images/bg_prompt.gif);
 	background-repeat: no-repeat
 }
 
@@ -1129,7 +1129,7 @@ img.err-price {
 
 #shortcut-2013 .fl b, #shortcut-2013 .fr b {
 	background-image:
-		url(<%=request.getContextPath() %>/images/20130330A_2.png);
+		url(/portal/images/20130330A_2.png);
 	background-repeat: no-repeat
 }
 
@@ -1177,7 +1177,7 @@ img.err-price {
 	left: 0;
 	width: 13px;
 	height: 13px;
-	background: url(<%=request.getContextPath() %>/images/20130725.png)
+	background: url(/portal/images/20130725.png)
 		no-repeat 0 0;
 	cursor: pointer
 }
@@ -1330,7 +1330,7 @@ img.err-price {
 #logo-2013 a:hover b, #logo-2013 a:active b {
 	display: none;
 	background:
-		url(<%=request.getContextPath() %>/images/20130330A_2.png) #fff
+		url(/portal/images/20130330A_2.png) #fff
 		no-repeat 0 -312px
 }
 
@@ -1626,7 +1626,7 @@ img.err-price {
 }
 
 #shelper-2013 .list-text .resultful {
-	background-image: url(<%=request.getContextPath() %>/images/8.png);
+	background-image: url(/portal/images/8.png);
 	background-repeat: no-repeat;
 	background-position: 302px 8px
 }
@@ -1715,7 +1715,7 @@ img.err-price {
 
 #my360buy-2013 dt, #my360buy-2013 dl.hover dt {
 	background-image:
-		url(<%=request.getContextPath() %>/images/20130330A_2.png);
+		url(/portal/images/20130330A_2.png);
 	background-repeat: no-repeat
 }
 
@@ -1871,7 +1871,7 @@ img.err-price {
 	width: 50px;
 	height: 50px;
 	background:
-		url(<%=request.getContextPath() %>/images/20130330A_2.png)
+		url(/portal/images/20130330A_2.png)
 		no-repeat 0 -250px;
 	overflow: hidden;
 	line-height: 150px;
@@ -1940,7 +1940,7 @@ img.err-price {
 #settleup-2013 dt, #settleup-2013 dl.hover dt, #settleup-2013 .nogoods b
 	{
 	background-image:
-		url(<%=request.getContextPath() %>/images/20130330A_2.png);
+		url(/portal/images/20130330A_2.png);
 	background-repeat: no-repeat
 }
 
@@ -1971,7 +1971,7 @@ img.err-price {
 	top: -13px;
 	left: 20px;
 	background-image:
-		url(<%=request.getContextPath() %>/images/20130330A_2.png);
+		url(/portal/images/20130330A_2.png);
 	background-position: -133px -279px;
 	padding-left: 6px;
 	color: #fff
@@ -1983,7 +1983,7 @@ img.err-price {
 	height: 20px;
 	padding-right: 6px;
 	background-image:
-		url(<%=request.getContextPath() %>/images/20130330A_2.png);
+		url(/portal/images/20130330A_2.png);
 	background-position: 100% -250px
 }
 
@@ -2311,7 +2311,7 @@ img.err-price {
 #categorys-2013 .mt b, #categorys-2013 h3, #categorys-2013 s,
 	#categorys-2013.hover .mt b {
 	background-image:
-		url(<%=request.getContextPath() %>/images/20130330A_2.png);
+		url(/portal/images/20130330A_2.png);
 	background-repeat: no-repeat
 }
 
@@ -2615,7 +2615,7 @@ img.err-price {
 	display: block;
 	width: 194px;
 	height: 30px;
-	background-image: url(<%=request.getContextPath() %>/images/28.png);
+	background-image: url(/portal/images/28.png);
 	background-repeat: no-repeat;
 	line-height: 80px;
 	overflow: hidden
@@ -2671,7 +2671,7 @@ img.err-price {
 	line-height: 28px;
 	margin-right: 20px;
 	background-image:
-		url(<%=request.getContextPath() %>/images/virtuals-cat-ico20140826.png);
+		url(/portal/images/virtuals-cat-ico20140826.png);
 	background-repeat: no-repeat
 }
 
@@ -2705,7 +2705,7 @@ img.err-price {
 
 #service-2013 dl b {
 	background-image:
-		url(<%=request.getContextPath() %>/images/20130330A_2.png);
+		url(/portal/images/20130330A_2.png);
 	background-repeat: no-repeat
 }
 
@@ -2843,7 +2843,7 @@ img.err-price {
 	height: 16px;
 	margin-right: 5px;
 	background:
-		url(<%=request.getContextPath() %>/images/update.png)
+		url(/portal/images/update.png)
 		no-repeat
 }
 
@@ -2936,7 +2936,7 @@ img.err-price {
 	width: 13px;
 	height: 22px;
 	background-image:
-		url(<%=request.getContextPath() %>/images/20130330A_2.png);
+		url(/portal/images/20130330A_2.png);
 	background-repeat: no-repeat;
 	background-position: -128px -360px;
 	-webkit-transition: all .2s ease;
@@ -2964,7 +2964,7 @@ img.err-price {
 	width: 49px;
 	height: 23px;
 	background:
-		url(<%=request.getContextPath() %>/images/20130330A_2.png)
+		url(/portal/images/20130330A_2.png)
 		no-repeat 0 -438px;
 	left: 88px;
 	top: 5px
@@ -3001,7 +3001,7 @@ img.err-price {
 	display: inline-block;
 	line-height: 29px;
 	background-image:
-		url(<%=request.getContextPath() %>/images/20130330A_2.png);
+		url(/portal/images/20130330A_2.png);
 	background-repeat: no-repeat
 }
 
@@ -3070,7 +3070,7 @@ img.err-price {
 	width: 220px;
 	height: 65px;
 	background:
-		url(<%=request.getContextPath() %>/images/537b084eN94336622.png)
+		url(/portal/images/537b084eN94336622.png)
 }
 
 #shortcut-2013 #jd-vip {
@@ -3089,5 +3089,5 @@ img.err-price {
 	width: 24px;
 	height: 11px;
 	overflow: hidden;
-	background: url(<%=request.getContextPath() %>/images/vip.png)
+	background: url(/portal/images/vip.png)
 }

@@ -17,7 +17,7 @@ input {
 	padding: 0
 }
 .btn,.btn .btn-text {
-	background: url(<%=request.getContextPath() %>/images/btn-bg-1.png) no-repeat
+	background: url(/portal/images/btn-bg-1.png) no-repeat
 }
 .btn {
 	float: left;
@@ -117,7 +117,7 @@ a.btn:hover,a.btn:hover span {
 	text-indent: -9999px;
 	line-height: 0;
 	overflow: hidden;
-	background: url(<%=request.getContextPath() %>/images/dialog/dialog-close.gif) no-repeat
+	background: url(/portal/images/dialog/dialog-close.gif) no-repeat
 }
 .dialog .dialog-bump {
 	position: absolute;
@@ -143,15 +143,15 @@ a.btn:hover,a.btn:hover span {
 .dialog .dialog-bg-n,.dialog .dialog-bg-s {
 	width: 100%;
 	left: 0;
-	background: url(<%=request.getContextPath() %>/images/dialog/dialog-x.png);
+	background: url(/portal/images/dialog/dialog-x.png);
 }
 .dialog .dialog-bg-e,.dialog .dialog-bg-w {
 	height: 100%;
 	top: 0;
-	background: url(<%=request.getContextPath() %>/images/dialog/dialog-y.png)
+	background: url(/portal/images/dialog/dialog-y.png)
 }
 .dialog .dialog-bg-ne,.dialog .dialog-bg-se,.dialog .dialog-bg-sw,.dialog .dialog-bg-nw {
-	background: url(<%=request.getContextPath() %>/images/dialog/dialog-bg.png)
+	background: url(/portal/images/dialog/dialog-bg.png)
 }
 .dialog .dialog-bg-ne {
 	top: -4px;
@@ -210,7 +210,7 @@ a.btn:hover,a.btn:hover span {
 .progress {
 	padding-top: 6px
 }
-.progress .progress-1{background:url(<%=request.getContextPath() %>/images/step1.png) no-repeat;width:481px;padding-top:23px;overflow:hidden;height:23px;}
+.progress .progress-1{background:url(/portal/images/step1.png) no-repeat;width:481px;padding-top:23px;overflow:hidden;height:23px;}
 .progress ul {width:481px; float:right;}
 .progress li {width:160px; height:23px; float:left; color:#bce8a3; line-height:23px; text-align:center;}
 .progress li b {width:22px; height:25px; display:none; }
@@ -234,7 +234,7 @@ a.btn:hover,a.btn:hover span {
 	margin-bottom: 15px;
 	line-height: 100px;
 	overflow: hidden;
-	background: url(<%=request.getContextPath() %>/images/my_cart_title.png) no-repeat left top;
+	background: url(/portal/images/my_cart_title.png) no-repeat left top;
 }
 .cart .cart-hd span, .cart .cart-hd a {
 	float: left;
@@ -261,7 +261,7 @@ a.btn:hover,a.btn:hover span {
 	line-height: 0;
 	font-size: 0;
 	position: absolute;
-	background: url(<%=request.getContextPath() %>/images/cart_corner_1.png) no-repeat
+	background: url(/portal/images/cart_corner_1.png) no-repeat
 }
 .cart-frame .tl,.cart-frame .tr {
 	bottom: -4px
@@ -603,7 +603,7 @@ color:#999;
 .less-service-btn{
 	display:inline-block;
 	padding-right: 12px;
-	background:url(<%=request.getContextPath() %>/images/yanbao-icon.gif) no-repeat right -5px;
+	background:url(/portal/images/yanbao-icon.gif) no-repeat right -5px;
 }
 .alter-yb:link,
 .alter-yb:visited,
@@ -627,7 +627,7 @@ color:#999;
 	bottom:14px;
 }
 .less-service-btn{
-	background:url(<%=request.getContextPath() %>/images/yanbao-icon.gif) no-repeat right 7px;
+	background:url(/portal/images/yanbao-icon.gif) no-repeat right 7px;
 	right:23px;
 	display: none;
 }
@@ -759,7 +759,7 @@ color:#999;
 	margin: 6px 10px 0 0;
 	float: left;
 	overflow: hidden;
-	background: url(<%=request.getContextPath() %>/images/icon-tags.png) no-repeat;
+	background: url(/portal/images/icon-tags.png) no-repeat;
 }
 .meet-minus .f-text b {
 	background-position: 0 0;
@@ -864,7 +864,7 @@ color:#999;
 	overflow: hidden;
 	line-height: 0;
 	font-size: 0;
-	background: url(<%=request.getContextPath() %>/images/control-icon-1.gif) no-repeat;
+	background: url(/portal/images/control-icon-1.gif) no-repeat;
 }
 .cart-toolbar .control .delete {
 	margin-right: 12px;
@@ -911,7 +911,7 @@ color:#999;
 .cart-total a.gray-btn .btn-icon {
 	height: 12px;
 	top: 4px;
-	background: url(<%=request.getContextPath() %>/images/btn-storage-icon.png) no-repeat;
+	background: url(/portal/images/btn-storage-icon.png) no-repeat;
 }
 .cart-total a.gray-btn .btn-text {
 	padding-left: 32px;
@@ -945,7 +945,7 @@ color:#999;
 	padding-left: 40px;
 	color: #f60;
 	line-height: 28px;
-	background: #fffdee url(<%=request.getContextPath() %>/images/delivery-icon-1.gif) no-repeat 10px 6px;
+	background: #fffdee url(/portal/images/delivery-icon-1.gif) no-repeat 10px 6px;
 }
 .cart-total .total {
 	width: 250px;
@@ -970,7 +970,7 @@ color:#999;
 	padding-right: 16px;
 	background-position: 100% -198px;
 }
-.cart-button a#continue{background: url(<%=request.getContextPath() %>/images/btn-proceed.png) no-repeat 0 0;width:94px;height:36px;line-height:36px;text-align:center;padding:0;}
+.cart-button a#continue{background: url(/portal/images/btn-proceed.png) no-repeat 0 0;width:94px;height:36px;line-height:36px;text-align:center;padding:0;}
 .cart-button a.continue:hover {
 	background-position: 100% -234px;
 }
@@ -993,7 +993,7 @@ color:#999;
 	display: block;
 	overflow: hidden;
 	line-height: 100px;
-	background: url(<%=request.getContextPath() %>/images/btn-check-2013.jpg) no-repeat #E43F45;
+	background: url(/portal/images/btn-check-2013.jpg) no-repeat #E43F45;
     font-family: "\5FAE\8F6F\96C5\9ED1";
     font-size: 18px;
     font-weight: bold;
@@ -1010,7 +1010,7 @@ color:#999;
 	top: 0;
 	width: 100%;
 	height: 100%;
-	background: url(<%=request.getContextPath() %>/images/btn-check.jpg) no-repeat;
+	background: url(/portal/images/btn-check.jpg) no-repeat;
 }
 .cart-button a.checkout:hover b{background-position:0 -36px;}
 .cart-button .checkout-state {
@@ -1031,7 +1031,7 @@ color:#999;
 	margin: 2px 0 0 10px;
 	float: left;
 	display: inline;
-	background: url(<%=request.getContextPath() %>/images/loading.gif) no-repeat center center;
+	background: url(/portal/images/loading.gif) no-repeat center center;
 }
 .cart-extra {
 	padding-top: 20px;
@@ -1088,7 +1088,7 @@ color:#999;
 	margin: 5px auto 0;
 	border: 1px solid #ddd;
 	overflow: hidden;
-	background: #fff url(<%=request.getContextPath() %>/images/cart-icon-bg-1.png) no-repeat right center;
+	background: #fff url(/portal/images/cart-icon-bg-1.png) no-repeat right center;
 }
 #inventory span {
 	width: 36px;
@@ -1267,7 +1267,7 @@ color:#999;
 .cart-tooltip .dialog-arrow {
 	width: 18px;
 	height: 11px;
-	background: url(<%=request.getContextPath() %>/images/dialog/dialog-arrow-bg.png) no-repeat;
+	background: url(/portal/images/dialog/dialog-arrow-bg.png) no-repeat;
 }
 .cart-tooltip .dialog-message {
 	line-height: 22px;
@@ -1304,7 +1304,7 @@ color:#999;
 .cart-empty .message {
 	height: 98px;
 	padding-left: 341px;
-	background: #f3f3f3 url(<%=request.getContextPath() %>/images/cart-empty-bg.png) no-repeat 250px 22px;
+	background: #f3f3f3 url(/portal/images/cart-empty-bg.png) no-repeat 250px 22px;
 }
 .cart-empty .message p {
 	line-height: 98px;
@@ -1344,7 +1344,7 @@ color:#999;
 .c-notification .c-corner span {
 	width: 5px;
 	position: absolute;
-	background: url(<%=request.getContextPath() %>/images/cart_corner_2.png) no-repeat;
+	background: url(/portal/images/cart_corner_2.png) no-repeat;
 }
 .c-notification .c-corner .nw {
 	bottom: -5px;
@@ -1519,7 +1519,7 @@ color:#999;
 	height:21px;
 	line-height:21px;
 	text-align:center;
-	background:url(<%=request.getContextPath() %>/images/btn-enter.png?v=2) no-repeat;
+	background:url(/portal/images/btn-enter.png?v=2) no-repeat;
 }
 #c-tabs .p-btn .btn:hover{
 	background-position:0 -21px;
@@ -1530,7 +1530,7 @@ color:#999;
 	height: 21px;
 	top: 0;
 	left: 7px;
-	background: url(<%=request.getContextPath() %>/images/icon-add-cart.png) no-repeat;
+	background: url(/portal/images/icon-add-cart.png) no-repeat;
 	display:none;
 }
 #c-tabs .p-btn .btn-text {
@@ -1554,7 +1554,7 @@ color:#999;
 	top: 112px;
 	width: 14px;
 	height: 36px;
-	background: url(<%=request.getContextPath() %>/images/left-2013.png) no-repeat;
+	background: url(/portal/images/left-2013.png) no-repeat;
 	cursor: pointer;
 	margin-right:20px;
 }
@@ -1563,7 +1563,7 @@ color:#999;
 }
 #recommend-rigth {
 	right: 20px;
-	background: url(<%=request.getContextPath() %>/images/right-2013.png) no-repeat;
+	background: url(/portal/images/right-2013.png) no-repeat;
 	margin-right:0;
 	margin-left:20px;
 }
@@ -1771,29 +1771,29 @@ color:#999;
 }
 .promisejsd{
     padding:1px 27px;
-    background: url('<%=request.getContextPath() %>/images/promise-ico.png') 0 0 no-repeat;
+    background: url('/portal/images/promise-ico.png') 0 0 no-repeat;
     margin-left:1px;
 }
 .promisejsd:hover{
-    background: url('<%=request.getContextPath() %>/images/promise-ico.png') -100px 0 no-repeat;
+    background: url('/portal/images/promise-ico.png') -100px 0 no-repeat;
     text-decoration: none;
 }
 .promisexsd{
     padding:1px 33px;
-    background: url('<%=request.getContextPath() %>/images/promise-ico.png') 0 -20px no-repeat;
+    background: url('/portal/images/promise-ico.png') 0 -20px no-repeat;
     margin-left:1px;
 }
 .promisexsd:hover{
-    background: url('<%=request.getContextPath() %>/images/promise-ico.png') -100px -20px no-repeat;
+    background: url('/portal/images/promise-ico.png') -100px -20px no-repeat;
     text-decoration: none;
 }
 .promisesg{
     padding:1px 21px;
-    background: url('<%=request.getContextPath() %>/images/promise-ico-sg.png') no-repeat;
+    background: url('/portal/images/promise-ico-sg.png') no-repeat;
     margin-left:1px;
 }
 .promisesg:hover{
-    background: url('<%=request.getContextPath() %>/images/promise-ico-sg.png') 0 -18px  no-repeat;
+    background: url('/portal/images/promise-ico-sg.png') 0 -18px  no-repeat;
     text-decoration: none;
 }
 .promisejdint{
@@ -1802,7 +1802,7 @@ color:#999;
 	height:16px;
 	vertical-align:middle;
 	overflow:hidden;
-    background: url('<%=request.getContextPath() %>/images/promise-ico-20140416.png') 0 -40px no-repeat;
+    background: url('/portal/images/promise-ico-20140416.png') 0 -40px no-repeat;
     margin-right:3px;
 }
 .promisejdint:hover{
@@ -1837,7 +1837,7 @@ color:#999;
     cursor:default;
 }
 .arrow-wrap-l .disabled i,.arrow-wrap-r .disabled i{
-    background-image:url('<%=request.getContextPath() %>/images/arrow-s-disabled.png');
+    background-image:url('/portal/images/arrow-s-disabled.png');
 }
 .arrow-left{
     left:0;
@@ -1861,7 +1861,7 @@ color:#999;
     position:absolute;
     left:5px;top:7px;overflow:hidden;
     width:4px;height:7px;
-    background:url('<%=request.getContextPath() %>/images/arrow-s.png');
+    background:url('/portal/images/arrow-s.png');
 }
 .arrow-right i{
     background-position:-3px 0;
@@ -1949,7 +1949,7 @@ color:#999;
     display:block;
     position:absolute;
     left:-44px;top:2px;
-    background:url('<%=request.getContextPath() %>/images/icon-tag.png');
+    background:url('/portal/images/icon-tag.png');
     *background-position:0 1px;
     width:34px;height:23px;
     font-size:0;color:transparent;text-indent:-99px;
@@ -2059,7 +2059,7 @@ color:#999;
     top:24px;
     width:14px;
     height:36px;
-    background:url('<%=request.getContextPath() %>/images/arrow.png') no-repeat;
+    background:url('/portal/images/arrow.png') no-repeat;
     cursor:pointer;
     margin-right:20px;
 	overflow:hidden;
@@ -2108,7 +2108,7 @@ color:#999;
 	font-weight: normal;
 }
 .ib-msg .arrow{
-	background: url('<%=request.getContextPath() %>/images/ib-msg-arrow.png') no-repeat 0 0;
+	background: url('/portal/images/ib-msg-arrow.png') no-repeat 0 0;
 	display: inline-block;
 	height: 12px;
 	width:6px;
@@ -2143,7 +2143,7 @@ color:#999;
 	height: 8px;
 	width: 16px;
 	overflow:hidden;
-	background: url('<%=request.getContextPath() %>/images/dialog/dialog-arrow.png') no-repeat 0 0;
+	background: url('/portal/images/dialog/dialog-arrow.png') no-repeat 0 0;
 }
 .modify-pre .dialog .dialog-close{
 	position: absolute;
@@ -2153,7 +2153,7 @@ color:#999;
 	height: 17px;
 	width: 17px;
 	cursor:pointer;
-	background: url('<%=request.getContextPath() %>/images/dialog/dialog-close.png') no-repeat 0 0;
+	background: url('/portal/images/dialog/dialog-close.png') no-repeat 0 0;
 }
 .modify-pre .cho-favor{
 	color:#333;
@@ -2228,7 +2228,7 @@ color:#999;
 	line-height: 32px;
 	width: 24px;
 	vertical-align: middle;
-	background: url('<%=request.getContextPath() %>/images/favor-icon.png') 0 5px no-repeat;
+	background: url('/portal/images/favor-icon.png') 0 5px no-repeat;
 	margin-right: 6px;
 }
 .favor-moved .fc-o{
@@ -2285,12 +2285,12 @@ color:#999;
 .p-gift-box{position:relative;z-index:1;overflow:visible;}
 .p-gift-box .mb{position:relative;border-top:1px solid #ccc;height:18px; text-align:center; background:#fffdee;overflow:visible;}
 .p-gift-box .p-gift-extra{position:relative;display:inline-block;*display:inline;+zoom:1; width:136px;height:16px;line-height:16px;border:solid #ccc;border-width:0 1px 1px;text-align:center;background:#f5fff5;cursor:pointer;margin-top:-1px;}
-.p-gift-box .p-gift-extra b{display:block;width:7px; height:4px;background:url('<%=request.getContextPath() %>/images/gift-arrow.png') no-repeat 0 0;position:absolute;right:10px;top:6px;overflow:hidden;}
+.p-gift-box .p-gift-extra b{display:block;width:7px; height:4px;background:url('/portal/images/gift-arrow.png') no-repeat 0 0;position:absolute;right:10px;top:6px;overflow:hidden;}
 .p-gift-box .on b{background-position:0 -6px;}
 .p-gift-box .p-gift{border:0;border-top:1px dashed #ccc; margin-top:-1px;overflow:hidden;}
 
 .cart-hd{position:relative;}
-.cart-announce{position:absolute;right:0;bottom:0;width:112px;height:55px;background:url('<%=request.getContextPath() %>/images/announcement.png') no-repeat;}
+.cart-announce{position:absolute;right:0;bottom:0;width:112px;height:55px;background:url('/portal/images/announcement.png') no-repeat;}
 .cart-announce a{display:block;width:112px;height:55px;}
 .cart-announce a:hover{ text-decoration:none;}
 
@@ -2333,7 +2333,7 @@ color:#999;
 	vertical-align:middle;
 	width:14px;
 	height:14px;
-	background:url(<%=request.getContextPath() %>/images/control-icon-20140521.png) no-repeat;
+	background:url(/portal/images/control-icon-20140521.png) no-repeat;
 	margin-right:5px;
 }
 .cart-dibu .fdibu .delete b {
@@ -2375,7 +2375,7 @@ color:#999;
 .cart-total-2014 a.gray-btn .btn-icon {
 	height:12px;
 	top:4px;
-	background:url(<%=request.getContextPath() %>/images/btn-storage-icon.png) no-repeat
+	background:url(/portal/images/btn-storage-icon.png) no-repeat
 }
 .cart-total-2014 .cart-button {
 	float:right;
@@ -2413,7 +2413,7 @@ color:#999;
 	padding-left:40px;
 	color:#f60;
 	line-height:28px;
-	background:#fffdee url(<%=request.getContextPath() %>/images/delivery-icon-1.gif) no-repeat 10px 6px
+	background:#fffdee url(/portal/images/delivery-icon-1.gif) no-repeat 10px 6px
 }
 .cart-total-2014 .total {
 	margin-right:20px;
@@ -2425,11 +2425,11 @@ color:#999;
 	top:-1px;
 	font-size: 18px;
 	font-weight: bold;
-	background:url(<%=request.getContextPath() %>/images/btn-check-20140627.png) no-repeat #e43f42;
+	background:url(/portal/images/btn-check-20140627.png) no-repeat #e43f42;
 }
 
 .cart-dibu .cart-button a.checkout b,.cart-dibu .cart-button a.checkout-jd b,.cart-dibu .cart-button a.checkout-jdInt b {
-	background:url(<%=request.getContextPath() %>/images/btn-check-20140627.png) no-repeat;
+	background:url(/portal/images/btn-check-20140627.png) no-repeat;
 }
 .cart-dibu .cart-button a.checkout-jd,.cart-dibu .cart-button a.checkout-jd b{
 	display:inline-block;*display:inline;*zoom:1;
@@ -2465,7 +2465,7 @@ color:#999;
 
 
 .combine-box{position:relative;border:1px solid #d0e4c2;background:#fcfffa;margin:20px 0 0;}
-.combine-box .combine-arr{position:absolute;right:65px;top:-10px;width:18px;height:10px;background:url('<%=request.getContextPath() %>/images/jdint-arr.png') no-repeat;}
+.combine-box .combine-arr{position:absolute;right:65px;top:-10px;width:18px;height:10px;background:url('/portal/images/jdint-arr.png') no-repeat;}
 .combine-box .combine-lcol{float:left;position:relative;padding:20px;width:424px;border-right:1px solid #d0e4c2;}
 .combine-box .combine-rcol{float:left;position:relative;padding:20px;width:480px;}
 .combine-box .list{float:left;position:relative;padding:0 30px; text-align:right;}
@@ -2477,7 +2477,7 @@ color:#999;
 .combine-box .combine-pnum .price{color:#e4393c;font-family:verdana;font-size:18px; margin-top:5px;}
 
 .combine-box .p-img{width: 50px;height: 50px;margin-right: 10px;border: 1px solid #ddd;padding: 0;float: left;background-color: #fff}
-.combine-box .btns{position: absolute;top: 13px;width: 14px;height: 23px;background: url('<%=request.getContextPath() %>/images/arrow.png') no-repeat;cursor: pointer;}
+.combine-box .btns{position: absolute;top: 13px;width: 14px;height: 23px;background: url('/portal/images/arrow.png') no-repeat;cursor: pointer;}
 .combine-box #prev01,.combine-box #prev02{left:0}
 .combine-box #prev01:hover,.combine-box #prev02:hover{background-position:0 -50px;}
 .combine-box #prev01.disabled,.combine-box #prev02.disabled{background-position:0 -100px;cursor:default;}

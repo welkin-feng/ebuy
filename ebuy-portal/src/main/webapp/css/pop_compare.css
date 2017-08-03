@@ -296,7 +296,7 @@ a.compare-active {
 	width: 58px;
 	height: 21px;
 	background:
-		url(<%=request.getContextPath() %>/images/cmp-btns.png) 0 0
+		url(/portal/images/cmp-btns.png) 0 0
 		no-repeat;
 	overflow: hidden;
 	line-height: 100px;
@@ -356,7 +356,7 @@ a.compare-active {
 	overflow: hidden;
 	cursor: pointer;
 	background-image:
-		url(<%=request.getContextPath() %>/images/footprint-arr.png);
+		url(/portal/images/footprint-arr.png);
 	background-repeat: no-repeat
 }
 
@@ -390,7 +390,7 @@ a.compare-active {
 	width: 14px;
 	height: 13px;
 	background:
-		url(<%=request.getContextPath() %>/images/cmp-btns.png) -95px
+		url(/portal/images/cmp-btns.png) -95px
 		-94px no-repeat
 }
 

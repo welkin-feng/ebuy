@@ -1,5 +1,6 @@
 package com.welkin.portal.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -14,9 +15,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.welkin.commons.CookieUtils;
+import com.welkin.commons.JsonUtils;
+import com.welkin.commons.Message;
 import com.welkin.commons.MessageUtil;
 import com.welkin.pojo.Order;
 import com.welkin.pojo.TbOrder;
+import com.welkin.pojo.TbOrderItem;
 import com.welkin.pojo.TbUser;
 import com.welkin.portal.pojo.CartItem;
 import com.welkin.portal.service.CartService;
@@ -31,44 +35,61 @@ public class OrderController {
 	private CartService cartService;
 	@Autowired
 	private OrderService orderService;
-	@Value("SSO_URL")
+	@Value("${SSO_URL}")
 	private String SSO_URL;
-	@Value("SSO_USER_TOKEN")
+	@Value("${SSO_USER_TOKEN}")
 	private String SSO_USER_TOKEN;
+	@Value("${SSO_PAGE_LOGIN}")
+	private String SSO_PAGE_LOGIN;
 
 	@RequestMapping("/myorders")
 	public ModelAndView showMyorders(HttpServletRequest request) {
 		ModelAndView mv = new ModelAndView("my-orders");
-
 		List<TbOrder> orderlist = orderService.getOrdersByUser(getTbUser(request).getId());
-		/*
-		 * List<TbOrderItem> itemlist = new ArrayList<TbOrderItem>();
-		 * itemlist.clear(); for (TbOrder tbOrder : orderlist) { itemlist =
-		 * orderService.getItemsByOrderId(tbOrder.getOrderId()); }
-		 */
-
-		mv.addObject("orderlist", orderlist);
+		
+		List<List<TbOrderItem>> itemlistlist = new ArrayList<List<TbOrderItem>>();
+		  itemlistlist.clear(); 
+		  for (TbOrder tbOrder : orderlist) { 
+			  //System.out.println("orderId:" + tbOrder.getOrderId());
+			  List<TbOrderItem> itemlist = new ArrayList<TbOrderItem>();
+			  itemlist = orderService.getItemsByOrderId(tbOrder.getOrderId()); 
+			  itemlistlist.add(itemlist);
+		  }
+			  
+		  mv.addObject("orderlist", orderlist);
+		  mv.addObject("itemlistlist", itemlistlist);
 
 		return mv;
 	}
 
 	@RequestMapping("/order-cart")
 	public String showOrderCart(HttpServletRequest request, HttpServletResponse response, Model model) {
+		try {
+		TbUser user = getTbUser(request);
+		if (user == null) {
+			return "redirect:" + SSO_URL + SSO_PAGE_LOGIN;
+		}
 		// 取购物车商品列表
 		List<CartItem> list = cartService.getCartItemList(request);
 		// 传递给页面
 		model.addAttribute("cartList", list);
-
 		return "order-cart";
+		} catch (Exception e) {
+			e.printStackTrace();
+			model.addAttribute("message", "您还未登录。请先返回首页登录！");
+			return "error/exception";
+		}
 	}
 
 	@RequestMapping("/create")
 	public String createOrder(Order order, Model model, HttpServletRequest request, HttpServletResponse response) {
-
 		try {
 			TbUser user = getTbUser(request);
-
-			// 在order对象中补全用户信息
+			if (user == null) {
+				return "redirect:" + SSO_URL + SSO_PAGE_LOGIN;
+			}
+			// 调用创建订单服务之前补全用户信息。
+			// 从cookie中后取TT_TOKEN的内容，根据token调用sso系统的服务根据token换取用户信息。
 			order.setUserId(user.getId());
 			order.setBuyerNick(user.getUsername());
 			// 调用服务
@@ -97,10 +118,17 @@ public class OrderController {
 		// System.out.println("userToken:" + userToken);
 
 		String url = SSO_URL + SSO_USER_TOKEN + userToken;
+		System.out.println("sso url:" + url);
+		// 返回数据 200 + tbuser对象，或 400 + “此session已经过期”
 		String tbUserJsonData = HttpClientUtils.doPost(url);
-
-		TbUser user = (TbUser) MessageUtil.jsonToMessage(tbUserJsonData, TbUser.class).getData();
-		return user;
+		
+		Message m = MessageUtil.jsonToMessage(tbUserJsonData);
+		if(m.getStatus() == 200) {
+			System.out.println("jsonData : " + m.getData());
+			return (TbUser) MessageUtil.jsonToMessage(tbUserJsonData, TbUser.class).getData();
+		}
+		return null;
+		
 	}
 
 }

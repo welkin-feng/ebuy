@@ -128,7 +128,13 @@ public class TbItemOpService {
 			TbItemParamItemExample ex3 = new TbItemParamItemExample();
 			com.welkin.pojo.TbItemParamItemExample.Criteria c3 = ex3.createCriteria();
 			c3.andItemIdEqualTo(po.getId());
-			x3 = tbItemParamItemMapper.updateByExampleSelective(paramItem, ex3);
+			int count = tbItemParamItemMapper.countByExample(ex3);
+			if (count > 0)
+				x3 = tbItemParamItemMapper.updateByExampleSelective(paramItem, ex3);
+			else {
+				paramItem.setCreated(new Date());
+				x3 = tbItemParamItemMapper.insertSelective(paramItem);
+			}
 		}
 
 		if ((x1 & x2 & x3) > 0) {

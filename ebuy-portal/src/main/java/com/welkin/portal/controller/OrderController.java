@@ -35,8 +35,8 @@ public class OrderController {
 	private CartService cartService;
 	@Autowired
 	private OrderService orderService;
-	@Value("${SSO_URL}")
-	private String SSO_URL;
+	@Value("${SSO_REDIRECT_URL}")
+	private String SSO_REDIRECT_URL;
 	@Value("${SSO_USER_TOKEN}")
 	private String SSO_USER_TOKEN;
 	@Value("${SSO_PAGE_LOGIN}")
@@ -67,7 +67,7 @@ public class OrderController {
 		try {
 		TbUser user = getTbUser(request);
 		if (user == null) {
-			return "redirect:" + SSO_URL + SSO_PAGE_LOGIN;
+			return "redirect:" + SSO_REDIRECT_URL + SSO_PAGE_LOGIN;
 		}
 		// 取购物车商品列表
 		List<CartItem> list = cartService.getCartItemList(request);
@@ -86,7 +86,7 @@ public class OrderController {
 		try {
 			TbUser user = getTbUser(request);
 			if (user == null) {
-				return "redirect:" + SSO_URL + SSO_PAGE_LOGIN;
+				return "redirect:" + SSO_REDIRECT_URL + SSO_PAGE_LOGIN;
 			}
 			// 调用创建订单服务之前补全用户信息。
 			// 从cookie中后取TT_TOKEN的内容，根据token调用sso系统的服务根据token换取用户信息。
@@ -115,9 +115,11 @@ public class OrderController {
 
 		// System.out.println("user:" + user);
 		String userToken = CookieUtils.getCookieValue(request, "TT_TOKEN");
-		// System.out.println("userToken:" + userToken);
-
-		String url = SSO_URL + SSO_USER_TOKEN + userToken;
+		// 如果 cookies 中的 token 值不存在，则不返回 tbuser 对象
+		if ( userToken == null || userToken == "") {
+			return null;
+		}
+		String url = SSO_REDIRECT_URL + SSO_USER_TOKEN + userToken;
 		System.out.println("sso url:" + url);
 		// 返回数据 200 + tbuser对象，或 400 + “此session已经过期”
 		String tbUserJsonData = HttpClientUtils.doPost(url);

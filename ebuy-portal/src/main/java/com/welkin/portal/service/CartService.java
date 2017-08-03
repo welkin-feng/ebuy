@@ -34,7 +34,7 @@ public class CartService {
 	public List<CartItem> getCartItemList(HttpServletRequest request) {
 		// 从cookie中取商品列表
 		String cartJson = CookieUtils.getCookieValue(request, "TT_CART", true);
-		if (cartJson == null)
+		if (cartJson == null || cartJson == "")
 			return new ArrayList<>();
 
 		// 把json转换成商品列表
@@ -99,6 +99,62 @@ public class CartService {
 		// 把购物车列表写入cookie
 		CookieUtils.setCookie(request, response, "TT_CART", JsonUtils.objectToJson(itemList), true);
 		System.out.println("购物车添加商品/itemId:" + cartItem.getId() + ",number:" + cartItem.getNum());
+
+		return MessageUtil.build(200);
+	}
+	
+	/**
+	 * 更新购物车中的商品
+	 * 
+	 * @param itemId
+	 *            商品Id
+	 * @param number
+	 *            商品数量
+	 * @param request
+	 * @param response
+	 * @return
+	 */
+	public Message updateCartItem(Long itemId, Integer number, HttpServletRequest request, HttpServletResponse response) {
+
+		// 取商品信息
+		CartItem cartItem = null;
+		// 取购物车商品列表
+		List<CartItem> itemList = getCartItemList(request);
+		// 判断购物车商品列表中是否存在此商品
+		for(int i=0; i<itemList.size(); i++) {
+			// 如果存在此商品
+			if (itemList.get(i).getId().equals(itemId)) {
+				// 修改商品数量
+				itemList.get(i).setNum(number);
+				cartItem = itemList.get(i);
+				break;
+			}
+		}
+		// 购物车中不存在该商品
+		if (cartItem == null) {
+			System.out.println("购物车中不存在该商品");
+
+			// 查找商品信息
+			Map<String, String> params = new HashMap<String, String>();
+			params.put("itemId", itemId + "");
+			String json = HttpClientUtils.doPost(MIDDLE_URL + MIDDLE_QUERY_ITEM_URL, params);
+			// System.out.println("json:"+json);
+			TbItem item = JsonUtils.jsonToObject(json, TbItem.class);
+			
+			// 为购物车中商品对象赋值
+			cartItem = new CartItem();
+			cartItem.setId(itemId);
+			cartItem.setTitle(item.getTitle());
+			cartItem.setNum(number);
+			cartItem.setPrice(item.getPrice());
+			cartItem.setImages(item.getImage() == null ? null : item.getImage().split(","));
+
+			// 添加到购物车列表
+			itemList.add(cartItem);
+		}
+		// 把购物车列表写入cookie
+		CookieUtils.setCookie(request, response, "TT_CART", JsonUtils.objectToJson(itemList), true);
+		System.out.println("更新车添加商品/itemId:" + cartItem.getId() + ",number:" + cartItem.getNum());
 
 		return MessageUtil.build(200);
 	}

@@ -51,6 +51,28 @@ public class CartController {
 		}
 		return mv;
 	}
+	
+	@RequestMapping("/update/num/{itemId}/{number}")
+	public ModelAndView UpdateItemOfCart(@PathVariable Long itemId,
+			@PathVariable Integer number,
+			HttpServletRequest request,
+			HttpServletResponse response) {
+		List<CartItem> cartList = null;
+
+		ModelAndView mv = new ModelAndView();
+		System.out.println("update itemId:" + itemId + ", number:" + number);
+		Message mes = cartService.updateCartItem(itemId, number, request, response);
+		
+		if (200 == mes.getStatus()) {
+			mv.setViewName("redirect:/cart/cart.html");
+			cartList = cartService.getCartItemList(request);
+			mv.addObject("cartList", cartList);
+			return mv;
+		} else {
+			mv.setViewName("/error/exception");
+			return mv;
+		}
+	}
 
 	@RequestMapping("/delete/{itemId}")
 	public ModelAndView deleteItemFromCart(@PathVariable Long itemId, HttpServletRequest request,

@@ -61,6 +61,12 @@ public class TbItemParamService {
 		com.welkin.pojo.TbItemExample.Criteria c2 = ex2.createCriteria();
 		c2.andCidEqualTo(tbItemParam.getItemCatId());
 		List<TbItem> tbItems = tbItemMapper.selectByExample(ex2);
+		if(tbItems == null || tbItems.size() == 0) {
+			if(updateTbItemParamRes > 0)
+				return true;
+			return false;
+		}
+		
 		List<Long> tbItems_ItemId = new ArrayList<Long>();
 		for (int i = 0; i < tbItems.size(); i++) 
 			tbItems_ItemId.add(tbItems.get(i).getId());
@@ -133,25 +139,17 @@ public class TbItemParamService {
 		// 查询前开始分页
 		// page: 第几页, rows：每页的记录数量
 		PageHelper.startPage(page, rows);
-
+		
+		List<TbItemParamDetail> tli = new ArrayList<>();
+		
 		TbItemParamExample ex = new TbItemParamExample();
 		List<TbItemParam> paramList = tbItemParamMapper.selectByExampleWithBLOBs(ex);
-
-		List<Long> catIds = new ArrayList<>();
+	
 		for (int i = 0; i < paramList.size(); i++) {
-			catIds.add(paramList.get(i).getItemCatId());
-		}
-
-		TbItemCatExample catEx = new TbItemCatExample();
-		com.welkin.pojo.TbItemCatExample.Criteria c = catEx.createCriteria();
-		c.andIdIn(catIds);
-		List<TbItemCat> catList = tbItemCatMapper.selectByExample(catEx);
-
-		List<TbItemParamDetail> tli = new ArrayList<>();
-		for (int i = 0; i < catList.size(); i++) {
 			TbItemParamDetail e = new TbItemParamDetail();
 			e.setTbItemParam(paramList.get(i));
-			e.setItemCatName(catList.get(i).getName());
+			TbItemCat tbItemCat = tbItemCatMapper.selectByPrimaryKey(paramList.get(i).getItemCatId());
+			e.setItemCatName(tbItemCat.getName());
 			tli.add(e);
 		}
 

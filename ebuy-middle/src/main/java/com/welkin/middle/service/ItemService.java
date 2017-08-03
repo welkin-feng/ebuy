@@ -8,10 +8,13 @@ import org.springframework.stereotype.Service;
 
 import com.welkin.commons.JsonUtils;
 import com.welkin.dao.RedisDao;
+import com.welkin.mapper.TbItemCatMapper;
 import com.welkin.mapper.TbItemDescMapper;
 import com.welkin.mapper.TbItemMapper;
 import com.welkin.mapper.TbItemParamItemMapper;
 import com.welkin.pojo.TbItem;
+import com.welkin.pojo.TbItemCat;
+import com.welkin.pojo.TbItemCatExample;
 import com.welkin.pojo.TbItemDesc;
 import com.welkin.pojo.TbItemDescExample;
 import com.welkin.pojo.TbItemParamItem;
@@ -19,6 +22,8 @@ import com.welkin.pojo.TbItemParamItemExample;
 
 @Service
 public class ItemService {
+	@Autowired
+	private TbItemCatMapper tbItemCatMapper;
 	@Autowired
 	private TbItemMapper tbItemMapper;
 	@Autowired
@@ -35,6 +40,25 @@ public class ItemService {
 	private String TB_ITEM_PARAM_ITEM_KEY;
 	@Value("${ITEM_ID_FIELD}")
 	private String ITEM_ID_FIELD;
+	
+	/**
+	 * 功能：根据cid查询TbItemCat，找到具体的商品cat
+	 * 
+	 * @param cid
+	 *            商品的cid
+	 * @return 商品类别码字符串
+	 */
+	public String queryItemCategoryByItemCid(Long cid) {
+		TbItemCatExample ex = new TbItemCatExample();
+		com.welkin.pojo.TbItemCatExample.Criteria c = ex.createCriteria();
+		c.andIdEqualTo(cid);
+		List<TbItemCat> tbItemCats = tbItemCatMapper.selectByExample(ex);
+
+		if (1 == tbItemCats.size())
+			return JsonUtils.objectToJson(tbItemCats.get(0));
+		
+		return "";
+	}
 
 	/**
 	 * 功能：根据ItemId查询TbItem，找到具体的商品，该商品的查询结果只能有一个

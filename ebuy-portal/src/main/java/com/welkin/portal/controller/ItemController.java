@@ -32,6 +32,48 @@ public class ItemController {
 	private String MIDDLE_QUERY_ITEMDESC_URL; // "/item/query/itemDesc"
 	@Value("${MIDDLE_QUERY_ITEMPARAM_URL}")
 	private String MIDDLE_QUERY_ITEMPARAM_URL; // "/item/query/itemParam"
+	@Value("${MIDDLE_QUERY_ITEMCATEGORY_URL}")
+	private String MIDDLE_QUERY_ITEMCATEGORY_URL;// "/item/query/itemCategory"
+	
+	/**
+	 * 根据itemId得到item的基本信息
+	 * 
+	 * @param itemId
+	 * @return
+	 */
+	@RequestMapping(value = "/item/category/{cid}")
+	@ResponseBody
+	public void getItemCat(@PathVariable Long cid, HttpServletRequest request, HttpServletResponse response) {
+		// 设置编码格式
+		try {
+			request.setCharacterEncoding("utf-8");
+		} catch (UnsupportedEncodingException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		response.setContentType("text/html;charset=utf-8");
+		response.setHeader("Cache-Control", "no-cache");
+		
+		// 发送请求 根据商品的cid返回item的分类信息
+		String url = MIDDLE_URL + MIDDLE_QUERY_ITEMCATEGORY_URL;
+		Map<String, String> params = new HashMap<String, String>();
+		params.put("cid", cid + "");
+		// 向指定url地址发送post请求
+		String res = HttpClientUtils.doPost(url, params);
+
+		// 将json的字符串转换成自定类
+//		List<String> categories = JsonUtils.jsonToList(res, String.class);
+		PrintWriter out = null;
+		try {
+			out = response.getWriter();
+		} catch (IOException e) {
+			e.printStackTrace();
+		} finally {
+			out.print(res);
+			out.flush();
+			out.close();
+		}
+	}
 
 	/**
 	 * 根据itemId得到item的基本信息
@@ -44,12 +86,12 @@ public class ItemController {
 		ModelAndView mv = new ModelAndView("item");
 
 		// 发送请求 返回TbItem表的商品基本信息
+		// /item/query/item
 		String url = MIDDLE_URL + MIDDLE_QUERY_ITEM_URL;
 		Map<String, String> params = new HashMap<String, String>();
 		params.put("itemId", itemId + "");
 		// 向指定url地址发送post请求
 		String str = HttpClientUtils.doPost(url, params);
-		System.out.println("str:" + str);
 
 		// 将json的字符串转换成自定类
 		TbItemInfo tbIteminfo = JsonUtils.jsonToObject(str, TbItemInfo.class);
@@ -82,7 +124,6 @@ public class ItemController {
 		params.put("itemId", itemId + "");
 		// 向指定url地址发送post请求
 		String str = HttpClientUtils.doPost(url, params);
-		System.out.println("str:" + str);
 
 		// 将json的字符串转换成自定类
 		TbItemDesc tbItemDesc = JsonUtils.jsonToObject(str, TbItemDesc.class);
@@ -90,10 +131,10 @@ public class ItemController {
 		PrintWriter out = null;
 		try {
 			out = response.getWriter();
+			out.print(res);
 		} catch (IOException e) {
 			e.printStackTrace();
 		} finally {
-			out.print(res);
 			out.flush();
 			out.close();
 		}
@@ -123,7 +164,6 @@ public class ItemController {
 		params.put("itemId", itemId + "");
 		// 向指定url地址发送post请求
 		String str = HttpClientUtils.doPost(url, params);
-		System.out.println("str:" + str);
 
 		// 将json的字符串转换成自定类
 		TbItemParamItem tbItemParamItem = JsonUtils.jsonToObject(str, TbItemParamItem.class);
@@ -132,13 +172,12 @@ public class ItemController {
 		PrintWriter out = null;
 		try {
 			out = response.getWriter();
+			out.print(res);
 		} catch (IOException e) {
 			e.printStackTrace();
 		} finally {
-			out.print(res);
 			out.flush();
 			out.close();
 		}
-
 	}
 }

@@ -8,10 +8,10 @@
 <head>
 <meta http-equiv="Cache-Control" content="max-age=300" />
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>我的订单 - 淘淘</title>
-<meta name="Keywords" content="java,淘淘java" />
+<title>我的订单</title>
+<meta name="Keywords" content="java,商城java" />
 <meta name="description"
-	content="在淘淘中找到了29910件java的类似商品，其中包含了“图书”，“电子书”，“教育音像”，“骑行运动”等类型的java的商品。" />
+	content="在商城中找到了29910件java的类似商品，其中包含了“图书”，“电子书”，“教育音像”，“骑行运动”等类型的java的商品。" />
 <link rel="stylesheet" type="text/css"
 	href="<%=request.getContextPath()%>/css/base.css" media="all" />
 <link rel="stylesheet" type="text/css"
@@ -223,7 +223,7 @@
 														href="http://order.jd.com/normal/item.action?orderid=2538292730&amp;PassKey=769448C6BA99F1ADA8244BAE7BC60580"
 														clstag="click|keycount|orderinfo|order_num">${order.orderId }</a>
 
-												</span> <span class="tcol2"> 淘淘 </span> <span class="tcol3">
+												</span> <span class="tcol2"> 商城 </span> <span class="tcol3">
 														<a class="btn-im" onclick="getPamsForChat()" href="#none"
 														title="联系客服"></a>
 												</span></td>
@@ -377,13 +377,13 @@
 							<dd class="fore2">
 								<div class="item" id="_MYJD_credit">
 									<a clstag="homepage|keycount|home2013|hbt" tag="213"
-										href="http://baitiao.jd.com/creditUser/record">淘淘白条</a>&nbsp;
+										href="http://baitiao.jd.com/creditUser/record">商城白条</a>&nbsp;
 								</div>
 							</dd>
 							<dd class="fore3">
 								<div class="item" id="_MYJD_tx">
 									<a target="_blank" clstag="homepage|keycount|home2013|htx"
-										href="http://mobile.jd.com/yyswt/myjd.do">淘淘通信</a>
+										href="http://mobile.jd.com/yyswt/myjd.do">商城通信</a>
 								</div>
 							</dd>
 							<dd class="fore4">
@@ -401,7 +401,7 @@
 							<dd class="fore6">
 								<div class="item" id="_MYJD_card">
 									<a target="_blank" clstag="homepage|keycount|home2013|he"
-										href="http://giftcard.jd.com/giftcard/index.action">淘淘卡/E卡</a>
+										href="http://giftcard.jd.com/giftcard/index.action">商城卡/E卡</a>
 								</div>
 							</dd>
 							<dd class="fore7 last">
@@ -438,13 +438,13 @@
 					<div id="da-game" class="da-box m">
 						<a
 							href="http://c.nfa.jd.com/adclick?sid=14&amp;cid=720&amp;aid=4497&amp;bid=0&amp;unit=85943&amp;advid=131939&amp;guv=&amp;url=http://wan.jd.com/yeyou/play.html?gameId=86&amp;gateWayId=s40"><img
-							width="100%" src="/images/547e6a57N75c2f016.gif" alt=""></a>
+							width="100%" src="<%=request.getContextPath()%>/images/547e6a57N75c2f016.gif" alt=""></a>
 					</div>
 					<div id="da-home" class="da-box">
 						<a
 							href="http://c.nfa.jd.com/adclick?sid=2&amp;cid=102&amp;aid=413&amp;bid=8305&amp;unit=65429&amp;advid=166662&amp;guv=&amp;url=http://vivoshop.jd.com"
 							target="_blank"><img width="100%" height="100%" alt=""
-							app="image:poster" src="/images/549d03d0N59b1f026.jpg"></a>
+							app="image:poster" src="<%=request.getContextPath()%>/images/549d03d0N59b1f026.jpg"></a>
 					</div>
 				</div>
 				<span class="clr"></span>

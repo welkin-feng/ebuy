@@ -3,7 +3,7 @@
 <div id="shortcut-2013">
 	<div class="w">
 		<ul class="fl lh">
-			<li class="fore1 ld" clstag="homepage|keycount|home2013|01a"><b></b><a href="javascript:addToFavorite()" rel="nofollow">收藏淘淘</a></li>
+			<li class="fore1 ld" clstag="homepage|keycount|home2013|01a"><b></b><a href="javascript:addToFavorite()" rel="nofollow">收藏商城</a></li>
 		</ul>
 		<ul class="fr lh">
 			<li class="fore1" id="loginbar" clstag="homepage|keycount|home2013|01b">您好！欢迎来到商城！<a href="javascript:login()">[登录]</a>&nbsp;<a href="javascript:regist()">[免费注册]</a></li>
@@ -43,14 +43,14 @@
 					<dl class="item fore1">
 						<dt>特色栏目</dt>
 						<dd>
-							<div><a target="_blank" href="http://mobile.jd.com/index.do">淘淘通信</a></div>
+							<div><a target="_blank" href="http://mobile.jd.com/index.do">商城通信</a></div>
 							<div><a target="_blank" href="http://jdstar.jd.com/">校园之星</a></div>
 							<div><a target="_blank" href="http://my.jd.com/personal/guess.html">为我推荐</a></div>
 							<div><a target="_blank" href="http://shipingou.jd.com/">视频购物</a></div>
-							<div><a target="_blank" href="http://club.jd.com/">淘淘社区</a></div>
+							<div><a target="_blank" href="http://club.jd.com/">商城社区</a></div>
 							<div><a target="_blank" href="http://read.jd.com/">在线读书</a></div>
 							<div><a target="_blank" href="http://diy.jd.com/">装机大师</a></div>
-							<div><a target="_blank" href="http://giftcard.jd.com/market/index.action">淘淘E卡</a></div>
+							<div><a target="_blank" href="http://giftcard.jd.com/market/index.action">商城E卡</a></div>
 							<div><a target="_blank" href="http://channel.jd.com/jiazhuang.html">家装城</a></div>
 							<div><a target="_blank" href="http://dapeigou.jd.com/">搭配购</a></div>
 							<div><a target="_blank" href="http://xihuan.jd.com/">我喜欢</a></div>

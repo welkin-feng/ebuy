@@ -226,7 +226,11 @@
 			var url = "<%=request.getContextPath() %>/moreInfo.html?userName=${tbUser.username}";
 			$(".more-info").attr("href", url);
 		});
+		$(".btn-5").bind("click", function(){
+			alert("保存成功！");
+		});
 	});
+	
 </script>
 </body>
 </html>

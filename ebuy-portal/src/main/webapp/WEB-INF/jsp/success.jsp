@@ -1,8 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page trimDirectiveWhitespaces="true" %>
 
-
-
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
@@ -26,7 +24,7 @@
 <jsp:include page="commons/shortcut.jsp" />
 <!--shortcut end-->
 <div class="w" id="headers">
-		<div id="logo"><a href="/"><img alt="商城" src="<%=request.getContextPath() %>/images/taotao-logo.gif"></a></div>
+		<div id="logo"><a href="<%=request.getContextPath() %>"><img alt="商城" src="<%=request.getContextPath() %>/images/taotao-logo.gif"></a></div>
 		<ul class="step" id="step3">
 			<li class="fore1">1.我的购物车<b></b></li>
 			<li class="fore2">2.填写核对订单信息<b></b></li>

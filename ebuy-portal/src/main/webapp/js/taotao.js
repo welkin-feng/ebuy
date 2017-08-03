@@ -1,3 +1,4 @@
+var LOCAL_HOST_IP="172.28.10.253"
 var TT = TAOTAO = {
 	checkLogin : function(){
 		var _ticket = $.cookie("TT_TOKEN");
@@ -11,7 +12,7 @@ var TT = TAOTAO = {
 			success : function(data){
 				if(data.status == 200){
 					var username = data.data.username;
-					var html = "<a href=\"userInfo.html?userName=" + username+ "\" class=\"link-userInfo\">" + username + "</a>" + "，欢迎来到淘淘！<a href=\"logout.html\" class=\"link-logout\">[退出]</a>";
+					var html = "<a href=\"/portal/userInfo.html?userName=" + username+ "\" class=\"link-userInfo\">" + username + "</a>" + "，欢迎来到淘淘！<a href=\"/portal/logout.html\" class=\"link-logout\">[退出]</a>";
 					$("#loginbar").html(html);
 				}
 			}
